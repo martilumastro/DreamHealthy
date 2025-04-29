@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // button hamburger --> from home to menu
-        var buttonMenu = findViewById<Button>(R.id.hamburger_button)
+        val buttonMenu = findViewById<Button>(R.id.hamburger_button)
         buttonMenu.setOnClickListener {
             val pageMenu = Intent (this, MenuActivity::class.java)
             startActivity(pageMenu)
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // button today --> from home to today
-        var buttonToday = findViewById<Button>(R.id.today_button)
+        val buttonToday = findViewById<Button>(R.id.today_button)
         buttonToday.setOnClickListener {
             val pageToday = Intent (this, TodayActivity::class.java)
             startActivity(pageToday)

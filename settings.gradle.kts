@@ -9,6 +9,10 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        //library for pie chart
+        maven {
+            url = uri("https://jitpack.io")
+        }
     }
 }
 dependencyResolutionManagement {
@@ -16,6 +20,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        //library for pie chart
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
