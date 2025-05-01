@@ -27,11 +27,12 @@ class TodayActivity : AppCompatActivity() {
     //CAMBIARE CON I VALORI SMARTWATCH
     var hoursSleep:Int = 8
     var minutesSleep:Int = 30
-    var minutesRest:Int = 1
-    var hoursRest:Int = 0
-    var heartbeatsSleep:Float = 45.00f
-    var heartbeatsRest:Float = 86.00f
-    var reawakenings:Int = 1
+    var minutesRest:Int = 0
+    var hoursRest:Int = 1
+    var heartRateAverage:Float = 45.00f
+    var awakening:Int = 1
+    var Averagebreath:Int = 15
+    var noise:Int = 0
     var totalHours:Int = hoursSleep + hoursRest
     var totalMinutes:Int = minutesSleep + minutesRest
 
@@ -56,8 +57,8 @@ class TodayActivity : AppCompatActivity() {
         val pieChart = findViewById<PieChart>(R.id.total_chart)
 
 
-        pieChart.holeRadius = 70f
-        pieChart.transparentCircleRadius = 45f
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
         pieChart.setHoleColor(Color.TRANSPARENT)
 
         //description component disabled
@@ -107,6 +108,12 @@ class TodayActivity : AppCompatActivity() {
         addMinutesRest()
         //print
         printTotal()
+        printNotSleep()
+        printSleep()
+        printHeartRate()
+        printBreath()
+        printNoise()
+        printAwakening()
     }
 
 
@@ -149,9 +156,46 @@ class TodayActivity : AppCompatActivity() {
             val totalHoursTextView = findViewById<TextView>(R.id.total_hours)
             val totalMinutesTextView = findViewById<TextView>(R.id.total_minutes)
 
-            Log.d("TodayActivity", "Total Hours: $totalHours, Total Minutes: $totalMinutes")
+            //Log.d("TodayActivity", "Total Hours: $totalHours, Total Minutes: $totalMinutes")
             totalHoursTextView.text = "$totalHours h"
             totalMinutesTextView.text = "$totalMinutes m"
+        }
+
+        //Print input not sleep hours and minutes
+        fun printNotSleep() {
+            val notSleepHoursTextView = findViewById<TextView>(R.id.not_sleep_hours)
+            val notSleepMinutesTextView = findViewById<TextView>(R.id.not_sleep_minutes)
+
+            notSleepHoursTextView.text = "$hoursRest h"
+            notSleepMinutesTextView.text = "$minutesRest m"
+        }
+        //Print input slepp hours and minutes
+        fun printSleep(){
+            val sleepHoursTextView = findViewById<TextView>(R.id.sleep_hours)
+            val sleepMinutesTextView = findViewById<TextView>(R.id.sleep_minutes)
+
+            sleepHoursTextView.text = "$hoursSleep h"
+            sleepMinutesTextView.text = "$minutesSleep m"
+        }
+        //Print input average heart rate
+        fun printHeartRate(){
+            val heartRateTextView = findViewById<TextView>(R.id.text_heart)
+            heartRateTextView.text = "$heartRateAverage bpm"
+        }
+        //Print input average breath per minutes
+        fun printBreath(){
+            val breathTextView = findViewById<TextView>(R.id.text_breath)
+            breathTextView.text = "$Averagebreath per minute"
+        }
+        //Print input number noise
+        fun printNoise(){
+            val noiseTextView = findViewById<TextView>(R.id.text_noise)
+            noiseTextView.text = "$noise"
+        }
+        //Print input number awakening
+        fun printAwakening(){
+            val awakeningTextView = findViewById<TextView>(R.id.text_awakening)
+            awakeningTextView.text = "$awakening"
         }
 
 }
