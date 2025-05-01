@@ -12,4 +12,11 @@
     <color name="magenta">#5C0019</color>
     <color name="red_light">#E93419</color>
     <color name="orange">#EA6600</color>
+
+    //trasparence
+    <color name="trans_green">#7525D366</color>
+    <color name="trans_red">#85DD2C00</color>
+    <color name="trans_purple">#7C6200EA</color>
+    <color name="trans_blue">#862962FF</color>
+    <color name="trans_yellow">#88FFD600</color>
 </resources>

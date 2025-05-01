@@ -1,15 +1,24 @@
 package com.example.dreamhealthy
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.view.Window
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.PopupMenu
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -23,7 +32,6 @@ import java.util.ArrayList
 import java.util.Scanner
 
 class TodayActivity : AppCompatActivity() {
-
     //CAMBIARE CON I VALORI SMARTWATCH
     var hoursSleep:Int = 8
     var minutesSleep:Int = 30
@@ -49,64 +57,29 @@ class TodayActivity : AppCompatActivity() {
             startActivity(pageMenu)
 
         }
-        //call fun
+        //call fun for update var, val and print
         updateVar()
-
-
-        //pie chart
-        val pieChart = findViewById<PieChart>(R.id.total_chart)
-
-
-        pieChart.holeRadius = 80f
-        pieChart.transparentCircleRadius = 0f
-        pieChart.setHoleColor(Color.TRANSPARENT)
-
-        //description component disabled
-        pieChart.description.isEnabled = false
-        pieChart.legend.isEnabled = false
-        pieChart.setDrawEntryLabels(false)
-
-
-        val pieList = mutableListOf<PieEntry>()
-
-        //sleep values --> change with correct percentage
-        pieList.add(PieEntry(80.00f, "Good Sleep"))
-        pieList.add(PieEntry(20.00f,""))
-
-        //value for text Center
-        val goodSleep = pieList.find {it.label == "Good Sleep"}?.value ?: 0f
-        // text center
-        pieChart.setCenterText("$goodSleep%")
-        pieChart.setCenterTextSize(20f)
-        pieChart.setCenterTextColor(Color.WHITE)
-
-        val colors = listOf(
-            ContextCompat.getColor(this, R.color.green_light),
-            ContextCompat.getColor(this, R.color.blue_dark)
-        )
-
-        //pie chart color
-        val pieDataSet = PieDataSet(pieList, "")
-        pieDataSet.colors = colors
-
-        //allocation of data
-        val pieData = PieData(pieDataSet)
-        pieChart.data = pieData
-
-        //animation
-        pieChart.animateY(1000)
-        pieChart.invalidate()
-
 
     }
 
     //Fun update var and print
     fun updateVar() {
-        //var
+        //general fun
         addMinutes()
         addMinutesSleep()
         addMinutesRest()
-        //print
+        pieChartTotal()
+        pieCharFistNrem()
+        pieChartSecondNrem()
+        pieChartRem()
+        pieChartMonday()
+        pieChartTuesday()
+        pieChartWednsday()
+        pieChartThursday()
+        pieChartFriday()
+        pieChartSaturday()
+        pieChartSunday()
+        //fun specific for print
         printTotal()
         printNotSleep()
         printSleep()
@@ -117,9 +90,246 @@ class TodayActivity : AppCompatActivity() {
     }
 
 
-
+        //coordinare con calendario
         // days of the week section top
-
+        fun pieChartMonday() {
+            val pieChart = findViewById<PieChart>(R.id.monday_chart)
+            //pie chart hole
+            pieChart.holeRadius = 80f
+            pieChart.transparentCircleRadius = 0f
+            pieChart.setHoleColor(Color.TRANSPARENT)
+            //description component disabled
+            pieChart.description.isEnabled = false
+            pieChart.legend.isEnabled = false
+            pieChart.setDrawEntryLabels(false)
+            //pie chart value val
+            val pieList = mutableListOf<PieEntry>()
+            //sleep values --> change with correct percentage
+            pieList.add(PieEntry(00.00f, "Good Sleep"))
+            pieList.add(PieEntry(100.00f, ""))
+            // text center
+            pieChart.setCenterText("M")
+            pieChart.setCenterTextSize(10f)
+            pieChart.setCenterTextColor(Color.WHITE)
+            //val colors for pie chart
+            val colors = listOf(
+                ContextCompat.getColor(this, R.color.green_light),
+                ContextCompat.getColor(this, R.color.blue_dark)
+            )
+            //pie chart color
+            val pieDataSet = PieDataSet(pieList, "")
+            pieDataSet.colors = colors
+            //allocation of data
+            val pieData = PieData(pieDataSet)
+            pieChart.data = pieData
+            //animation
+            pieChart.animateY(1000)
+            pieChart.invalidate()
+        }
+    fun pieChartTuesday() {
+        val pieChart = findViewById<PieChart>(R.id.tuesday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("T")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+    fun pieChartWednsday() {
+        val pieChart = findViewById<PieChart>(R.id.wednsday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("W")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+    fun pieChartThursday() {
+        val pieChart = findViewById<PieChart>(R.id.thursday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("T")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+    fun pieChartFriday() {
+        val pieChart = findViewById<PieChart>(R.id.friday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("F")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+    fun pieChartSaturday() {
+        val pieChart = findViewById<PieChart>(R.id.saturday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("S")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+    fun pieChartSunday() {
+        val pieChart = findViewById<PieChart>(R.id.sunday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("S")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
 
         //minutes and hour (60 minutes = 1 hour)
         //total
@@ -151,7 +361,6 @@ class TodayActivity : AppCompatActivity() {
         }
 
         //Print input total hours and minutes
-
         fun printTotal() {
             val totalHoursTextView = findViewById<TextView>(R.id.total_hours)
             val totalMinutesTextView = findViewById<TextView>(R.id.total_minutes)
@@ -160,7 +369,6 @@ class TodayActivity : AppCompatActivity() {
             totalHoursTextView.text = "$totalHours h"
             totalMinutesTextView.text = "$totalMinutes m"
         }
-
         //Print input not sleep hours and minutes
         fun printNotSleep() {
             val notSleepHoursTextView = findViewById<TextView>(R.id.not_sleep_hours)
@@ -198,4 +406,154 @@ class TodayActivity : AppCompatActivity() {
             awakeningTextView.text = "$awakening"
         }
 
+    //pie chart
+    fun pieChartTotal() {
+        val pieChart = findViewById<PieChart>(R.id.total_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(80.00f, "Good Sleep"))
+        pieList.add(PieEntry(20.00f, ""))
+
+        //value for text Center
+        val goodSleep = pieList.find { it.label == "Good Sleep" }?.value ?: 0f
+        // text center
+        pieChart.setCenterText("$goodSleep%")
+        pieChart.setCenterTextSize(20f)
+        pieChart.setCenterTextColor(Color.WHITE)
+
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+
+    fun pieCharFistNrem(){
+        val pieChart = findViewById<PieChart>(R.id.first_nrem_chart)
+        //hole
+        pieChart.holeRadius = 70f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+
+        //value
+        val pieList = mutableListOf<PieEntry>()
+        pieList.add(PieEntry(45.00f, "first NREM"))
+        pieList.add(PieEntry(55.00f, ""))
+
+        val nRem = pieList.find { it.label == "first NREM" }?.value ?: 0f
+        // text center
+        pieChart.setCenterText("$nRem%")
+        pieChart.setCenterTextSize(14f)
+        pieChart.setCenterTextColor(Color.WHITE)
+
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.magenta),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+
+    fun pieChartSecondNrem(){
+        val pieChart = findViewById<PieChart>(R.id.second_nrem_chart)
+        //hole
+        pieChart.holeRadius = 70f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //value
+        val pieList = mutableListOf<PieEntry>()
+        pieList.add(PieEntry(25.00f, "second NREM"))
+        pieList.add(PieEntry(65.00f, ""))
+
+        val nRem = pieList.find { it.label == "second NREM" }?.value ?: 0f
+        pieChart.setCenterText("$nRem%")
+        pieChart.setCenterTextSize(14f)
+        pieChart.setCenterTextColor(Color.WHITE)
+
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.red_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+
+    fun pieChartRem(){
+        val pieChart = findViewById<PieChart>(R.id.rem_chart)
+        //hole caracters
+        pieChart.holeRadius = 70f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //value
+        val pieList = mutableListOf<PieEntry>()
+        pieList.add(PieEntry(30.00f, "REM"))
+        pieList.add(PieEntry(70.00f, ""))
+
+        val nRem = pieList.find { it.label == "REM" }?.value ?: 0f
+        pieChart.setCenterText("$nRem%")
+        pieChart.setCenterTextSize(14f)
+        pieChart.setCenterTextColor(Color.WHITE)
+
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.orange),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+
+
 }
+
