@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.github.mikephil.charting.charts.Chart
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
@@ -42,6 +43,15 @@ class TodayActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_today)
 
+        // button chart --> from today to chart
+        val buttonChart = findViewById<Button>(R.id.chart_button)
+        buttonChart.setOnClickListener {
+            val pageChart = Intent(this, ChartActivity::class.java)
+            startActivity(pageChart)
+        }
+
+
+
         // button menu --> from today to menu
         val buttonMenu = findViewById<Button>(R.id.hamburger_button)
         buttonMenu.setOnClickListener {
@@ -49,6 +59,10 @@ class TodayActivity : AppCompatActivity() {
             startActivity(pageMenu)
 
         }
+
+
+
+
         //call fun for update var, val and print
         updateVar()
 
