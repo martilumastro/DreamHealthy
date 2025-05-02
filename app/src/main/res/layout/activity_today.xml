@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
     </LinearLayout>
 
-    <!--Cetral group, title, principal pie chart and hours sleep-->
+    <!--Central group, title, principal pie chart and hours sleep-->
     <LinearLayout
         android:id="@+id/group_central"
         android:layout_width="0dp"
