@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChartActivty">
+
+    <Button
+        android:id="@+id/hamburger_button2"
+        android:layout_width="88dp"
+        android:layout_height="58dp"
+        android:backgroundTint="@color/white"
+        android:drawableBottom="@drawable/hamburger_off"
+        android:gravity="center"
+        android:text="menu"
+        tools:layout_editor_absoluteX="322dp"
+        tools:layout_editor_absoluteY="834dp" />
+
+    <Button
+        android:id="@+id/home_button"
+        android:layout_width="97dp"
+        android:layout_height="61dp"
+        android:backgroundTint="@color/white"
+        android:drawableBottom="@drawable/home_off"
+        android:gravity="center"
+        android:text="home"
+
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="833dp" />
+
+    <LinearLayout
+        android:layout_width="59dp"
+        android:layout_height="58dp"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="264dp"
+        tools:layout_editor_absoluteY="834dp">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="77dp"
+        android:layout_height="59dp"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="833dp">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/today_button2"
+        android:layout_width="88dp"
+        android:layout_height="59dp"
+        android:backgroundTint="@color/white"
+        android:drawableBottom="@drawable/today_off"
+        android:gravity="center"
+        android:text="today"
+        tools:layout_editor_absoluteX="174dp"
+        tools:layout_editor_absoluteY="833dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="395dp"
+        android:layout_height="119dp"
+        android:text="CHART"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

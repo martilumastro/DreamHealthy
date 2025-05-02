@@ -466,16 +466,16 @@
             android:gravity="center"
             android:layout_weight="1"
             android:background="?attr/selectableItemBackground">
+
             <Button
-                android:id="@+id/menu_button"
+                android:id="@+id/chart_button"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:backgroundTint="@color/white"
-                android:text="menu"
-                android:scaleType="centerInside"
                 android:drawableBottom="@drawable/diagrams_today"
                 android:gravity="center"
-                />
+                android:scaleType="centerInside"
+                android:text="chart" />
         </LinearLayout>
 
         <LinearLayout
