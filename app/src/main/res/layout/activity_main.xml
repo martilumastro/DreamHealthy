@@ -47,14 +47,7 @@
         android:orientation="horizontal"
         android:background="@color/white">
 
-        <LinearLayout
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackground"
-            >
+        <LinearLayout style="@style/Navigation_Bar">
             <Button
                 android:id="@+id/home_button"
                 android:padding="-8dp"

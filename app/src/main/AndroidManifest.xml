@@ -13,6 +13,9 @@
         android:theme="@style/Theme.DreamHealthy"
         tools:targetApi="31">
         <activity
+            android:name=".ChartActivty"
+            android:exported="false" />
+        <activity
             android:name=".CalendarActivity"
             android:exported="false" />
         <activity

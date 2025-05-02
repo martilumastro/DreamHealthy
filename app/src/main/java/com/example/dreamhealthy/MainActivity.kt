@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+
         // button today --> from home to today
         val buttonToday = findViewById<Button>(R.id.today_button)
         buttonToday.setOnClickListener {
