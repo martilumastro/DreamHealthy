@@ -1,20 +1,29 @@
 package com.example.dreamhealthy
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.view.Window
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.LinearLayout
+import android.widget.PopupMenu
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.github.mikephil.charting.charts.Chart
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
@@ -24,7 +33,6 @@ import java.util.ArrayList
 import java.util.Scanner
 
 class TodayActivity : AppCompatActivity() {
-
     //CAMBIARE CON I VALORI SMARTWATCH
     var hoursSleep:Int = 8
     var minutesSleep:Int = 30
@@ -37,42 +45,32 @@ class TodayActivity : AppCompatActivity() {
     var totalHours:Int = hoursSleep + hoursRest
     var totalMinutes:Int = minutesSleep + minutesRest
 
+
+    //value for navbar
+    //private lateinit var homeBtn: ImageButton  --> new value
+    private lateinit var todayBtn: ImageButton
+    private lateinit var menuBtn: ImageButton
+
     @SuppressLint("MissingInflatedId")
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_today)
 
-        // button chart --> from today to chart
-        val buttonChart = findViewById<Button>(R.id.chart_button)
-        buttonChart.setOnClickListener {
-            val pageChart = Intent(this, ChartActivity::class.java)
-            startActivity(pageChart)
-        }
-
-
-
-        // button menu --> from today to menu
-        val buttonMenu = findViewById<Button>(R.id.hamburger_button)
-        buttonMenu.setOnClickListener {
-            val pageMenu = Intent (this, MenuActivity::class.java)
-            startActivity(pageMenu)
-
-        }
-
-
-
+        //init image buttons
+        //homeBtn = findViewById(R.id.homeBt)  --> new value
+        todayBtn = findViewById(R.id.todayBt)
+        menuBtn = findViewById(R.id.menuBt)
 
         //call fun for update var, val and print
         updateVar()
-
 
     }
 
     //Fun update var and print
     fun updateVar() {
         //general fun
+        buttonChange()
         addMinutes()
         addMinutesSleep()
         addMinutesRest()
@@ -80,7 +78,16 @@ class TodayActivity : AppCompatActivity() {
         pieCharFistNrem()
         pieChartSecondNrem()
         pieChartRem()
+        pieChartMonday()
+        pieChartTuesday()
+        pieChartWednsday()
+        pieChartThursday()
+        pieChartFriday()
+        pieChartSaturday()
+        pieChartSunday()
         //fun specific for print
+
+        printTextButton()
         printTotal()
         printNotSleep()
         printSleep()
@@ -92,83 +99,340 @@ class TodayActivity : AppCompatActivity() {
 
 
 
-        // days of the week section top
+    //minutes and hour (60 minutes = 1 hour)
+    //total
+    fun addMinutes(){
+        if (totalMinutes >= 60){
+            totalMinutes = totalMinutes - 60
+            totalHours = totalHours + 1
+        } else {
+            totalMinutes = totalMinutes
+        }
+    }
+    //sleep
+    fun addMinutesSleep(){
+        if(minutesSleep >= 60){
+            minutesSleep = minutesSleep - 60
+            hoursSleep = hoursSleep + 1
+        } else {
+            minutesSleep = minutesSleep
+        }
+    }
+    //rest
+    fun addMinutesRest() {
+        if (minutesRest >= 60) {
+            minutesRest = minutesRest - 60
+            hoursRest = hoursRest + 1
+        } else {
+            minutesRest = minutesRest
+        }
+    }
 
 
-        //minutes and hour (60 minutes = 1 hour)
-        //total
-        fun addMinutes(){
-            if (totalMinutes >= 60){
-                totalMinutes = totalMinutes - 60
-                totalHours = totalHours + 1
-            } else {
-                totalMinutes = totalMinutes
-            }
+    //fun for changing page (navbar)
+    fun buttonChange(){
+        // button hamburger --> from today to menu
+        val buttonMenu = findViewById<ImageButton>(R.id.menuBt)
+        buttonMenu.setOnClickListener {
+            val pageHome = Intent (this, MenuActivity::class.java)
+            startActivity(pageHome)
         }
-        //sleep
-        fun addMinutesSleep(){
-            if(minutesSleep >= 60){
-                minutesSleep = minutesSleep - 60
-                hoursSleep = hoursSleep + 1
-            } else {
-                minutesSleep = minutesSleep
-            }
-        }
-        //rest
-        fun addMinutesRest() {
-            if (minutesRest >= 60) {
-                minutesRest = minutesRest - 60
-                hoursRest = hoursRest + 1
-            } else {
-                minutesRest = minutesRest
-            }
-        }
+    }
 
-        //Print input total hours and minutes
-        fun printTotal() {
-            val totalHoursTextView = findViewById<TextView>(R.id.total_hours)
-            val totalMinutesTextView = findViewById<TextView>(R.id.total_minutes)
+    //text button
+    fun printTextButton() {
+        val textButton = findViewById<TextView>(R.id.today_text_button)
+        textButton.text = "Today"
+    }
 
-            //Log.d("TodayActivity", "Total Hours: $totalHours, Total Minutes: $totalMinutes")
-            totalHoursTextView.text = "$totalHours h"
-            totalMinutesTextView.text = "$totalMinutes m"
-        }
-        //Print input not sleep hours and minutes
-        fun printNotSleep() {
-            val notSleepHoursTextView = findViewById<TextView>(R.id.not_sleep_hours)
-            val notSleepMinutesTextView = findViewById<TextView>(R.id.not_sleep_minutes)
+    //ALL PIE CHART FUNCTION
+    //coordinare con calendario
+    // days of the week section top
+    fun pieChartMonday() {
+        val pieChart = findViewById<PieChart>(R.id.monday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("M")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+    fun pieChartTuesday() {
+        val pieChart = findViewById<PieChart>(R.id.tuesday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("T")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+    fun pieChartWednsday() {
+        val pieChart = findViewById<PieChart>(R.id.wednsday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("W")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+    fun pieChartThursday() {
+        val pieChart = findViewById<PieChart>(R.id.thursday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("T")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+    fun pieChartFriday() {
+        val pieChart = findViewById<PieChart>(R.id.friday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("F")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+    fun pieChartSaturday() {
+        val pieChart = findViewById<PieChart>(R.id.saturday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("S")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
+    fun pieChartSunday() {
+        val pieChart = findViewById<PieChart>(R.id.sunday_chart)
+        //pie chart hole
+        pieChart.holeRadius = 80f
+        pieChart.transparentCircleRadius = 0f
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        //description component disabled
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        //pie chart value val
+        val pieList = mutableListOf<PieEntry>()
+        //sleep values --> change with correct percentage
+        pieList.add(PieEntry(00.00f, "Good Sleep"))
+        pieList.add(PieEntry(100.00f, ""))
+        // text center
+        pieChart.setCenterText("S")
+        pieChart.setCenterTextSize(10f)
+        pieChart.setCenterTextColor(Color.WHITE)
+        //val colors for pie chart
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.green_light),
+            ContextCompat.getColor(this, R.color.blue_dark)
+        )
+        //pie chart color
+        val pieDataSet = PieDataSet(pieList, "")
+        pieDataSet.colors = colors
+        //allocation of data
+        val pieData = PieData(pieDataSet)
+        pieChart.data = pieData
+        //animation
+        pieChart.animateY(1000)
+        pieChart.invalidate()
+    }
 
-            notSleepHoursTextView.text = "$hoursRest h"
-            notSleepMinutesTextView.text = "$minutesRest m"
-        }
-        //Print input slepp hours and minutes
-        fun printSleep(){
-            val sleepHoursTextView = findViewById<TextView>(R.id.sleep_hours)
-            val sleepMinutesTextView = findViewById<TextView>(R.id.sleep_minutes)
 
-            sleepHoursTextView.text = "$hoursSleep h"
-            sleepMinutesTextView.text = "$minutesSleep m"
-        }
-        //Print input average heart rate
-        fun printHeartRate(){
-            val heartRateTextView = findViewById<TextView>(R.id.text_heart)
-            heartRateTextView.text = "$heartRateAverage bpm"
-        }
-        //Print input average breath per minutes
-        fun printBreath(){
-            val breathTextView = findViewById<TextView>(R.id.text_breath)
-            breathTextView.text = "$Averagebreath per minute"
-        }
-        //Print input number noise
-        fun printNoise(){
-            val noiseTextView = findViewById<TextView>(R.id.text_noise)
-            noiseTextView.text = "$noise"
-        }
-        //Print input number awakening
-        fun printAwakening(){
-            val awakeningTextView = findViewById<TextView>(R.id.text_awakening)
-            awakeningTextView.text = "$awakening"
-        }
+    //Print input total hours and minutes
+    fun printTotal() {
+        val totalHoursTextView = findViewById<TextView>(R.id.total_hours)
+        val totalMinutesTextView = findViewById<TextView>(R.id.total_minutes)
+
+        //Log.d("TodayActivity", "Total Hours: $totalHours, Total Minutes: $totalMinutes")
+        totalHoursTextView.text = "$totalHours h"
+        totalMinutesTextView.text = "$totalMinutes m"
+    }
+    //Print input not sleep hours and minutes
+    fun printNotSleep() {
+        val notSleepHoursTextView = findViewById<TextView>(R.id.not_sleep_hours)
+        val notSleepMinutesTextView = findViewById<TextView>(R.id.not_sleep_minutes)
+
+        notSleepHoursTextView.text = "$hoursRest h"
+        notSleepMinutesTextView.text = "$minutesRest m"
+    }
+    //Print input slepp hours and minutes
+    fun printSleep(){
+        val sleepHoursTextView = findViewById<TextView>(R.id.sleep_hours)
+        val sleepMinutesTextView = findViewById<TextView>(R.id.sleep_minutes)
+
+        sleepHoursTextView.text = "$hoursSleep h"
+        sleepMinutesTextView.text = "$minutesSleep m"
+    }
+    //Print input average heart rate
+    fun printHeartRate(){
+        val heartRateTextView = findViewById<TextView>(R.id.text_heart)
+        heartRateTextView.text = "$heartRateAverage bpm"
+    }
+    //Print input average breath per minutes
+    fun printBreath(){
+        val breathTextView = findViewById<TextView>(R.id.text_breath)
+        breathTextView.text = "$Averagebreath per minute"
+    }
+    //Print input number noise
+    fun printNoise(){
+        val noiseTextView = findViewById<TextView>(R.id.text_noise)
+        noiseTextView.text = "$noise"
+    }
+    //Print input number awakening
+    fun printAwakening(){
+        val awakeningTextView = findViewById<TextView>(R.id.text_awakening)
+        awakeningTextView.text = "$awakening"
+    }
 
     //pie chart
     fun pieChartTotal() {
@@ -317,4 +581,6 @@ class TodayActivity : AppCompatActivity() {
         pieChart.animateY(1000)
         pieChart.invalidate()
     }
+
+
 }

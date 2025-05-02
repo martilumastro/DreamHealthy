@@ -49,7 +49,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     //library for pie chart
     implementation(libs.mpandroidchart)
-
+    //for navbar
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 
 
 }

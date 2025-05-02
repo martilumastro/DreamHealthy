@@ -22,16 +22,16 @@ class ChartActivity : AppCompatActivity() {
 
         }
         // bottom from Chart to Menu
-       val buttonHome = findViewById<Button>(R.id.home_button)
-       buttonHome.setOnClickListener {
-           val pageHome = Intent(this, MainActivity::class.java)
-           startActivity(pageHome)
+       //val buttonHome = findViewById<Button>(R.id.home_button)
+       //buttonHome.setOnClickListener {
+        //   val pageHome = Intent(this, MainActivity::class.java)
+         //  startActivity(pageHome)
+       //}
+        //val buttonToday = findViewById<Button>(R.id.today_button)
+        //buttonToday.setOnClickListener {
+        //val pageToday = Intent(this, TodayActivity::class.java)
+         //   startActivity(pageToday)
+        //}
 
-        val buttonToday = findViewById<Button>(R.id.today_button)
-        buttonToday.setOnClickListener {
-            val pageToday = Intent(this, TodayActivity::class.java)
-            startActivity(pageToday)
-        }
-       }
     }
 }
