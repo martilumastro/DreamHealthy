@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DreamHealthy</string>
+    <string name="home">home</string>
+    <string name="today">today</string>
+    <string name="chart">CHART</string>
+    <string name="menu">menu</string>
 </resources>
