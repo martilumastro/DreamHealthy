@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.media.Image
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
@@ -47,21 +48,23 @@ class TodayActivity : AppCompatActivity() {
 
 
     //value for navbar
-    //private lateinit var homeBtn: ImageButton  --> new value
+  //  private lateinit var homeBtn: ImageButton // --> new value
     private lateinit var todayBtn: ImageButton
     private lateinit var menuBtn: ImageButton
+   private lateinit var chartBtn: ImageButton
+
 
     @SuppressLint("MissingInflatedId")
-    override fun onCreate(savedInstanceState: Bundle?) {
-
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_today)
 
         //init image buttons
-        //homeBtn = findViewById(R.id.homeBt)  --> new value
+       // homeBtn = findViewById(R.id.homeBt)  //--> new value
         todayBtn = findViewById(R.id.todayBt)
         menuBtn = findViewById(R.id.menuBt)
-
+       chartBtn = findViewById(R.id.chart_Bt)
         //call fun for update var, val and print
         updateVar()
 
@@ -130,12 +133,19 @@ class TodayActivity : AppCompatActivity() {
 
 
     //fun for changing page (navbar)
-    fun buttonChange(){
+    fun buttonChange()
+    {
         // button hamburger --> from today to menu
         val buttonMenu = findViewById<ImageButton>(R.id.menuBt)
         buttonMenu.setOnClickListener {
             val pageHome = Intent (this, MenuActivity::class.java)
             startActivity(pageHome)
+        // button chart  --> from today to chartanalisys_today
+         val buttonChart = findViewById<ImageButton>(R.id.chart_Bt)
+           buttonChart.setOnClickListener {
+               val pageChart = Intent(this, ChartActivity::class.java)
+               startActivity(pageChart)
+           }
         }
     }
 
@@ -143,6 +153,7 @@ class TodayActivity : AppCompatActivity() {
     fun printTextButton() {
         val textButton = findViewById<TextView>(R.id.today_text_button)
         textButton.text = "Today"
+
     }
 
     //ALL PIE CHART FUNCTION
