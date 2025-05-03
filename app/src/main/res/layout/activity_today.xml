@@ -490,6 +490,7 @@
     <LinearLayout
         android:id="@+id/bar_button"
         android:layout_width="match_parent"
+        android:backgroundTint="@color/white"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/bottom_shape_navigation"
