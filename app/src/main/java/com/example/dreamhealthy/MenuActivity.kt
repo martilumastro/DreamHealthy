@@ -16,6 +16,7 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var homeBtn: ImageButton
     private lateinit var todayBtn: ImageButton
     private lateinit var menuBtn: ImageButton
+    private lateinit var alarmsButton: Button
 
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +27,7 @@ class MenuActivity : AppCompatActivity() {
         homeBtn = findViewById(R.id.homeBt)
         todayBtn = findViewById(R.id.todayBt)
         menuBtn = findViewById(R.id.menuBt)
+        alarmsButton = findViewById(R.id.alarm_clock_bt)
 
 
         //call fun
@@ -36,18 +38,25 @@ class MenuActivity : AppCompatActivity() {
 
     //fun for all changing page
     fun buttonChange(){
-        // button hamburger --> from home to menu
+        // button home --> from menu to home
         val buttonMenu = findViewById<ImageButton>(R.id.homeBt)
         buttonMenu.setOnClickListener {
             val pageHome = Intent (this, MainActivity::class.java)
             startActivity(pageHome)
         }
-        // button today --> from home to today
+        // button today --> from menu to today
         val buttonToday = findViewById<ImageButton>(R.id.todayBt)
         buttonToday.setOnClickListener {
             val pageToday = Intent (this, TodayActivity::class.java)
             startActivity(pageToday)
         }
+
+        val buttonAlarms = findViewById<Button>(R.id.alarm_clock_bt)
+        buttonAlarms.setOnClickListener {
+            val pageAlarms = Intent (this, MyAlarmsClockActivity::class.java)
+            startActivity(pageAlarms)
+        }
+
     }
 
     //text button
