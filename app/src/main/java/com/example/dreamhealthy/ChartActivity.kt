@@ -1,5 +1,6 @@
 package com.example.dreamhealthy
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,33 +8,46 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.widget.Button
+import android.widget.ImageButton
 
 
-import com.example.dreamhealthy.databinding.ActivityChartBinding //package per il grafico della activity Chart
+//import com.example.dreamhealthy.databinding.ActivityChartBinding //package per il grafico della activity Chart
 
 //varie componenti gentilmente offerti da github
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarEntry
+//import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 
-//import android.widget.TextView
+import android.widget.TextView
 
 class ChartActivity : AppCompatActivity()
+
 {
-    val profitValues = ArrayList<BarEntry>() // dichiaro qua
-    private lateinit var binding: ActivityChartBinding
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
-        super.onCreate(savedInstanceState)
+    //value for navbar's button
+    private lateinit var todayBtn: ImageButton
+    private lateinit var menuBtn: ImageButton
+    //val profitValues = ArrayList<BarEntry>() // dichiaro qua
+    //private lateinit var binding: ActivityChartBinding
 
-        binding = ActivityChartBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        enableEdgeToEdge()
+    @SuppressLint("MissingInflatedId")
+    override fun onCreate(savedInstanceState: Bundle?){
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_chart)
+
+        //init button navbar
+        todayBtn = findViewById(R.id.todayBt)
+        menuBtn = findViewById(R.id.menuBt)
+
+
+        //binding = ActivityChartBinding.inflate(layoutInflater)
+        //setContentView(binding.root)
+
+        /*enableEdgeToEdge()
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main))
         { v, insets ->
@@ -41,21 +55,36 @@ class ChartActivity : AppCompatActivity()
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
 
-        }
-           // ritorna indietro al file today
 
-            val buttonToday = findViewById<Button>(R.id.today_button)
+        }*/
+
+
+        //call fun to exit in the onCreate method
+        buttonChange()
+        //dataListing()
+    } // end Oncreate
+
+
+    //fun for changing page (navbar)
+    fun buttonChange()
+    {
+        // button hamburger --> from today to menu
+        val buttonMenu = findViewById<ImageButton>(R.id.menuBt)
+        buttonMenu.setOnClickListener {
+            val pageMenu = Intent(this, MenuActivity::class.java)
+            startActivity(pageMenu)
+        }
+            // button chart  --> from today to chartanalisys_today
+            val buttonToday = findViewById<ImageButton>(R.id.todayBt)
             buttonToday.setOnClickListener {
                 val pageToday = Intent(this, TodayActivity::class.java)
                 startActivity(pageToday)
             }
-            dataListing()
+
+    }
 
 
-
-
-    } // end Oncreate
-    private fun dataListing()
+    /*private fun dataListing()
     {
         profitValues.add(BarEntry(0.toFloat(),13.toFloat())) //y ordinata x ascissa
         profitValues.add(BarEntry(1.toFloat(),27.toFloat()))
@@ -110,6 +139,8 @@ class ChartActivity : AppCompatActivity()
         }
         binding.chart.invalidate()
 
-    } // end setChart()
+    } // end setChart()*/
 
-}//end class
+
+}
+//end class

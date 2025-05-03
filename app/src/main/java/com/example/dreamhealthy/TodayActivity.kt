@@ -61,10 +61,10 @@ class TodayActivity : AppCompatActivity() {
         setContentView(R.layout.activity_today)
 
         //init image buttons
-       // homeBtn = findViewById(R.id.homeBt)  //--> new value
         todayBtn = findViewById(R.id.todayBt)
         menuBtn = findViewById(R.id.menuBt)
-       chartBtn = findViewById(R.id.chart_Bt)
+        chartBtn = findViewById(R.id.chartBt)
+
         //call fun for update var, val and print
         updateVar()
 
@@ -138,15 +138,15 @@ class TodayActivity : AppCompatActivity() {
         // button hamburger --> from today to menu
         val buttonMenu = findViewById<ImageButton>(R.id.menuBt)
         buttonMenu.setOnClickListener {
-            val pageHome = Intent (this, MenuActivity::class.java)
-            startActivity(pageHome)
-        // button chart  --> from today to chartanalisys_today
-         val buttonChart = findViewById<ImageButton>(R.id.chart_Bt)
-           buttonChart.setOnClickListener {
-               val pageChart = Intent(this, ChartActivity::class.java)
-               startActivity(pageChart)
-           }
+            val pageMenu = Intent(this, MenuActivity::class.java)
+            startActivity(pageMenu)
         }
+        // button chart  --> from today to chartanalisys_today
+         val buttonChart = findViewById<ImageButton>(R.id.chartBt)
+            buttonChart.setOnClickListener {
+                val pageChart = Intent(this, ChartActivity::class.java)
+                startActivity(pageChart)
+            }
     }
 
     //text button

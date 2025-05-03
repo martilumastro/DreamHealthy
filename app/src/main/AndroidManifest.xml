@@ -16,9 +16,6 @@
             android:name=".ChartActivity"
             android:exported="false" />
         <activity
-            android:name=".CalendarActivity"
-            android:exported="false" />
-        <activity
             android:name=".TodayActivity"
             android:exported="false" />
         <activity
