@@ -515,7 +515,8 @@
             android:layout_height="60dp"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
-            android:padding="15dp"/>
+            android:padding="15dp"
+            android:contentDescription="Chart"/>
         <ImageButton
             android:id="@+id/todayBt"
             android:src="@drawable/icon_today_value_blue"
@@ -524,7 +525,8 @@
             android:layout_height="60dp"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
-            android:padding="15dp"/>
+            android:padding="15dp"
+            android:contentDescription="Today's values"/>
         <TextView
             android:id="@+id/today_text_button"
             android:layout_width="wrap_content"
@@ -545,6 +547,7 @@
             android:layout_height="60dp"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
-            android:padding="15dp"/>
+            android:padding="15dp"
+            android:contentDescription="Menu"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

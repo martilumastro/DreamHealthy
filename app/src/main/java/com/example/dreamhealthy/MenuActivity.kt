@@ -39,8 +39,8 @@ class MenuActivity : AppCompatActivity() {
     //fun for all changing page
     fun buttonChange(){
         // button home --> from menu to home
-        val buttonMenu = findViewById<ImageButton>(R.id.homeBt)
-        buttonMenu.setOnClickListener {
+        val buttonHome = findViewById<ImageButton>(R.id.homeBt)
+        buttonHome.setOnClickListener {
             val pageHome = Intent (this, MainActivity::class.java)
             startActivity(pageHome)
         }

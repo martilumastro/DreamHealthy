@@ -142,7 +142,7 @@ class TodayActivity : AppCompatActivity() {
             startActivity(pageMenu)
         }
         // button chart  --> from today to chartanalisys_today
-         val buttonChart = findViewById<ImageButton>(R.id.chartBt)
+        val buttonChart = findViewById<ImageButton>(R.id.chartBt)
             buttonChart.setOnClickListener {
                 val pageChart = Intent(this, ChartActivity::class.java)
                 startActivity(pageChart)

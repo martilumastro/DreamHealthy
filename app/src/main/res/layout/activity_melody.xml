@@ -2,84 +2,75 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/chartContainer"
+    android:id="@+id/melody"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/blue_background"
-    android:orientation="vertical"
-    tools:context=".ChartActivity">
-
-
-
-    <TextView
-        android:id="@+id/CHART_NAME"
-        android:layout_width="395dp"
-        android:layout_height="119dp"
-        android:fontFamily="sans-serif-light"
-        android:shadowColor="#E6524B4B"
-        android:text="@string/chart"
-        android:textAlignment="center"
-        android:textColor="#C5DBDB"
-        android:textColorHighlight="@color/white"
-        android:textSize="48sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <!--<androidx.constraintlayout.widget.Barrier
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top" />
-
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/chart"
-        android:layout_width="match_parent"
+    tools:context=".MelodyActivity">
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bar_button">
 
-    </com.github.mikephil.charting.charts.BarChart>-->
+    </LinearLayout>
 
     <!--nav bar-->
     <LinearLayout
         android:id="@+id/bar_button"
-        android:backgroundTint="@color/white"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/bottom_shape_navigation"
+        android:backgroundTint="@color/white"
         android:padding="4dp"
         android:paddingEnd="16dp"
         android:paddingStart="16dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:elevation="80dp"
-        android:shadowColor="@color/black"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="20dp"
         android:layout_alignParentStart="true"
         app:layout_constraintBottom_toBottomOf="parent">
-
-
         <ImageButton
-            android:id="@+id/todayBt"
-            android:src="@drawable/icon_today_value_black"
+            android:id="@+id/my_alarms_clock_bt"
+            android:src="@drawable/clock_black"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="60dp"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
             android:padding="15dp"
-            android:contentDescription="Today's values"/>
-
+            android:contentDescription="All my alarms clock"/>
         <ImageButton
-            android:id="@+id/menuBt"
+            android:id="@+id/melody_bt"
+            android:src="@drawable/icon_music_note_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/white"
+            android:padding="15dp"
+            android:contentDescription="All melodies"/>
+        <TextView
+            android:id="@+id/melody_text_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/blue_background"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="-16dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
+        <ImageButton
+            android:id="@+id/menu_bt"
             android:src="@drawable/icon_hamburger_menu_black"
             android:layout_width="wrap_content"
             android:layout_weight="1"

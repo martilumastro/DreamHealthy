@@ -70,7 +70,8 @@
                     android:layout_weight="1"
                     android:layout_margin="5dp"
                     android:backgroundTint="@color/white"
-                    android:padding="15dp"/>
+                    android:padding="15dp"
+                    android:contentDescription="Home"/>
                 <TextView
                     android:id="@+id/home_text_button"
                     android:layout_width="wrap_content"
@@ -91,7 +92,8 @@
                     android:layout_height="60dp"
                     android:layout_margin="5dp"
                     android:backgroundTint="@color/white"
-                    android:padding="15dp"/>
+                    android:padding="15dp"
+                    android:contentDescription="Today's value"/>
 
                 <ImageButton
                     android:id="@+id/menuBt"
@@ -101,6 +103,7 @@
                     android:layout_height="60dp"
                     android:layout_margin="5dp"
                     android:backgroundTint="@color/white"
-                    android:padding="15dp"/>
+                    android:padding="15dp"
+                    android:contentDescription="Menu"/>
         </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,5 +45,11 @@ class MyAlarmsClockActivity : AppCompatActivity() {
             val pageToday = Intent(this, TodayActivity::class.java)
             startActivity(pageToday)
         }
+        // button melody --> from alarms to melody
+        val buttonMelody = findViewById<ImageButton>(R.id.melody_bt)
+        buttonMelody.setOnClickListener {
+            val pageMelody = Intent(this, MelodyActivity::class.java)
+            startActivity(pageMelody)
+        }
     }
 }

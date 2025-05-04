@@ -214,7 +214,8 @@
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
-            android:padding="15dp"/>
+            android:padding="15dp"
+            android:contentDescription="Home"/>
         <ImageButton
             android:id="@+id/todayBt"
             android:src="@drawable/icon_today_value_black"
@@ -223,7 +224,8 @@
             android:layout_height="60dp"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
-            android:padding="15dp"/>
+            android:padding="15dp"
+            android:contentDescription="Today's values"/>
         <ImageButton
             android:id="@+id/menuBt"
             android:src="@drawable/icon_hamburger_menu_blue"
@@ -232,7 +234,8 @@
             android:layout_height="60dp"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
-            android:padding="15dp"/>
+            android:padding="15dp"
+            android:contentDescription="Menu"/>
         <TextView
             android:id="@+id/menu_text_button"
             android:layout_width="wrap_content"

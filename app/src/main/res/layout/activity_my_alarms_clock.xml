@@ -89,6 +89,10 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:checked="false"
+                        android:thumb="@drawable/switch_custom_thumb_selector"
+                        android:track="@drawable/switch_custom_track_selector"
+                        android:layout_gravity="center"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:layout_width="match_parent"
@@ -154,6 +158,9 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:checked="false"
+                        android:thumb="@drawable/switch_custom_thumb_selector"
+                        android:track="@drawable/switch_custom_track_selector"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:layout_width="match_parent"
@@ -218,6 +225,9 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:checked="false"
+                        android:thumb="@drawable/switch_custom_thumb_selector"
+                        android:track="@drawable/switch_custom_track_selector"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:layout_width="match_parent"
@@ -284,6 +294,9 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:checked="false"
+                        android:thumb="@drawable/switch_custom_thumb_selector"
+                        android:track="@drawable/switch_custom_track_selector"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:layout_width="match_parent"
@@ -350,6 +363,9 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:checked="false"
+                        android:thumb="@drawable/switch_custom_thumb_selector"
+                        android:track="@drawable/switch_custom_track_selector"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:layout_width="match_parent"
@@ -418,6 +434,9 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:checked="false"
+                        android:thumb="@drawable/switch_custom_thumb_selector"
+                        android:track="@drawable/switch_custom_track_selector"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:layout_width="match_parent"
@@ -484,6 +503,9 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:checked="false"
+                        android:thumb="@drawable/switch_custom_thumb_selector"
+                        android:track="@drawable/switch_custom_track_selector"
                         android:gravity="center"
                         android:minHeight="48dp"
                         android:layout_width="match_parent"
@@ -513,7 +535,6 @@
         android:layout_marginBottom="20dp"
         android:layout_alignParentStart="true"
         app:layout_constraintBottom_toBottomOf="parent">
-
         <ImageButton
             android:id="@+id/melody_bt"
             android:src="@drawable/icon_music_note_black"
@@ -522,7 +543,8 @@
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
-            android:padding="15dp"/>
+            android:padding="15dp"
+            android:contentDescription="All melodies"/>
         <ImageButton
             android:id="@+id/today_bt"
             android:src="@drawable/icon_today_value_black"
@@ -531,7 +553,8 @@
             android:layout_height="60dp"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
-            android:padding="15dp"/>
+            android:padding="15dp"
+            android:contentDescription="Today's values"/>
         <ImageButton
             android:id="@+id/menu_bt"
             android:src="@drawable/icon_hamburger_menu_black"
@@ -540,6 +563,7 @@
             android:layout_height="60dp"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
-            android:padding="15dp"/>
+            android:padding="15dp"
+            android:contentDescription="Menu"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
