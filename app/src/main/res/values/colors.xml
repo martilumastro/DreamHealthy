@@ -2,7 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray_light">#CCFFFFFF</color>
+    <color name="gray_light">#858383</color>
+    <color name="gray_dark">#242424</color>
     <color name="blue_background">#292680</color>
     <color name="blue_dark">#00093A</color>
     <color name="blue_light">#00BCD4</color>
@@ -16,9 +17,19 @@
     <color name="orange">#EA6600</color>
 
     //trasparence
-    <color name="trans_green">#7525D366</color>
-    <color name="trans_red">#85DD2C00</color>
-    <color name="trans_purple">#7C6200EA</color>
-    <color name="trans_blue">#862962FF</color>
-    <color name="trans_yellow">#88FFD600</color>
+    <color name="tran_black">#B3000000</color>
+    <color name="trans_white">#B3FFFFFF</color>
+    <color name="trans_gray_dark">#B3242424</color>
+    <color name="trans_gray_light">#B3FFFFFF</color>
+    <color name="trans_blue_background">#B3292680</color>
+    <color name="trans_blue_dark">#B300093A</color>
+    <color name="trans_blue_light">#B300BCD4</color>
+    <color name="trans_green_dark">#B3006400</color>
+    <color name="trans_green_light">#B34DBE0B</color>
+    <color name="trans_purple_dark">#B3562855</color>
+    <color name="trans_purple_light">#B3C03EB6</color>
+    <color name="trans_magenta">#B35C0019</color>
+    <color name="trans_red_dark">#B3870000</color>
+    <color name="trans_red_light">#B3E93419</color>
+    <color name="trans_orange">#B3EA6600</color>
 </resources>
