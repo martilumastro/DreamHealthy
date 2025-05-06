@@ -12,19 +12,35 @@ import androidx.core.view.WindowInsetsCompat
 
 class SleepMelodiesActivity : AppCompatActivity() {
     //var
-    private lateinit var melodyBt: Button
+    private lateinit var buttonMelody: Button
     private lateinit var buttonPlayPause: ImageButton
-    var changePlayPause = false
+    private var changePlayPause = false
 
-    @SuppressLint("MissingInflatedId")
+    data class Melody(
+        val audioPath: String,
+        val imageReId: Int
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        setContentView(R.layout.activity_sleep_melodies)
 
-        //init image buttons
-        melodyBt = findViewById(R.id.go_back_bt)
+        //init
         buttonPlayPause = findViewById(R.id.play_pause_bt)
+        buttonMelody = findViewById(R.id.go_back_bt)
 
+
+        //melodies' list
+        val Melodies = listOf(
+            Melody("asset://rowboat.mp3", R.drawable.img_rowboat_white),
+            Melody("asset://sea_swimming.mp3", R.drawable.img_sea_swimming_white),
+            Melody("asset://sea_waves.mp3", R.drawable.img_waves_white),
+            Melody("asset://sea_waves_light_melody.mp3", R.drawable.img_sea_waves_light_white),
+            Melody("asset://sea_waves_with_birds.mp3", R.drawable.sea_waves_with_birds),
+            Melody("asset://strong_wind_sea.mp3", R.drawable.img_strong_wind_white),
+        )
+
+        //call function
         buttonChange()
         changeStartPauseButton()
     }
@@ -33,7 +49,6 @@ class SleepMelodiesActivity : AppCompatActivity() {
     fun buttonChange()
     {
         // button myAlarmsClockBt  --> return to myAlarmsClock's page
-        val buttonMelody = findViewById<Button>(R.id.go_back_bt)
         buttonMelody.setOnClickListener {
             val pageMelody = Intent(this, MelodyActivity::class.java)
             startActivity(pageMelody)

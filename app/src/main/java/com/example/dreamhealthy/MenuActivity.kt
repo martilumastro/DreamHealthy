@@ -13,10 +13,10 @@ import androidx.core.view.WindowInsetsCompat
 
 class MenuActivity : AppCompatActivity() {
 
-    private lateinit var homeBtn: ImageButton
-    private lateinit var todayBtn: ImageButton
-    private lateinit var menuBtn: ImageButton
-    private lateinit var alarmsButton: Button
+    private lateinit var buttonHome: ImageButton
+    private lateinit var buttonToday: ImageButton
+    private lateinit var textButton: TextView
+    private lateinit var buttonAlarms: Button
 
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,10 +24,10 @@ class MenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu)
 
         //init image buttons
-        homeBtn = findViewById(R.id.homeBt)
-        todayBtn = findViewById(R.id.todayBt)
-        menuBtn = findViewById(R.id.menuBt)
-        alarmsButton = findViewById(R.id.alarm_clock_bt)
+        buttonAlarms = findViewById(R.id.alarm_clock_bt)
+        textButton = findViewById(R.id.menu_text_button)
+        buttonToday = findViewById(R.id.todayBt)
+        buttonHome = findViewById(R.id.homeBt)
 
 
         //call fun
@@ -39,19 +39,16 @@ class MenuActivity : AppCompatActivity() {
     //fun for all changing page
     fun buttonChange(){
         // button home --> from menu to home
-        val buttonHome = findViewById<ImageButton>(R.id.homeBt)
         buttonHome.setOnClickListener {
             val pageHome = Intent (this, MainActivity::class.java)
             startActivity(pageHome)
         }
         // button today --> from menu to today
-        val buttonToday = findViewById<ImageButton>(R.id.todayBt)
         buttonToday.setOnClickListener {
             val pageToday = Intent (this, TodayActivity::class.java)
             startActivity(pageToday)
         }
 
-        val buttonAlarms = findViewById<Button>(R.id.alarm_clock_bt)
         buttonAlarms.setOnClickListener {
             val pageAlarms = Intent (this, MyAlarmsClockActivity::class.java)
             startActivity(pageAlarms)
@@ -61,7 +58,6 @@ class MenuActivity : AppCompatActivity() {
 
     //text button
     fun printTextButton() {
-        val textButton = findViewById<TextView>(R.id.menu_text_button)
         textButton.text = "Menu"
     }
 }

@@ -12,9 +12,9 @@ import androidx.core.view.WindowInsetsCompat
 
 class MyAlarmsClockActivity : AppCompatActivity() {
 
-    private lateinit var melodyBtn: ImageButton
-    private lateinit var todayBtn: ImageButton
-    private lateinit var menuBtn: ImageButton
+    private lateinit var buttonToday: ImageButton
+    private lateinit var buttonMenu: ImageButton
+    private lateinit var buttonMelody: ImageButton
 
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,29 +24,25 @@ class MyAlarmsClockActivity : AppCompatActivity() {
 
 
             //init image buttons
-        melodyBtn = findViewById(R.id.melody_bt)
-        todayBtn = findViewById(R.id.today_bt)
-        menuBtn = findViewById(R.id.menu_bt)
-
+        buttonMenu = findViewById(R.id.menu_bt)
+        buttonToday = findViewById(R.id.today_bt)
+        buttonMelody = findViewById(R.id.melody_bt)
         //call fun
         buttonChange()
     }
 
     fun buttonChange() {
         // button hamburger --> from alarms to menu
-        val buttonMenu = findViewById<ImageButton>(R.id.menu_bt)
         buttonMenu.setOnClickListener {
             val pageMenu = Intent(this, MenuActivity::class.java)
             startActivity(pageMenu)
         }
         // button today --> from home to today
-        val buttonToday = findViewById<ImageButton>(R.id.today_bt)
         buttonToday.setOnClickListener {
             val pageToday = Intent(this, TodayActivity::class.java)
             startActivity(pageToday)
         }
         // button melody --> from alarms to melody
-        val buttonMelody = findViewById<ImageButton>(R.id.melody_bt)
         buttonMelody.setOnClickListener {
             val pageMelody = Intent(this, MelodyActivity::class.java)
             startActivity(pageMelody)

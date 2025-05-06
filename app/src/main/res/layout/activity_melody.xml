@@ -9,6 +9,7 @@
     android:background="@color/blue_background"
     tools:context=".MelodyActivity">
     <LinearLayout
+        android:id="@+id/group_central"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,9 +17,218 @@
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/bar_button">
+        <LinearLayout
+            android:id="@+id/title_page"
+            android:layout_width="wrap_content"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="24dp"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="0dp"
+                android:layout_gravity="top|center"
+                android:text="Sleep and Wake"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="28dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:layout_marginTop="0dp"
+                android:layout_gravity="top|center"
+                android:text="to Your Own Melody"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="28dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/central_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_page"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="32dp"
+            android:orientation="vertical"
+            android:gravity="center">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bottom_shape_navigation_4"
+                    android:backgroundTint="@color/purple_dark"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:padding="4dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/img_night_white"
+                        android:layout_marginStart="16dp"/>
+                    <Button
+                        android:id="@+id/sleep_melody_bt"
+                        android:drawableEnd="@drawable/arrow_forward_white"
+                        android:backgroundTint="@color/purple_dark"
+                        android:text="Sleep Melodies"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bottom_shape_navigation_5"
+                    android:backgroundTint="@color/trans_purple_dark"
+                    android:layout_weight="1.4"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingStart="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:padding="4dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Melodies to guide you gently into sleep."
+                        android:gravity="center"
+                        android:textSize="16dp"
+                        android:textStyle="italic"
+                        android:textColor="@color/white"
+                        android:paddingEnd="8dp"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bottom_shape_navigation_4"
+                    android:backgroundTint="@color/red_dark"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:padding="4dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/img_sky_white"
+                        android:layout_marginStart="16dp"
+                        android:scaleType="centerInside"/>
+                    <Button
+                        android:id="@+id/a_bt"
+                        android:drawableEnd="@drawable/arrow_forward_white"
+                        android:backgroundTint="@color/red_dark"
+                        android:text="Wake-Up Melodies"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bottom_shape_navigation_5"
+                    android:backgroundTint="@color/trans_red_dark"
+                    android:layout_weight="1.4"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingStart="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:padding="4dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Melodies that start softly before your alarm to ease you into waking."
+                        android:gravity="center"
+                        android:textSize="16dp"
+                        android:textStyle="italic"
+                        android:textColor="@color/white"
+                        android:paddingEnd="8dp"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bottom_shape_navigation_4"
+                    android:backgroundTint="@color/orange"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:padding="4dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/img_alarm_clock"
+                        android:layout_marginStart="16dp"/>
+                    <Button
+                        android:id="@+id/b_bt"
+                        android:drawableEnd="@drawable/arrow_forward_white"
+                        android:backgroundTint="@color/orange"
+                        android:text="Alarm Melodies"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bottom_shape_navigation_5"
+                    android:backgroundTint="@color/trans_orange"
+                    android:layout_weight="1.4"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingStart="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:padding="4dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Choose the melody that will greet you when it's time to wake up."
+                        android:gravity="center"
+                        android:textSize="16dp"
+                        android:textStyle="italic"
+                        android:textColor="@color/white"
+                        android:paddingEnd="8dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
-
     <!--nav bar-->
     <LinearLayout
         android:id="@+id/bar_button"

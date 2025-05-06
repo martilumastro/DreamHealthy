@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/melody_night"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
@@ -15,13 +15,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
+        android:padding="4dp"
         app:layout_constraintBottom_toTopOf="@+id/comandi">
         <LinearLayout
             android:id="@+id/go_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/bottom_shape_navigation"
             android:padding="4dp"
             android:gravity="start|center"
             android:layout_marginStart="18dp"
@@ -33,52 +33,196 @@
                 android:text="Go back"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:backgroundTint="@color/trans_blue_background"
+                android:backgroundTint="@color/blue_background"
                 android:padding="4dp"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/options"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/bottom_shape_navigation"
             android:padding="4dp"
             android:gravity="start|center"
             android:orientation="horizontal"
             android:layout_marginStart="18dp"
             android:layout_marginEnd="18dp">
-            <!--<Button
-                android:id="@+id/musical_genres"
-                android:drawableBottomLeft="@drawable/arrow_back_black"
-                android:text="Go back"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/trans_blue_background"
-                android:padding="4dp"/>
-            <Button
-                android:id="@+id/general_nature"
-                android:drawableBottom="@drawable/arrow_back_black"
-                android:text="Go back"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/trans_blue_background"
-                android:padding="4dp"/>
-            <Button
-                android:id="@+id/sea"
-                android:drawableBottom="@drawable/arrow_back_black"
-                android:text="Go back"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/trans_blue_background"
-                android:padding="4dp"/>
-            <Button
-                android:id="@+id/meditation"
-                android:drawableBottom="@drawable/arrow_back_black"
-                android:text="Go back"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/trans_blue_background"
-                android:padding="4dp"/>-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:background="@drawable/bottom_shape_navigation_rectangle"
+                android:backgroundTint="@color/purple_light">
+                <Button
+                    android:id="@+id/musical_meditation"
+                    android:text="Balance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/purple_light"
+                    android:padding="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/bottom_shape_navigation_rectangle"
+                android:backgroundTint="@color/purple_dark">
+                <Button
+                    android:id="@+id/musical_sea"
+                    android:text="Sea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/purple_dark"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:padding="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/bottom_shape_navigation_rectangle"
+                android:backgroundTint="@color/purple_dark">
+                <Button
+                    android:id="@+id/musical_nature"
+                    android:text="Forest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/purple_dark"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:padding="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/bottom_shape_navigation_rectangle"
+                android:backgroundTint="@color/purple_dark">
+                <Button
+                    android:id="@+id/musical_night"
+                    android:text="Dreams"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/purple_dark"
+                    android:padding="4dp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="32dp"
+            android:padding="16dp"
+            android:gravity="center"
+            android:background="@drawable/borders_linear"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/borders_linear"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/borders_linear"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/borders_linear"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/borders_linear"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/borders_linear"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/borders_linear"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

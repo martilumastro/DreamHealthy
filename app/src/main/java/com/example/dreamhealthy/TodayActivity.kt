@@ -48,10 +48,10 @@ class TodayActivity : AppCompatActivity() {
 
 
     //value for navbar
-  //  private lateinit var homeBtn: ImageButton // --> new value
-    private lateinit var todayBtn: ImageButton
-    private lateinit var menuBtn: ImageButton
-   private lateinit var chartBtn: ImageButton
+    private lateinit var buttonToday: ImageButton
+    private lateinit var buttonMenu: ImageButton
+    private lateinit var buttonChart: ImageButton
+    private lateinit var textButton: TextView
 
 
     @SuppressLint("MissingInflatedId")
@@ -61,9 +61,10 @@ class TodayActivity : AppCompatActivity() {
         setContentView(R.layout.activity_today)
 
         //init image buttons
-        todayBtn = findViewById(R.id.todayBt)
-        menuBtn = findViewById(R.id.menuBt)
-        chartBtn = findViewById(R.id.chartBt)
+        buttonToday = findViewById(R.id.todayBt)
+        buttonChart = findViewById(R.id.chartBt)
+        buttonMenu = findViewById(R.id.menuBt)
+        textButton = findViewById(R.id.today_text_button)
 
         //call fun for update var, val and print
         updateVar()
@@ -136,22 +137,24 @@ class TodayActivity : AppCompatActivity() {
     fun buttonChange()
     {
         // button hamburger --> from today to menu
-        val buttonMenu = findViewById<ImageButton>(R.id.menuBt)
         buttonMenu.setOnClickListener {
             val pageMenu = Intent(this, MenuActivity::class.java)
             startActivity(pageMenu)
         }
         // button chart  --> from today to chartanalisys_today
-        val buttonChart = findViewById<ImageButton>(R.id.chartBt)
-            buttonChart.setOnClickListener {
-                val pageChart = Intent(this, ChartActivity::class.java)
-                startActivity(pageChart)
-            }
+        buttonChart.setOnClickListener {
+            val pageChart = Intent(this, ChartActivity::class.java)
+            startActivity(pageChart)
+        }
+        //button NULL
+        buttonToday.setOnClickListener {
+            val pageToday = Intent(this, TodayActivity::class.java)
+            startActivity(pageToday)
+        }
     }
 
     //text button
     fun printTextButton() {
-        val textButton = findViewById<TextView>(R.id.today_text_button)
         textButton.text = "Today"
 
     }
