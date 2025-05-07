@@ -70,18 +70,22 @@ class SleepSeaActivity : AppCompatActivity() {
     fun buttonChange() {
         // button myAlarmsClockBt  --> return to myAlarmsClock's page
         buttonMelody.setOnClickListener {
+            melodyPlayer.stopMelody()
             val pageMelody = Intent(this, MelodyActivity::class.java)
             startActivity(pageMelody)
         }
         buttonBalance.setOnClickListener {
+            melodyPlayer.stopMelody()
             val pageBalance = Intent(this, SleepMelodiesActivity::class.java)
             startActivity(pageBalance)
         }
         buttonSea.setOnClickListener {
+            melodyPlayer.stopMelody()
             val pageSea = Intent(this, SleepSeaActivity::class.java)
             startActivity(pageSea)
         }
         buttonForest.setOnClickListener {
+            melodyPlayer.stopMelody()
             val pageForest = Intent(this, SleepForestActivity::class.java)
             startActivity(pageForest)
         }

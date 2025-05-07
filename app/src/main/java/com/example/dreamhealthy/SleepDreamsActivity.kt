@@ -34,8 +34,8 @@ class SleepDreamsActivity : AppCompatActivity() {
         Melody("dreams_sunset.mp3", R.drawable.img_day_and_night),
         Melody("deams_finding.mp3", R.drawable.img_candle_white),
         Melody("zen_relax.mp3", R.drawable.img_melody_sound),
-        Melody("rainy_window_dreams.mp3", R.drawable.img_night_sleep),
-        Melody("storrm_thuder_dreams.mp3", R.drawable.img_city_melody),
+        Melody("dream_meditation.mp3", R.drawable.img_night_sleep),
+        Melody("storm_thunder_dreams.mp3", R.drawable.img_city_melody),
     )
 
 
@@ -71,10 +71,12 @@ class SleepDreamsActivity : AppCompatActivity() {
     {
         // button myAlarmsClockBt  --> return to myAlarmsClock's page
         buttonMelody.setOnClickListener {
+            melodyPlayer.stopMelody()
             val pageMelody = Intent(this, MelodyActivity::class.java)
             startActivity(pageMelody)
         }
         buttonBalance.setOnClickListener {
+            melodyPlayer.stopMelody()
             val pageBalance = Intent(this, SleepMelodiesActivity::class.java)
             startActivity(pageBalance)
         }
@@ -85,17 +87,19 @@ class SleepDreamsActivity : AppCompatActivity() {
 
         }
         buttonForest.setOnClickListener {
+            melodyPlayer.stopMelody()
             val pageForest = Intent(this, SleepForestActivity::class.java)
             startActivity(pageForest)
         }
         buttonDreams.setOnClickListener {
+            melodyPlayer.stopMelody()
             val pageDreams = Intent(this, SleepDreamsActivity::class.java)
             startActivity(pageDreams)
         }
     }
 
+    //init image with melody
     private fun imageViewMelodies() {
-        //init image with melody
         imageMelodies = listOf(
             findViewById(R.id.img_moon),
             findViewById(R.id.img_day_night),
@@ -116,8 +120,6 @@ class SleepDreamsActivity : AppCompatActivity() {
         }
 
     }
-
-
     //fun to melodies
     private fun PlayControls(){
         buttonPlayPause.setOnClickListener {

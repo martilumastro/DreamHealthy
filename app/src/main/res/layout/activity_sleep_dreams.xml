@@ -154,7 +154,7 @@
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Moon Night"
+                        android:contentDescription="Moon night melody"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -176,7 +176,7 @@
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Day and Night"/>
+                        android:contentDescription="Day and night"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -205,7 +205,7 @@
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Light_waves"/>
+                        android:contentDescription="Sleep melody"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -226,7 +226,7 @@
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Rowboat in the sea"/>
+                        android:contentDescription="Light sound to sleep"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -255,7 +255,7 @@
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Sea with birds"/>
+                        android:contentDescription="Night sound"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -276,7 +276,7 @@
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Light_waves"/>
+                        android:contentDescription="Night city melody"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

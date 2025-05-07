@@ -147,14 +147,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_melody_waves_strong"
+                        android:id="@+id/img_melody_forest"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
-                        android:src="@drawable/img_waves_white"
+                        android:src="@drawable/img_forest_white"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Strong wave melody"
+                        android:contentDescription="Forest melody"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -169,14 +169,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_melody_swimming"
+                        android:id="@+id/img_strong_thunder"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
-                        android:src="@drawable/img_sea_swimming_white"
+                        android:src="@drawable/img_thunder1"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Swimming in the sea"/>
+                        android:contentDescription="Strong thunder melody"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -198,14 +198,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_melody_light_waves"
+                        android:id="@+id/img_melody_river"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
-                        android:src="@drawable/img_sea_waves_light_white"
+                        android:src="@drawable/img_river_white"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Light_waves"/>
+                        android:contentDescription="River melody"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -219,14 +219,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_melody_rowboat"
+                        android:id="@+id/img_melody_rain"
                         android:layout_width="110dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/img_rowboat_white"
+                        android:src="@drawable/img_rain_white"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Rowboat in the sea"/>
+                        android:contentDescription="Rain melody"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -248,14 +248,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_melody_birds"
+                        android:id="@+id/img_thunder_light"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
-                        android:src="@drawable/sea_waves_with_birds"
+                        android:src="@drawable/img_thunder2"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Sea with birds"/>
+                        android:contentDescription="Thunder light melody"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -272,11 +272,11 @@
                         android:id="@+id/img_strong_wind"
                         android:layout_width="120dp"
                         android:layout_height="114dp"
-                        android:src="@drawable/img_strong_wind_white"
+                        android:src="@drawable/img_night_rain_white"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Light_waves"/>
+                        android:contentDescription="Strong Rain"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -297,7 +297,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
-            android:id="@+id/melody_bt"
+            android:id="@+id/previous_melody_bt"
             android:src="@drawable/icon_skip_previous_black"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -316,7 +316,7 @@
             android:focusable="true"
             android:contentDescription="Play/Pause"/>
         <ImageButton
-            android:id="@+id/menu2_bt"
+            android:id="@+id/next_melody_bt"
             android:src="@drawable/icon_skip_next_black"
             android:layout_marginStart="8dp"
             android:layout_width="60dp"
