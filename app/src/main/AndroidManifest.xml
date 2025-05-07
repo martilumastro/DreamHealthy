@@ -13,6 +13,18 @@
         android:theme="@style/Theme.DreamHealthy"
         tools:targetApi="31">
         <activity
+            android:name=".WakeUpMelodiesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SleepDreamsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SleepForestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SleepSeaActivity"
+            android:exported="false" />
+        <activity
             android:name=".SleepMelodiesActivity"
             android:exported="false" />
         <activity

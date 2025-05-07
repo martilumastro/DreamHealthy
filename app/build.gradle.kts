@@ -54,7 +54,8 @@ dependencies {
     implementation(libs.mpandroidchart)
     //for navbar
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-
+    //for melody
     implementation ("androidx.media3:media3-exoplayer:1.3.1")
-    implementation ("androidx.media3:media3-ui:1.3.1")
+    implementation ("androidx.appcompat:appcompat:1.3.1")
+    //implementation ("androidx.media3:media3-ui:1.3.1")
 }

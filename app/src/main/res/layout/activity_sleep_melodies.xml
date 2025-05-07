@@ -120,8 +120,9 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="32dp"
+            android:layout_marginTop="50dp"
             android:padding="16dp"
             android:gravity="center"
             android:background="@drawable/borders_linear"
@@ -145,6 +146,16 @@
                     android:background="@drawable/borders_linear"
                     android:gravity="center"
                     android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/img_zen"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:src="@drawable/img_zen_white"
+                        android:scaleType="centerInside"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="Zen melody"
+                        />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -157,6 +168,15 @@
                     android:background="@drawable/borders_linear"
                     android:gravity="center"
                     android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/img_lotus"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:src="@drawable/img_lotus_flower_white"
+                        android:scaleType="centerInside"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="Lotus flower"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -177,6 +197,15 @@
                     android:background="@drawable/borders_linear"
                     android:gravity="center"
                     android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/img_candle"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:src="@drawable/img_carion_white"
+                        android:scaleType="centerInside"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="Light_waves"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -189,6 +218,15 @@
                     android:background="@drawable/borders_linear"
                     android:gravity="center"
                     android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/img_melody_rowboat"
+                        android:layout_width="110dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/img_zen_rain"
+                        android:scaleType="centerInside"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="Rowboat in the sea"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -209,6 +247,15 @@
                     android:background="@drawable/borders_linear"
                     android:gravity="center"
                     android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/img_melody_birds"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:src="@drawable/img_yin_yang"
+                        android:scaleType="centerInside"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="Sea with birds"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -221,6 +268,15 @@
                     android:background="@drawable/borders_linear"
                     android:gravity="center"
                     android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/img_strong_wind"
+                        android:layout_width="120dp"
+                        android:layout_height="114dp"
+                        android:src="@drawable/img_moon_hands"
+                        android:scaleType="centerInside"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="Light_waves"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -241,7 +297,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
-            android:id="@+id/melody_bt"
+            android:id="@+id/previous_melody_bt"
             android:src="@drawable/icon_skip_previous_black"
             android:layout_width="60dp"
             android:layout_height="60dp"
