@@ -41,7 +41,7 @@ class SleepDreamsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
         setContentView(R.layout.activity_sleep_dreams)
 
         melodyPlayer = MelodyPlayerManager(this)
