@@ -12,6 +12,14 @@
 
 
 
+
+
+
+
+
+
+
+
     <TextView
         android:id="@+id/CHART_NAME"
         android:layout_width="395dp"
@@ -27,25 +35,49 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="0dp" />
 
-    <!--<androidx.constraintlayout.widget.Barrier
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top" />
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/chart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-    </com.github.mikephil.charting.charts.BarChart>-->
 
     <!--nav bar-->
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pie_chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/bar_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/CHART_NAME">
+    </com.github.mikephil.charting.charts.PieChart>
+
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:background="@drawable/bg_rounder_corner_trans"
+        app:layout_constraintBottom_toBottomOf="@id/pie_chart"
+        app:layout_constraintEnd_toEndOf="@id/pie_chart"
+        app:layout_constraintStart_toStartOf="@id/pie_chart"
+        app:layout_constraintTop_toTopOf="@id/pie_chart">
+    </View>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <LinearLayout
         android:id="@+id/bar_button"
         android:backgroundTint="@color/white"

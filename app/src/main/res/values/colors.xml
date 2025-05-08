@@ -33,4 +33,33 @@
     <color name="trans_red_dark">#B3870000</color>
     <color name="trans_red_light">#B3E93419</color>
     <color name="trans_orange">#B3EA6600</color>
+
+
+      //other colors
+    <color name="colorPrimary">#FF6200EE</color>
+    <color name="colorPrimaryDark">#FF3700B3</color>
+    <color name="colorPrimaryLight">#FFBB86FC</color>
+
+    <color name="colorAccent">#FF03DAC5</color>
+    <color name="colorAccentDark">#FF018786</color>
+    <color name="colorAccentLight">#FFB2EBF2</color>
+
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_500">#9E9E9E</color>
+    <color name="grey_700">#616161</color>
+    <color name="grey_900">#212121</color>
+
+    <color name="black_transparent_50">#80000000</color>
+    <color name="white_transparent_20">#33FFFFFF</color>
+    <color name="red_transparent_80">#CCFF0000</color>
+    <color name="dark_yellow">#A17505</color>
+    <color name ="pink_light">#E9B0A5</color>
+
+
+
+
+
+
+
 </resources>

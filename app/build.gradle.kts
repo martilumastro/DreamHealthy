@@ -52,6 +52,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     //library for pie chart
     implementation(libs.mpandroidchart)
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     //for navbar
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     //for melody
