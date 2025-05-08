@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/melody_night"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/blue_background"
-    tools:context=".SleepMelodiesActivity">
+    tools:context=".WakeUpWeatherActivity">
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -48,10 +48,10 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.2"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:background="@drawable/bottom_shape_navigation_rectangle"
-                android:backgroundTint="@color/purple_light">
+                android:backgroundTint="@color/purple_dark">
                 <Button
                     android:id="@+id/musical_meditation"
                     android:text="Balance"
@@ -60,25 +60,7 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:textSize="16sp"
-                    android:backgroundTint="@color/purple_light"
-                    android:padding="4dp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:background="@drawable/bottom_shape_navigation_rectangle"
-                android:backgroundTint="@color/purple_dark">
-                <Button
-                    android:id="@+id/musical_sea"
-                    android:text="Sea"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:backgroundTint="@color/purple_dark"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
                     android:padding="4dp"/>
             </LinearLayout>
             <LinearLayout
@@ -90,7 +72,25 @@
                 android:backgroundTint="@color/purple_dark">
                 <Button
                     android:id="@+id/musical_nature"
-                    android:text="Forest"
+                    android:text="Nature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/purple_dark"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:padding="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/bottom_shape_navigation_rectangle"
+                android:backgroundTint="@color/purple_dark">
+                <Button
+                    android:id="@+id/musical_mountain"
+                    android:text="Mount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
@@ -101,20 +101,20 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:background="@drawable/bottom_shape_navigation_rectangle"
-                android:backgroundTint="@color/purple_dark">
+                android:backgroundTint="@color/purple_light">
                 <Button
-                    android:id="@+id/musical_night"
-                    android:text="Dreams"
+                    android:id="@+id/musical_weather"
+                    android:text="Weather"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/purple_dark"
+                    android:backgroundTint="@color/purple_light"
                     android:padding="4dp"/>
             </LinearLayout>
         </LinearLayout>
@@ -147,14 +147,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_zen"
+                        android:id="@+id/img_sun"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
-                        android:src="@drawable/img_zen_white"
+                        android:src="@drawable/img_sun_clouds"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Zen melody"
+                        android:contentDescription="Sun wake up melody"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -169,14 +169,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_lotus"
+                        android:id="@+id/img_rain_light"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
-                        android:src="@drawable/img_lotus_flower_white"
+                        android:src="@drawable/img_rain_wake_up"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Lotus flower"/>
+                        android:contentDescription="Rain light melody"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -198,14 +198,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_carion"
+                        android:id="@+id/img_wind"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
-                        android:src="@drawable/img_carion_white"
+                        android:src="@drawable/img_wind_wake_up"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Sleep carion melody"/>
+                        android:contentDescription="Wind melody"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -219,14 +219,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_melody_rain"
+                        android:id="@+id/img_storm"
                         android:layout_width="110dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/img_zen_rain"
+                        android:src="@drawable/img_storm_rain"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Rain melody"/>
+                        android:contentDescription="Storm melody"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -248,14 +248,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_melody_yin_yang"
+                        android:id="@+id/img_rain_strong"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
-                        android:src="@drawable/img_yin_yang"
+                        android:src="@drawable/img_rain_wake_up2"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Sleep zen melody"/>
+                        android:contentDescription="Rain strong melody"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -269,14 +269,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_moon_hands"
+                        android:id="@+id/img_snow"
                         android:layout_width="120dp"
                         android:layout_height="114dp"
-                        android:src="@drawable/img_moon_hands"
+                        android:src="@drawable/img_snow_wake_up"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Zen good night"/>
+                        android:contentDescription="Snow melody"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

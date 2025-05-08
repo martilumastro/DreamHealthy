@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class WakeUpMelodiesActivity : AppCompatActivity() {
+class WakeUpWeatherActivity : AppCompatActivity() {
     private lateinit var buttonBalance: Button
     private lateinit var buttonNature: Button
     private lateinit var buttonMount: Button
@@ -18,7 +18,7 @@ class WakeUpMelodiesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_wake_up_melodies)
+        setContentView(R.layout.activity_wake_up_weather)
 
         //init
         buttonMelody = findViewById(R.id.go_back_bt)

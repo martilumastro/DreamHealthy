@@ -17,6 +17,8 @@ class MelodyActivity : AppCompatActivity() {
     private lateinit var buttonMenu: ImageButton
     private lateinit var buttonAlarms: ImageButton
     private lateinit var buttonMelodySleep: Button
+    private lateinit var buttonMelodyWakeUp: Button
+    private lateinit var buttonMelodyAlarm: Button
     private lateinit var textButton: TextView
 
 
@@ -31,6 +33,8 @@ class MelodyActivity : AppCompatActivity() {
         textButton = findViewById(R.id.melody_text_button)
         buttonAlarms = findViewById(R.id.my_alarms_clock_bt)
         buttonMelodySleep = findViewById(R.id.sleep_melody_bt)
+        buttonMelodyWakeUp = findViewById(R.id.wake_up_melody_bt)
+        buttonMelodyAlarm = findViewById(R.id.alarm_melody_bt)
 
         //fun
         buttonChange()
@@ -55,6 +59,14 @@ class MelodyActivity : AppCompatActivity() {
         buttonMelodySleep.setOnClickListener {
             val pageMelodySleep = Intent (this, SleepMelodiesActivity::class.java)
             startActivity(pageMelodySleep)
+        }
+        buttonMelodyWakeUp.setOnClickListener {
+            val pageMelodyWakeUp = Intent (this, WakeUpMelodiesActivity::class.java)
+            startActivity(pageMelodyWakeUp)
+        }
+        buttonMelodyAlarm.setOnClickListener {
+            val pageMelodyAlarm = Intent (this, AlarmMelodiesActivity::class.java)
+            startActivity(pageMelodyAlarm)
         }
 
     }

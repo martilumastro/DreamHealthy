@@ -13,6 +13,21 @@
         android:theme="@style/Theme.DreamHealthy"
         tools:targetApi="31">
         <activity
+            android:name=".AlarmNaturalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlarmMelodiesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WakeUpWeatherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WakeUpMountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WakeUpNatureActivity"
+            android:exported="false" />
+        <activity
             android:name=".WakeUpMelodiesActivity"
             android:exported="false" />
         <activity
