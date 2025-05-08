@@ -174,7 +174,7 @@
                 android:drawableLeft="@drawable/settings"
                 android:backgroundTint="@color/black"
                 android:drawablePadding="2dp"
-                android:text="Calendar"
+                android:text="Settings"
                 android:textSize="24sp"
                 android:gravity="center"
                 android:textStyle="bold"

@@ -248,14 +248,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_melody_yin_yang"
+                        android:id="@+id/img_melody_mountain"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
                         android:src="@drawable/img_mountain_wake_up"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="Sleep zen melody"/>
+                        android:contentDescription="Melody mountain"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -269,14 +269,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
                     <ImageView
-                        android:id="@+id/img_moon_hands"
+                        android:id="@+id/img_mountain2"
                         android:layout_width="120dp"
                         android:layout_height="114dp"
-                        android:src="@drawable/img_moon_hands"
+                        android:src="@drawable/img_mountain_white"
                         android:scaleType="centerInside"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription=" Zen good night"/>
+                        android:contentDescription="Second melody mountain"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
