@@ -11,15 +11,6 @@
     tools:context=".ChartActivity">
 
 
-
-
-
-
-
-
-
-
-
     <TextView
         android:id="@+id/CHART_NAME"
         android:layout_width="395dp"
@@ -36,89 +27,57 @@
         tools:layout_editor_absoluteY="0dp" />
 
 
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/Line_Chart"
+        android:layout_width="361dp"
+        android:layout_height="438dp"
 
-    <!--nav bar-->
-
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pie_chart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/bar_button"
+        android:layout_marginTop="168dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/CHART_NAME">
-    </com.github.mikephil.charting.charts.PieChart>
-
-
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:background="@drawable/bg_rounder_corner_trans"
-        app:layout_constraintBottom_toBottomOf="@id/pie_chart"
-        app:layout_constraintEnd_toEndOf="@id/pie_chart"
-        app:layout_constraintStart_toStartOf="@id/pie_chart"
-        app:layout_constraintTop_toTopOf="@id/pie_chart">
-    </View>
-
-
-
-
-
-
-
-
-
-
-
-
+        app:layout_constraintTop_toTopOf="@+id/CHART_NAME" />
 
     <LinearLayout
         android:id="@+id/bar_button"
-        android:backgroundTint="@color/white"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/bottom_shape_navigation"
-        android:padding="4dp"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:elevation="80dp"
-        android:shadowColor="@color/black"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="20dp"
-        android:layout_alignParentStart="true"
+        android:background="@drawable/bottom_shape_navigation"
+        android:backgroundTint="@color/white"
+        android:elevation="80dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:shadowColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent">
 
 
         <ImageButton
             android:id="@+id/todayBt"
-            android:src="@drawable/icon_today_value_black"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
             android:layout_height="60dp"
             android:layout_margin="5dp"
+            android:layout_weight="1"
             android:backgroundTint="@color/white"
+            android:contentDescription="Today's values"
             android:padding="15dp"
-            android:contentDescription="Today's values"/>
+            android:src="@drawable/icon_today_value_black" />
 
         <ImageButton
             android:id="@+id/menuBt"
-            android:src="@drawable/icon_hamburger_menu_black"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
             android:layout_height="60dp"
             android:layout_margin="5dp"
+            android:layout_weight="1"
             android:backgroundTint="@color/white"
+            android:contentDescription="Menu"
             android:padding="15dp"
-            android:contentDescription="Menu"/>
+            android:src="@drawable/icon_hamburger_menu_black" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,109 +4,148 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
 import android.widget.ImageButton
-
+import com.example.dreamhealthy.databinding.ActivityChartBinding
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import android.graphics.Color
+import com.github.mikephil.charting.components.Legend
+import com.example.dreamhealthy.TimeAxisFormatter //classe importata
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.LimitLine
 class ChartActivity : AppCompatActivity() {
-    private lateinit var todayBtn: ImageButton
-    private lateinit var menuBtn: ImageButton
-    private lateinit var pieChart: PieChart
+    private lateinit var binding: ActivityChartBinding
+
+    val heart_rate_values = ArrayList<Entry>()
+    val temperature_values = ArrayList<Entry>()
+    val noise_values = ArrayList<Entry>()
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chart)
-        todayBtn = findViewById(R.id.todayBt)
-        menuBtn = findViewById(R.id.menuBt)
-
+        binding = ActivityChartBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         buttonChange()
-
-
-        GraphicChart()
-        SetDataCharts()
+       setDataChart()
     }
 
-
-
-    private fun GraphicChart() {
-        pieChart = findViewById(R.id.pie_chart)
-        pieChart.holeRadius = 0f
-        pieChart.transparentCircleRadius = 0f
-        pieChart.description.isEnabled = false
-        pieChart.setDrawEntryLabels(false)
-        pieChart.setDrawSlicesUnderHole(true)
-
+    fun setDataChart()
+    { // valori da implementare
+        HeartValues()
+        TemperatureValues()
+        NoiseValues()
+        setChart()
     }
 
-
-
-    private fun SetDataCharts() {
-        val pieList = DataChart()
-        val colors = ColorsChart()
-        val pieDataSet = PieDataSet(pieList, "")
-        pieDataSet.colors = colors
-        Set_Graphic_Chart(pieDataSet)
-        val pieData = PieData(pieDataSet)
-        pieData.setValueTextColor(android.R.color.transparent)
-        val legend = pieChart.legend
-        legend.verticalAlignment = Legend.LegendVerticalAlignment.TOP
-        legend.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
-        legend.orientation = Legend.LegendOrientation.VERTICAL
-        legend.setDrawInside(false)
-        legend.isEnabled = false
-        pieChart.data = pieData
-        pieChart.invalidate()
-        pieChart.animateY(1000, Easing.EaseInQuart)
-    }
-
-    private fun DataChart(): MutableList<PieEntry> {
-        return mutableListOf(
-            PieEntry(10.0f),
-            PieEntry(12.7f),
-            PieEntry(3.9f),
-            PieEntry(2.1f),
-            PieEntry(17.0f),
-            PieEntry(21.0f)
-        )
-    }
-
-    private fun ColorsChart(): MutableList<Int>
+    private fun HeartValues()
     {
-        return mutableListOf(
-            resources.getColor(R.color.trans_gray_light),
-            resources.getColor(R.color.trans_magenta),
-            resources.getColor(R.color.trans_blue_dark),
-            resources.getColor(R.color.trans_orange),
-            resources.getColor(R.color.trans_white),
-            resources.getColor(R.color.trans_blue_light)
-        )
+       heart_rate_values.add(Entry(23.0f,70f)) //x rappresenta l'ora y in questo caso il valore dei battiti cardiaci
+       heart_rate_values.add(Entry(23.5f,65f))
+       heart_rate_values.add(Entry(0.0f,60f))
     }
 
-    private fun Set_Graphic_Chart(dataSet: PieDataSet) {
-        val sliceSpaceInDp = 0.5f
-        val density = resources.displayMetrics.density
-        val sliceSpaceInPx = sliceSpaceInDp * density
-        dataSet.sliceSpace = sliceSpaceInPx
+    private fun TemperatureValues()
+    {
+      temperature_values.add(Entry(23.0f,36.7f))
+      temperature_values.add(Entry(23.5f,36.5f))
+      temperature_values.add(Entry(0.0f,36.4f))
     }
 
-    //fun for changing page (navbar)
-    fun buttonChange() {
-        // button hamburger --> from today to menu
-        val buttonMenu = findViewById<ImageButton>(R.id.menuBt)
-        buttonMenu.setOnClickListener {
-            val pageMenu = Intent(this, MenuActivity::class.java)
-            startActivity(pageMenu)
-        }
-        // button chart  --> from today to chartanalisys_today
-        val buttonToday = findViewById<ImageButton>(R.id.todayBt)
-        buttonToday.setOnClickListener {
-            val pageToday = Intent(this, TodayActivity::class.java)
-            startActivity(pageToday)
+    private fun NoiseValues()
+    {
+        noise_values.add(Entry(23.0f, 35f))
+        noise_values.add(Entry(23.5f, 30f))
+        noise_values.add(Entry(0.0f, 25f))
+    }
+
+
+
+
+
+        private fun setChart() {
+        val xAxis = binding.LineChart.xAxis
+        val now = java.util.Calendar.getInstance()
+        val current_hour = now.get(java.util.Calendar.HOUR_OF_DAY)
+        val current_minute = now.get(java.util.Calendar.MINUTE)
+        val current_time_float = current_hour+ (current_minute / 60.0f)
+
+        val HeartRateSet = LineDataSet(heart_rate_values, "Heart Rate")
+        HeartRateSet.color = Color.RED
+        HeartRateSet.setDrawCircles(false)
+
+        val TemperatureSet = LineDataSet(temperature_values, "Temperature Body")
+        TemperatureSet.color = Color.YELLOW
+        TemperatureSet.setDrawCircles(false)
+
+        val NoiseSet = LineDataSet(noise_values, "Noise Ambience (DB)")
+        NoiseSet.color = Color.GREEN
+        NoiseSet.setDrawCircles(false)
+
+        val lineData = LineData(HeartRateSet,TemperatureSet,NoiseSet)
+        binding.LineChart.data = lineData
+        binding.LineChart.invalidate()
+
+        // set x with formatter time
+        xAxis.valueFormatter = TimeAxisFormatter()
+        xAxis.granularity = 1f
+        xAxis.labelRotationAngle = -45f
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+        xAxis.setDrawGridLines(true)
+        xAxis.axisMinimum = 0f //00.00
+        xAxis.axisMaximum = 24f //24.00
+        xAxis.textColor = Color.WHITE
+
+        //set y
+        binding.LineChart.axisLeft.textColor = Color.WHITE
+        binding.LineChart.axisRight.isEnabled = false
+
+        //Description
+        binding.LineChart.description.isEnabled = false
+        //create an other value
+        val legend = binding.LineChart.legend
+        legend.isEnabled = true
+        legend.textColor = Color.WHITE
+        legend.form = Legend.LegendForm.LINE
+       limit_line(current_time_float,xAxis) // faccio la funzione per risparmiare tempo
+       anim_line()
+
+    }
+
+
+                    private fun limit_line(current_time : Float , xAxis :XAxis)
+                    {
+                    val currentLine = LimitLine(current_time,"Ora Attuale")
+                        currentLine.lineWidth = 2f
+                        currentLine.lineColor = Color.MAGENTA
+                        currentLine.textColor = Color.MAGENTA
+                        currentLine.labelPosition = LimitLine.LimitLabelPosition.RIGHT_TOP
+                        xAxis.removeAllLimitLines()  //mostriamo solo quella attuale
+                        xAxis.addLimitLine(currentLine)
+                    }
+                     private fun anim_line()
+                    {
+                      binding.LineChart.setTouchEnabled(true)
+                      binding.LineChart.setPinchZoom(true)
+                      binding.LineChart.animateX(1000)
+                      binding.LineChart.setNoDataText("No Data Avaible")
+                    }
+
+        //fun for changing page (navbar)
+        fun buttonChange() {
+            // button hamburger --> from today to menu
+            val buttonMenu = findViewById<ImageButton>(R.id.menuBt)
+            buttonMenu.setOnClickListener {
+                val pageMenu = Intent(this, MenuActivity::class.java)
+                startActivity(pageMenu)
+            }
+            // button chart  --> from today to chartanalisys_today
+            val buttonToday = findViewById<ImageButton>(R.id.todayBt)
+            buttonToday.setOnClickListener {
+                val pageToday = Intent(this, TodayActivity::class.java)
+                startActivity(pageToday)
+            }
+
         }
     }
-}

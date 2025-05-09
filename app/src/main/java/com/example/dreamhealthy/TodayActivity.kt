@@ -518,7 +518,7 @@ class TodayActivity : AppCompatActivity() {
             ContextCompat.getColor(this, R.color.blue_dark)
         )
         //pie chart color
-        val pieDataSet = PieDataSet(pieList, "")
+        val pieDataSet = PieDataSet(pieList, " ")
         pieDataSet.colors = colors
         //allocation of data
         val pieData = PieData(pieDataSet)
