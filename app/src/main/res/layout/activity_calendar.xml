@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calendar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/blue_background"
+    tools:context=".CalendarActivity">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/bar_button">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="My Calendar"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Good day!"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white" />
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_gravity="center"
+            android:layout_margin="24dp">
+
+        </CalendarView>
+    </LinearLayout>
+    <!--nav bar-->
+    <LinearLayout
+        android:id="@+id/bar_button"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bottom_shape_navigation"
+        android:backgroundTint="@color/white"
+        android:padding="4dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentStart="true"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <ImageButton
+            android:id="@+id/today_bt"
+            android:src="@drawable/icon_today_value_black"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/white"
+            android:padding="15dp"
+            android:contentDescription="Today"/>
+        <ImageButton
+            android:id="@+id/my_alarms_clock_bt"
+            android:src="@drawable/clock_black"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/white"
+            android:padding="15dp"
+            android:contentDescription="All my alarms clock"/>
+        <ImageButton
+            android:id="@+id/menu_bt"
+            android:src="@drawable/icon_hamburger_menu_black"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/white"
+            android:padding="15dp"
+            android:contentDescription="Menu"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
