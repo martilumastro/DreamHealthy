@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class UsefulAdvinceActivity : AppCompatActivity() {
+class FoodUsefulAdvinceActivity : AppCompatActivity() {
     private lateinit var listView: ListView
     private lateinit var list: Array<String>
     private lateinit var buttonToday: ImageButton
@@ -25,10 +25,11 @@ class UsefulAdvinceActivity : AppCompatActivity() {
     private lateinit var buttonRelaxList: Button
     private lateinit var buttonMorningList: Button
 
-
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_useful_advince)
+        setContentView(R.layout.activity_food_useful_advince)
+
         buttonToday = findViewById(R.id.today_bt)
         buttonChart = findViewById(R.id.chart_bt)
         buttonMenu = findViewById(R.id.menu_bt)
@@ -44,7 +45,7 @@ class UsefulAdvinceActivity : AppCompatActivity() {
         changePage()
     }
 
-    //change page
+    //fun change page
     fun changePage(){
         buttonToday.setOnClickListener {
             val todayPage = Intent(this, TodayActivity::class.java)
@@ -59,11 +60,11 @@ class UsefulAdvinceActivity : AppCompatActivity() {
             startActivity(menuPage)
         }
         buttonBack.setOnClickListener {
-            val backPage = Intent(this, MorningUsefulAdvinceActivity::class.java)
+            val backPage = Intent(this, UsefulAdvinceActivity::class.java)
             startActivity(backPage)
         }
         buttonNext.setOnClickListener {
-            val nextPage = Intent(this, FoodUsefulAdvinceActivity::class.java)
+            val nextPage = Intent(this, ToDoUsefulAdvinceActivity::class.java)
             startActivity(nextPage)
         }
         buttonFoodList.setOnClickListener {
@@ -88,10 +89,10 @@ class UsefulAdvinceActivity : AppCompatActivity() {
     fun listUsefulAdvince(){
         //text and visual elementslist
         list = arrayOf(
-            "Take a few minutes to breathe deeply.",
-            "Listen to calming music or nature sounds.",
-            "Try a short guided meditation or body scan exercise.",
-            "Read a few pages of a book (avoid screens!)."
+            "Avoid heavy or large meals at dinner.",
+            "Don’t go to bed hungry or overly full.",
+            "Limit caffeine and alcohol in the evening.",
+            "A warm herbal tea can help you relax."
         )
         listView = findViewById(R.id.list_view)
 

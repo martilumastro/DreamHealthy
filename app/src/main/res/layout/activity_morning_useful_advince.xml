@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/useful_advince"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/blue_background"
-    tools:context=".UsefulAdvinceActivity">
+    tools:context=".MorningUsefulAdvinceActivity">
     <LinearLayout
         android:id="@+id/all_pages"
         android:layout_marginTop="40dp"
@@ -24,10 +24,10 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.2"
+            android:layout_weight="1"
             android:gravity="center"
             android:background="@drawable/bottom_shape_navigation_rectangle"
-            android:backgroundTint="@color/purple_light">
+            android:backgroundTint="@color/purple_dark">
             <Button
                 android:id="@+id/relax_list"
                 android:text="Relax"
@@ -36,7 +36,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="16sp"
-                android:backgroundTint="@color/purple_light"
+                android:backgroundTint="@color/purple_dark"
                 android:padding="4dp"/>
         </LinearLayout>
         <LinearLayout
@@ -77,11 +77,11 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:layout_height="match_parent"
             android:gravity="center"
             android:background="@drawable/bottom_shape_navigation_rectangle"
-            android:backgroundTint="@color/purple_dark">
+            android:backgroundTint="@color/purple_light">
             <Button
                 android:id="@+id/morning_list"
                 android:text="Morning"
@@ -90,7 +90,7 @@
                 android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/purple_dark"
+                android:backgroundTint="@color/purple_light"
                 android:padding="4dp"/>
         </LinearLayout>
     </LinearLayout>
@@ -114,13 +114,13 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:scaleType="centerInside"
-                android:src="@drawable/relax_advince_activity"
+                android:src="@drawable/wake_up_advince_activity"
                 />
             <TextView
                 android:id="@+id/title_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1. Relax techniques before sleep"
+                android:text="4. Waking up"
                 android:textColor="@color/white"
                 android:textSize="22dp"
                 android:textStyle="bold"
@@ -173,7 +173,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Relax"
+                android:text="Morning"
                 android:textSize="20dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"

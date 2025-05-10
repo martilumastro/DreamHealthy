@@ -13,6 +13,15 @@
         android:theme="@style/Theme.DreamHealthy"
         tools:targetApi="31">
         <activity
+            android:name=".MorningUsefulAdvinceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ToDoUsefulAdvinceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FoodUsefulAdvinceActivity"
+            android:exported="false" />
+        <activity
             android:name=".UsefulAdvinceActivity"
             android:exported="false" />
         <activity

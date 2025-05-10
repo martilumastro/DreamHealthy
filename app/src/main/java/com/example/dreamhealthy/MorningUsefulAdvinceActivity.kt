@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class UsefulAdvinceActivity : AppCompatActivity() {
+class MorningUsefulAdvinceActivity : AppCompatActivity() {
     private lateinit var listView: ListView
     private lateinit var list: Array<String>
     private lateinit var buttonToday: ImageButton
@@ -25,10 +25,10 @@ class UsefulAdvinceActivity : AppCompatActivity() {
     private lateinit var buttonRelaxList: Button
     private lateinit var buttonMorningList: Button
 
-
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_useful_advince)
+        setContentView(R.layout.activity_morning_useful_advince)
         buttonToday = findViewById(R.id.today_bt)
         buttonChart = findViewById(R.id.chart_bt)
         buttonMenu = findViewById(R.id.menu_bt)
@@ -59,11 +59,11 @@ class UsefulAdvinceActivity : AppCompatActivity() {
             startActivity(menuPage)
         }
         buttonBack.setOnClickListener {
-            val backPage = Intent(this, MorningUsefulAdvinceActivity::class.java)
+            val backPage = Intent(this, ToDoUsefulAdvinceActivity::class.java)
             startActivity(backPage)
         }
         buttonNext.setOnClickListener {
-            val nextPage = Intent(this, FoodUsefulAdvinceActivity::class.java)
+            val nextPage = Intent(this, UsefulAdvinceActivity::class.java)
             startActivity(nextPage)
         }
         buttonFoodList.setOnClickListener {
@@ -82,16 +82,17 @@ class UsefulAdvinceActivity : AppCompatActivity() {
             val morningPage = Intent(this, MorningUsefulAdvinceActivity::class.java)
             startActivity(morningPage)
         }
+
     }
 
     //fun list
     fun listUsefulAdvince(){
         //text and visual elementslist
         list = arrayOf(
-            "Take a few minutes to breathe deeply.",
-            "Listen to calming music or nature sounds.",
-            "Try a short guided meditation or body scan exercise.",
-            "Read a few pages of a book (avoid screens!)."
+            "Try to wake up at the same time every day.",
+            "Get sunlight exposure as early as possible.",
+            "Do some gentle stretching to wake up your body.",
+            "Avoid hitting the snooze button too often."
         )
         listView = findViewById(R.id.list_view)
 
