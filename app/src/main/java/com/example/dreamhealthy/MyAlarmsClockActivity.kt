@@ -15,6 +15,7 @@ class MyAlarmsClockActivity : AppCompatActivity() {
     private lateinit var buttonToday: ImageButton
     private lateinit var buttonMenu: ImageButton
     private lateinit var buttonMelody: ImageButton
+    private lateinit var buttonAlarmMonday: Button
 
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,8 @@ class MyAlarmsClockActivity : AppCompatActivity() {
         buttonMenu = findViewById(R.id.menu_bt)
         buttonToday = findViewById(R.id.today_bt)
         buttonMelody = findViewById(R.id.melody_bt)
+        buttonAlarmMonday = findViewById(R.id.monday_bt)
+
         //call fun
         buttonChange()
     }
@@ -47,5 +50,10 @@ class MyAlarmsClockActivity : AppCompatActivity() {
             val pageMelody = Intent(this, MelodyActivity::class.java)
             startActivity(pageMelody)
         }
+        buttonAlarmMonday.setOnClickListener {
+            val pageAlarm = Intent(this, MondayAlarmClockActivity::class.java)
+            startActivity(pageAlarm)
+        }
+
     }
 }
