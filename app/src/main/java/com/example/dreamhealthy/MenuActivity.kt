@@ -18,8 +18,9 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var textButton: TextView
     private lateinit var buttonAlarms: Button
     private lateinit var buttonCalendar: Button
+    private lateinit var buttonUsefulAdvince: Button
 
-    @SuppressLint("WrongViewCast")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
@@ -30,6 +31,7 @@ class MenuActivity : AppCompatActivity() {
         buttonToday = findViewById(R.id.todayBt)
         buttonHome = findViewById(R.id.homeBt)
         buttonCalendar = findViewById(R.id.calendar_bt)
+        buttonUsefulAdvince = findViewById(R.id.useful_advince_bt)
 
 
         //call fun
@@ -59,8 +61,10 @@ class MenuActivity : AppCompatActivity() {
             val pageCalendar = Intent (this, CalendarActivity::class.java)
             startActivity(pageCalendar)
         }
-
-
+        buttonUsefulAdvince.setOnClickListener {
+            val pageUsefulAdvince = Intent (this, UsefulAdvinceActivity::class.java)
+            startActivity(pageUsefulAdvince)
+        }
     }
 
     //text button

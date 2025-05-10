@@ -47,6 +47,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -59,5 +61,6 @@ dependencies {
     //for melody
     implementation ("androidx.media3:media3-exoplayer:1.3.1")
     implementation ("androidx.appcompat:appcompat:1.3.1")
-    //implementation ("androidx.media3:media3-ui:1.3.1")
+
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
 }

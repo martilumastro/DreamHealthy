@@ -7,5 +7,14 @@
 
     <style name="Theme.DreamHealthy" parent="Base.Theme.DreamHealthy" />
 
+    <style name="Theme.DreamHealthy.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.DreamHealthy.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.DreamHealthy.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 
 </resources>
