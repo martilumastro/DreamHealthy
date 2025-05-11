@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/today"
+    android:id="@+id/monday_act"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -50,13 +50,13 @@
                 />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/wednsday_layout"
+            android:id="@+id/wednesday_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="4dp"
             android:layout_weight="1">
             <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/wednsday_chart"
+                android:id="@+id/wednesday_chart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />
@@ -138,7 +138,7 @@
             android:backgroundTint="@color/purple_light"
             android:contentDescription="tuesday"/>
         <Button
-            android:id="@+id/wedsneday_button"
+            android:id="@+id/wednesday_button"
             android:layout_marginEnd="2dp"
             android:layout_marginStart="2dp"
             android:layout_width="0dp"

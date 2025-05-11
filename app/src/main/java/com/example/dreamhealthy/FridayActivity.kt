@@ -20,28 +20,27 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 
-class TuesdayActivity : AppCompatActivity() {
-    //CAMBIARE CON I VALORI SMARTWATCH
-    var hoursSleep:Int = 7  //7-9 --> 6/10
-    var minutesSleep:Int = 34
-    var minutesRest:Int = 22
-    var hoursRest:Int = 1
-    var heartRateAverage:Float = 51.00f //40-50.50 --> 50.51/60
+class FridayActivity : AppCompatActivity() {
+    var hoursSleep:Int = 0  //7-9 --> 6/10
+    var minutesSleep:Int = 0
+    var minutesRest:Int = 0
+    var hoursRest:Int = 0
+    var heartRateAverage:Float = 0.00f //40-50.50 --> 50.51/60
     var awakening:Int = 0 //0 --> 1/3
-    var Averagebreath:Int = 15   //12-20 --> 10/24
-    var noise:Int = 4  //0
+    var Averagebreath:Int = 0   //12-20 --> 10/24
+    var noise:Int = 0  //0
     var totalHours:Int = hoursSleep + hoursRest
     var totalMinutes:Int = minutesSleep + minutesRest
-    private var goodChartTotalTuesday:Float = 100.00f
+    private var goodChartTotalFriday:Float = 100.00f
 
     //value for navbar
     private lateinit var buttonToday: ImageButton
     private lateinit var buttonMenu: ImageButton
     private lateinit var textButton: TextView
-    private lateinit var wednesdayButton: Button
+    private lateinit var tuesdayButton: Button
     private lateinit var mondayButton: Button
+    private lateinit var wednesdayButton: Button
     private lateinit var thursdayButton: Button
-    private lateinit var fridayButton: Button
     private lateinit var saturdayButton: Button
     private lateinit var sundayButton: Button
 
@@ -49,23 +48,21 @@ class TuesdayActivity : AppCompatActivity() {
     //value for today color
     private var today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
 
-
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_tuesday)
-
+        setContentView(R.layout.activity_friday)
         //init image buttons
         buttonToday = findViewById(R.id.todayBt)
         buttonMenu = findViewById(R.id.menuBt)
         textButton = findViewById(R.id.today_text_button)
-        wednesdayButton = findViewById(R.id.wednesday_button)
+        tuesdayButton = findViewById(R.id.tuesday_button)
         mondayButton = findViewById(R.id.monday_button)
+        wednesdayButton = findViewById(R.id.wednesday_button)
         thursdayButton = findViewById(R.id.thursday_button)
-        fridayButton = findViewById(R.id.friday_button)
         saturdayButton = findViewById(R.id.saturday_button)
-
+        sundayButton = findViewById(R.id.sunday_button)
 
 
         //change color today for make evident
@@ -114,38 +111,38 @@ class TuesdayActivity : AppCompatActivity() {
 
 
     fun calculatePercentageTotalChart(){
-        goodChartTotalTuesday = 100.00f
+        goodChartTotalFriday = 100.00f
 
         if (hoursSleep < 5 || hoursSleep > 11){
-            goodChartTotalTuesday = goodChartTotalTuesday - 14.00f
+            goodChartTotalFriday = goodChartTotalFriday - 14.00f
         } else if(hoursSleep < 7 || hoursSleep > 9){
-            goodChartTotalTuesday = goodChartTotalTuesday - 5.00f
+            goodChartTotalFriday = goodChartTotalFriday - 5.00f
         }
         if (heartRateAverage > 65.00f){
-            goodChartTotalTuesday = goodChartTotalTuesday - 20.00f
+            goodChartTotalFriday = goodChartTotalFriday - 20.00f
         } else if (heartRateAverage < 40.00f || heartRateAverage > 50.50f){
-            goodChartTotalTuesday = goodChartTotalTuesday - 12.00f
+            goodChartTotalFriday = goodChartTotalFriday - 12.00f
         }
         if (Averagebreath > 27){
-            goodChartTotalTuesday = goodChartTotalTuesday - 18.00f
+            goodChartTotalFriday = goodChartTotalFriday - 18.00f
         } else if (Averagebreath < 12 || Averagebreath > 20){
-            goodChartTotalTuesday = goodChartTotalTuesday - 10.00f
+            goodChartTotalFriday = goodChartTotalFriday - 10.00f
         }
         if (awakening > 3){
-            goodChartTotalTuesday = goodChartTotalTuesday - 10.00f
+            goodChartTotalFriday = goodChartTotalFriday - 10.00f
         } else if (awakening > 0){
-            goodChartTotalTuesday= goodChartTotalTuesday - 4.00f
+            goodChartTotalFriday = goodChartTotalFriday - 4.00f
         }
         if (noise > 0){
-            goodChartTotalTuesday = goodChartTotalTuesday - 3.00f
+            goodChartTotalFriday = goodChartTotalFriday - 3.00f
         }
         if (hoursSleep == 0 && heartRateAverage == 0.00f && Averagebreath == 0 && awakening == 0 && noise == 0){
-            goodChartTotalTuesday = 0.00f
+            goodChartTotalFriday = 0.00f
         }
 
-        val sharedPreferencesTuesday = getSharedPreferences("MyPrefsTuesday", Context.MODE_PRIVATE)
-        sharedPreferencesTuesday.edit()
-            .putFloat("goodChartTotalTuesday", goodChartTotalTuesday)
+        val sharedPreferencesFriday = getSharedPreferences("MyPrefsFriday", Context.MODE_PRIVATE)
+        sharedPreferencesFriday.edit()
+            .putFloat("goodChartTotalFriday", goodChartTotalFriday)
             .apply()
     }
 
@@ -195,6 +192,10 @@ class TuesdayActivity : AppCompatActivity() {
             val pageMonday = Intent(this, TodayActivity::class.java)
             startActivity(pageMonday)
         }
+        tuesdayButton.setOnClickListener {
+            val pageTuesday = Intent(this, TuesdayActivity::class.java)
+            startActivity(pageTuesday)
+        }
         wednesdayButton.setOnClickListener {
             val pageWednesday = Intent(this, WednesdayActivity::class.java)
             startActivity(pageWednesday)
@@ -203,19 +204,19 @@ class TuesdayActivity : AppCompatActivity() {
             val pageThursday = Intent(this, ThursdayActivity::class.java)
             startActivity(pageThursday)
         }
-        fridayButton.setOnClickListener {
-            val pageFriday = Intent(this, FridayActivity::class.java)
-            startActivity(pageFriday)
-        }
         saturdayButton.setOnClickListener {
             val pageSaturday = Intent(this, SaturdayActivity::class.java)
             startActivity(pageSaturday)
+        }
+        sundayButton.setOnClickListener {
+            val pageSunday = Intent(this, SundayActivity::class.java)
+            startActivity(pageSunday)
         }
     }
 
     //text button
     fun printTextButton() {
-        textButton.text = "Tuesday"
+        textButton.text = "Friday"
 
     }
 
@@ -272,7 +273,10 @@ class TuesdayActivity : AppCompatActivity() {
         pieChart.setDrawEntryLabels(false)
         //pie chart value val
         val pieList = mutableListOf<PieEntry>()
-        //sleep values --> change with correct percentage
+
+        //receive tuesday values
+        val sharedPreferencesTuesday = getSharedPreferences("MyPrefsTuesday", Context.MODE_PRIVATE)
+        val goodChartTotalTuesday = sharedPreferencesTuesday.getFloat("goodChartTotalTuesday", 0.00f)
         pieList.add(PieEntry(goodChartTotalTuesday, "Good Sleep"))
         pieList.add(PieEntry(100.00f - goodChartTotalTuesday, ""))
         // text center
@@ -306,6 +310,7 @@ class TuesdayActivity : AppCompatActivity() {
         pieChart.setDrawEntryLabels(false)
         //pie chart value val
         val pieList = mutableListOf<PieEntry>()
+
         //receive wednesday values
         val sharedPreferencesWednesday = getSharedPreferences("MyPrefsWednesday", Context.MODE_PRIVATE)
         val goodChartTotalWednesday = sharedPreferencesWednesday.getFloat("goodChartTotalWednesday", 0.00f)
@@ -342,8 +347,7 @@ class TuesdayActivity : AppCompatActivity() {
         pieChart.setDrawEntryLabels(false)
         //pie chart value val
         val pieList = mutableListOf<PieEntry>()
-
-        // receive thursday values
+        //receive thursday values
         val sharedPreferencesThursday = getSharedPreferences("MyPrefsThursday", Context.MODE_PRIVATE)
         val goodChartTotalThursday = sharedPreferencesThursday.getFloat("goodChartTotalThursday", 0.00f)
         pieList.add(PieEntry(goodChartTotalThursday, "Good Sleep"))
@@ -379,9 +383,7 @@ class TuesdayActivity : AppCompatActivity() {
         pieChart.setDrawEntryLabels(false)
         //pie chart value val
         val pieList = mutableListOf<PieEntry>()
-        //receive friday values
-        val sharedPreferencesFriday = getSharedPreferences("MyPrefsFriday", Context.MODE_PRIVATE)
-        val goodChartTotalFriday = sharedPreferencesFriday.getFloat("goodChartTotalFriday", 0.00f)
+        //sleep values
         pieList.add(PieEntry(goodChartTotalFriday, "Good Sleep"))
         pieList.add(PieEntry(100.00f - goodChartTotalFriday, ""))
         // text center
@@ -543,8 +545,8 @@ class TuesdayActivity : AppCompatActivity() {
         //pie chart value val
         val pieList = mutableListOf<PieEntry>()
         //sleep values --> change with correct percentage
-        pieList.add(PieEntry(goodChartTotalTuesday, "Good Sleep"))
-        pieList.add(PieEntry(100.00F - goodChartTotalTuesday, ""))
+        pieList.add(PieEntry(goodChartTotalFriday, "Good Sleep"))
+        pieList.add(PieEntry(100.00F - goodChartTotalFriday, ""))
 
         //value for text Center
         val goodSleep = pieList.find { it.label == "Good Sleep" }?.value ?: 0f
@@ -570,5 +572,4 @@ class TuesdayActivity : AppCompatActivity() {
         pieChart.animateY(1000)
         pieChart.invalidate()
     }
-
 }
