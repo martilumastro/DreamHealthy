@@ -1,77 +1,58 @@
 package com.example.dreamhealthy
 
 import android.annotation.SuppressLint
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.icu.util.Calendar
-import android.media.Image
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.Window
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
-import android.widget.PopupMenu
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-import java.util.ArrayList
-import java.util.Scanner
 
-
-class TodayActivity : AppCompatActivity() {
+class TuesdayActivity : AppCompatActivity() {
     //CAMBIARE CON I VALORI SMARTWATCH
-    var hoursSleep:Int = 8  //7-9 --> 6/10
-    var minutesSleep:Int = 30
-    var minutesRest:Int = 0
+    var hoursSleep:Int = 7  //7-9 --> 6/10
+    var minutesSleep:Int = 34
+    var minutesRest:Int = 22
     var hoursRest:Int = 1
-    var heartRateAverage:Float = 45.00f //40-50.50 --> 50.51/60
-    var awakening:Int = 1 //0 --> 1/3
+    var heartRateAverage:Float = 51.00f //40-50.50 --> 50.51/60
+    var awakening:Int = 0 //0 --> 1/3
     var Averagebreath:Int = 15   //12-20 --> 10/24
-    var noise:Int = 0  //0
+    var noise:Int = 4  //0
     var totalHours:Int = hoursSleep + hoursRest
     var totalMinutes:Int = minutesSleep + minutesRest
-    private var goodChartTotalMonday:Float = 100.00f
+    private var goodChartTotalTuesday:Float = 100.00f
 
     //value for navbar
     private lateinit var buttonToday: ImageButton
     private lateinit var buttonMenu: ImageButton
-    private lateinit var buttonChart: ImageButton
     private lateinit var textButton: TextView
     private lateinit var tuesdayButton: Button
     private lateinit var mondayButton: Button
-
 
     //value for today color
     private var today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
 
 
-
     @SuppressLint("MissingInflatedId")
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_today)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_tuesday)
 
         //init image buttons
         buttonToday = findViewById(R.id.todayBt)
-        buttonChart = findViewById(R.id.chartBt)
         buttonMenu = findViewById(R.id.menuBt)
         textButton = findViewById(R.id.today_text_button)
         tuesdayButton = findViewById(R.id.tuesday_button)
@@ -90,13 +71,12 @@ class TodayActivity : AppCompatActivity() {
         )
         daysLayout[today]?.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_light))
 
+
         //send value
 
 
-
-        //call fun for update var, val and print
+        //cal fun
         updateVar()
-
     }
 
     //Fun update var and print
@@ -107,6 +87,7 @@ class TodayActivity : AppCompatActivity() {
         addMinutesSleep()
         addMinutesRest()
         pieChartTotal()
+
         pieChartMonday()
         pieChartTuesday()
         pieChartWednsday()
@@ -128,38 +109,38 @@ class TodayActivity : AppCompatActivity() {
 
 
     fun calculatePercentageTotalChart(){
-        goodChartTotalMonday = 100.00f
+        goodChartTotalTuesday = 100.00f
 
         if (hoursSleep < 5 || hoursSleep > 11){
-            goodChartTotalMonday = goodChartTotalMonday - 14.00f
+            goodChartTotalTuesday = goodChartTotalTuesday - 14.00f
         } else if(hoursSleep < 7 || hoursSleep > 9){
-            goodChartTotalMonday = goodChartTotalMonday - 5.00f
+            goodChartTotalTuesday = goodChartTotalTuesday - 5.00f
         }
         if (heartRateAverage > 65.00f){
-            goodChartTotalMonday = goodChartTotalMonday - 20.00f
+            goodChartTotalTuesday = goodChartTotalTuesday - 20.00f
         } else if (heartRateAverage < 40.00f || heartRateAverage > 50.50f){
-            goodChartTotalMonday = goodChartTotalMonday - 12.00f
+            goodChartTotalTuesday = goodChartTotalTuesday - 12.00f
         }
         if (Averagebreath > 27){
-            goodChartTotalMonday = goodChartTotalMonday - 18.00f
+            goodChartTotalTuesday = goodChartTotalTuesday - 18.00f
         } else if (Averagebreath < 12 || Averagebreath > 20){
-            goodChartTotalMonday = goodChartTotalMonday - 10.00f
+            goodChartTotalTuesday = goodChartTotalTuesday - 10.00f
         }
         if (awakening > 3){
-            goodChartTotalMonday = goodChartTotalMonday - 10.00f
+            goodChartTotalTuesday = goodChartTotalTuesday - 10.00f
         } else if (awakening > 0){
-            goodChartTotalMonday = goodChartTotalMonday - 4.00f
+            goodChartTotalTuesday= goodChartTotalTuesday - 4.00f
         }
         if (noise > 0){
-            goodChartTotalMonday = goodChartTotalMonday - 3.00f
+            goodChartTotalTuesday = goodChartTotalTuesday - 3.00f
         }
-        if (goodChartTotalMonday <= 0 || goodChartTotalMonday > 100){
-            goodChartTotalMonday = 0.00f
+        if (goodChartTotalTuesday <= 0 || goodChartTotalTuesday > 100){
+            goodChartTotalTuesday = 0.00f
         }
-        //getSharePreference for save a value
+
         val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         sharedPreferences.edit()
-            .putFloat("goodChartTotalMonday", goodChartTotalMonday)
+            .putFloat("goodChartTotalTuesday", goodChartTotalTuesday)
             .apply()
     }
 
@@ -204,15 +185,7 @@ class TodayActivity : AppCompatActivity() {
             startActivity(pageMenu)
         }
         // button chart  --> from today to chartanalisys_today
-        buttonChart.setOnClickListener {
-            val pageChart = Intent(this, ChartActivity::class.java)
-            startActivity(pageChart)
-        }
-        //button NULL
-        buttonToday.setOnClickListener {
-            val pageToday = Intent(this, TodayActivity::class.java)
-            startActivity(pageToday)
-        }
+
         mondayButton.setOnClickListener {
             val pageMonday = Intent(this, TodayActivity::class.java)
             startActivity(pageMonday)
@@ -225,7 +198,7 @@ class TodayActivity : AppCompatActivity() {
 
     //text button
     fun printTextButton() {
-        textButton.text = "Monday"
+        textButton.text = "Tuesday"
 
     }
 
@@ -245,6 +218,10 @@ class TodayActivity : AppCompatActivity() {
         //pie chart value val
         val pieList = mutableListOf<PieEntry>()
         //sleep values --> change with correct percentage
+        //receive monday values
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val goodChartTotalMonday = sharedPreferences.getFloat("goodChartTotalMonday", 0.00f)
+
         pieList.add(PieEntry(goodChartTotalMonday, "Good Sleep"))
         pieList.add(PieEntry(100.00f - goodChartTotalMonday, ""))
         // text center
@@ -279,10 +256,6 @@ class TodayActivity : AppCompatActivity() {
         //pie chart value val
         val pieList = mutableListOf<PieEntry>()
         //sleep values --> change with correct percentage
-        //receive tuesday values
-        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        val goodChartTotalTuesday = sharedPreferences.getFloat("goodChartTotalTuesday", 0.00f)
-
         pieList.add(PieEntry(goodChartTotalTuesday, "Good Sleep"))
         pieList.add(PieEntry(100.00f - goodChartTotalTuesday, ""))
         // text center
@@ -540,8 +513,8 @@ class TodayActivity : AppCompatActivity() {
         //pie chart value val
         val pieList = mutableListOf<PieEntry>()
         //sleep values --> change with correct percentage
-        pieList.add(PieEntry(goodChartTotalMonday, "Good Sleep"))
-        pieList.add(PieEntry(100.00F - goodChartTotalMonday, ""))
+        pieList.add(PieEntry(goodChartTotalTuesday, "Good Sleep"))
+        pieList.add(PieEntry(100.00F - goodChartTotalTuesday, ""))
 
         //value for text Center
         val goodSleep = pieList.find { it.label == "Good Sleep" }?.value ?: 0f
@@ -567,4 +540,5 @@ class TodayActivity : AppCompatActivity() {
         pieChart.animateY(1000)
         pieChart.invalidate()
     }
+
 }

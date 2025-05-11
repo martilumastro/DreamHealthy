@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,16 +13,10 @@
         android:theme="@style/Theme.DreamHealthy"
         tools:targetApi="31">
         <activity
+            android:name=".TuesdayActivity"
+            android:exported="false" />
+        <activity
             android:name=".MondayAlarmClockActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MorningUsefulAdvinceActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ToDoUsefulAdvinceActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FoodUsefulAdvinceActivity"
             android:exported="false" />
         <activity
             android:name=".MorningUsefulAdvinceActivity"

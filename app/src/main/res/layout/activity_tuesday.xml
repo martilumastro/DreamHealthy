@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/today"
+    android:id="@+id/tuesday"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:background="@color/blue_background"
     android:orientation="vertical"
-    tools:context=".TodayActivity">
+    tools:context=".TuesdayActivity">
     <!--Linear high (days of the week)-->
     <LinearLayout
         android:id="@+id/top_layout"
@@ -23,18 +23,17 @@
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/days_layout_bt"
         app:layout_constraintTop_toTopOf="parent">
         <LinearLayout
             android:id="@+id/monday_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="4dp"
-            android:layout_weight="1.4">
+            android:layout_weight="1">
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/monday_chart"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 />
         </LinearLayout>
         <LinearLayout
@@ -42,11 +41,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="4dp"
-            android:layout_weight="1">
+            android:layout_weight="1.4">
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/tuesday_chart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 />
         </LinearLayout>
         <LinearLayout
@@ -126,7 +125,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/trans_purple_dark"
+            android:backgroundTint="@color/purple_light"
             android:contentDescription="monday"/>
         <Button
             android:id="@+id/tuesday_button"
@@ -135,7 +134,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/purple_light"
+            android:backgroundTint="@color/trans_purple_dark"
             android:contentDescription="tuesday"/>
         <Button
             android:id="@+id/wedsneday_button"
@@ -352,13 +351,13 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bar_button"
         android:orientation="vertical"
         android:gravity="start"
         android:paddingStart="60dp"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         android:background="@color/blue_dark"
-        app:layout_constraintBottom_toTopOf="@id/bar_button"
         app:layout_constraintTop_toBottomOf="@+id/group_central">
         <TextView
             android:layout_width="wrap_content"
@@ -459,6 +458,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
 
 
     <!--nav bar-->
