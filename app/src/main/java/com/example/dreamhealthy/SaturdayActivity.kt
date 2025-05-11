@@ -209,8 +209,8 @@ class SaturdayActivity : AppCompatActivity() {
             startActivity(pageFriday)
         }
         sundayButton.setOnClickListener {
-            val pageSaturday = Intent(this, SaturdayActivity::class.java)
-            startActivity(pageSaturday)
+            val pageSunday = Intent(this, SundayActivity::class.java)
+            startActivity(pageSunday)
         }
     }
 
