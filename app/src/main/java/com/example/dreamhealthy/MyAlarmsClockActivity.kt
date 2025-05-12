@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class MyAlarmsClockActivity : AppCompatActivity() {
 
-    private lateinit var buttonToday: ImageButton
+    private lateinit var buttonWeekValue: ImageButton
     private lateinit var buttonMenu: ImageButton
     private lateinit var buttonMelody: ImageButton
     private lateinit var buttonAlarmMonday: Button
@@ -26,7 +26,7 @@ class MyAlarmsClockActivity : AppCompatActivity() {
 
             //init image buttons
         buttonMenu = findViewById(R.id.menu_bt)
-        buttonToday = findViewById(R.id.today_bt)
+        buttonWeekValue = findViewById(R.id.week_values_bt)
         buttonMelody = findViewById(R.id.melody_bt)
         buttonAlarmMonday = findViewById(R.id.monday_bt)
 
@@ -40,10 +40,9 @@ class MyAlarmsClockActivity : AppCompatActivity() {
             val pageMenu = Intent(this, MenuActivity::class.java)
             startActivity(pageMenu)
         }
-        // button today --> from home to today
-        buttonToday.setOnClickListener {
-            val pageToday = Intent(this, TodayActivity::class.java)
-            startActivity(pageToday)
+        buttonWeekValue.setOnClickListener {
+            val pageWeekValue = Intent (this, WeekValuesMenuActivity::class.java)
+            startActivity(pageWeekValue)
         }
         // button melody --> from alarms to melody
         buttonMelody.setOnClickListener {

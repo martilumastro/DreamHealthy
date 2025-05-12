@@ -2,13 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/menu"
+    android:id="@+id/week_values_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/blue_background"
-    tools:context=".MenuActivity">
-
+    tools:context=".WeekValuesMenuActivity">
     <!--Text and image-->
     <LinearLayout
         android:layout_width="0dp"
@@ -27,7 +26,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/bar_button"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
         android:layout_marginBottom="10dp"
@@ -37,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bottom_shape_navigation"
-            android:backgroundTint="@color/orange"
+            android:backgroundTint="@color/green_dark"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
@@ -45,11 +44,11 @@
             android:layout_marginBottom="4dp"
             android:padding="2dp">
             <Button
-                android:id="@+id/weekly_summary_bt"
-                android:drawableLeft="@drawable/week"
-                android:backgroundTint="@color/orange"
+                android:id="@+id/monday_values_bt"
+                android:drawableLeft="@drawable/img_moon_white"
+                android:backgroundTint="@color/green_dark"
                 android:drawablePadding="2dp"
-                android:text="Weekly summary"
+                android:text="Monday values"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:gravity="center"
@@ -62,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bottom_shape_navigation"
-            android:backgroundTint="@color/red_light"
+            android:backgroundTint="@color/blue_dark"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
@@ -70,11 +69,11 @@
             android:layout_marginBottom="4dp"
             android:padding="2dp">
             <Button
-                android:id="@+id/monthly_summary_bt"
-                android:drawableLeft="@drawable/monthly_summary"
-                android:backgroundTint="@color/red_light"
+                android:id="@+id/tuesday_values_bt"
+                android:drawableLeft="@drawable/mars_white"
+                android:backgroundTint="@color/blue_dark"
                 android:drawablePadding="2dp"
-                android:text="Monthly summary"
+                android:text="Tuesday values"
                 android:textSize="24sp"
                 android:gravity="center"
                 android:textStyle="bold"
@@ -87,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bottom_shape_navigation"
-            android:backgroundTint="@color/magenta"
+            android:backgroundTint="@color/purple_dark"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
@@ -95,11 +94,11 @@
             android:layout_marginBottom="4dp"
             android:padding="2dp">
             <Button
-                android:id="@+id/calendar_bt"
-                android:drawableLeft="@drawable/icon_calendar_white"
-                android:backgroundTint="@color/magenta"
+                android:id="@+id/wednesday_values_bt"
+                android:drawableLeft="@drawable/mercury_white"
+                android:backgroundTint="@color/purple_dark"
                 android:drawablePadding="2dp"
-                android:text="Calendar"
+                android:text="Wednesday values"
                 android:textSize="24sp"
                 android:gravity="center"
                 android:textStyle="bold"
@@ -120,11 +119,11 @@
             android:layout_marginBottom="4dp"
             android:padding="2dp">
             <Button
-                android:id="@+id/alarm_clock_bt"
-                android:drawableLeft="@drawable/alarm_clock_white"
+                android:id="@+id/thursday_values_bt"
+                android:drawableLeft="@drawable/jupiter_white"
                 android:backgroundTint="@color/purple_light"
                 android:drawablePadding="2dp"
-                android:text="My alarms clock"
+                android:text="Thursday values"
                 android:textSize="24sp"
                 android:gravity="center"
                 android:textStyle="bold"
@@ -137,7 +136,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bottom_shape_navigation"
-            android:backgroundTint="@color/blue_light"
+            android:backgroundTint="@color/red_dark"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
@@ -145,15 +144,65 @@
             android:layout_marginBottom="4dp"
             android:padding="2dp">
             <Button
-                android:id="@+id/useful_advince_bt"
-                android:drawableLeft="@drawable/useful_advince_black"
-                android:backgroundTint="@color/blue_light"
+                android:id="@+id/friday_values_bt"
+                android:drawableLeft="@drawable/venus_white"
+                android:backgroundTint="@color/red_dark"
                 android:drawablePadding="2dp"
-                android:text="Useful advince"
+                android:text="Friday values"
                 android:textSize="24sp"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_shape_navigation"
+            android:backgroundTint="@color/red_light"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:padding="2dp">
+            <Button
+                android:id="@+id/saturday_values_bt"
+                android:drawableLeft="@drawable/saturn_white"
+                android:backgroundTint="@color/red_light"
+                android:drawablePadding="2dp"
+                android:text="Saturday values"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_shape_navigation"
+            android:backgroundTint="@color/orange"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:padding="2dp">
+            <Button
+                android:id="@+id/sunday_values_bt"
+                android:drawableLeft="@drawable/sun_white"
+                android:backgroundTint="@color/orange"
+                android:drawablePadding="2dp"
+                android:text="Sunday values"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
@@ -192,7 +241,7 @@
             android:contentDescription="Home"/>
         <ImageButton
             android:id="@+id/week_values_bt"
-            android:src="@drawable/pie_chart_black"
+            android:src="@drawable/pie_chart_blue"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="60dp"
@@ -200,16 +249,6 @@
             android:backgroundTint="@color/white"
             android:padding="15dp"
             android:contentDescription="Week's values"/>
-        <ImageButton
-            android:id="@+id/menuBt"
-            android:src="@drawable/icon_hamburger_menu_blue"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="60dp"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
-            android:padding="15dp"
-            android:contentDescription="Menu"/>
         <TextView
             android:id="@+id/menu_text_button"
             android:layout_width="wrap_content"
@@ -222,5 +261,15 @@
             android:layout_marginLeft="4dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"/>
+        <ImageButton
+            android:id="@+id/menuBt"
+            android:src="@drawable/icon_hamburger_menu_black"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/white"
+            android:padding="15dp"
+            android:contentDescription="Menu"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

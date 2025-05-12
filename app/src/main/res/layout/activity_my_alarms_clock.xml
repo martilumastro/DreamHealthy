@@ -546,15 +546,15 @@
             android:padding="15dp"
             android:contentDescription="All melodies"/>
         <ImageButton
-            android:id="@+id/today_bt"
-            android:src="@drawable/icon_today_value_black"
+            android:id="@+id/week_values_bt"
+            android:src="@drawable/pie_chart_black"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="60dp"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
             android:padding="15dp"
-            android:contentDescription="Today's values"/>
+            android:contentDescription="Week's values"/>
         <ImageButton
             android:id="@+id/menu_bt"
             android:src="@drawable/icon_hamburger_menu_black"
