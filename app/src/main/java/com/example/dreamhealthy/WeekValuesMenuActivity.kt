@@ -1,6 +1,5 @@
 package com.example.dreamhealthy
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -8,8 +7,6 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class WeekValuesMenuActivity : AppCompatActivity() {
     private lateinit var buttonHome: ImageButton
@@ -63,7 +60,7 @@ class WeekValuesMenuActivity : AppCompatActivity() {
             startActivity(pageMenu)
         }
         mondayButton.setOnClickListener {
-            val pageMonday = Intent (this, TodayActivity::class.java)
+            val pageMonday = Intent (this, MondayActivity::class.java)
             startActivity(pageMonday)
         }
         tuesdayButton.setOnClickListener {

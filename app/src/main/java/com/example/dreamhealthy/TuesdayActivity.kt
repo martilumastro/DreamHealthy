@@ -13,8 +13,6 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -192,7 +190,7 @@ class TuesdayActivity : AppCompatActivity() {
         // button chart  --> from today to chartanalisys_today
 
         mondayButton.setOnClickListener {
-            val pageMonday = Intent(this, TodayActivity::class.java)
+            val pageMonday = Intent(this, MondayActivity::class.java)
             startActivity(pageMonday)
         }
         wednesdayButton.setOnClickListener {
@@ -484,7 +482,7 @@ class TuesdayActivity : AppCompatActivity() {
         val totalHoursTextView = findViewById<TextView>(R.id.total_hours)
         val totalMinutesTextView = findViewById<TextView>(R.id.total_minutes)
 
-        //Log.d("TodayActivity", "Total Hours: $totalHours, Total Minutes: $totalMinutes")
+        //Log.d("MondayActivity", "Total Hours: $totalHours, Total Minutes: $totalMinutes")
         totalHoursTextView.text = "$totalHours h"
         totalMinutesTextView.text = "$totalMinutes m"
     }

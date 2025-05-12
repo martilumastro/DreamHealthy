@@ -1,16 +1,12 @@
 package com.example.dreamhealthy
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ListView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class UsefulAdvinceActivity : AppCompatActivity() {
     private lateinit var listView: ListView
@@ -47,11 +43,11 @@ class UsefulAdvinceActivity : AppCompatActivity() {
     //change page
     fun changePage(){
         buttonToday.setOnClickListener {
-            val todayPage = Intent(this, TodayActivity::class.java)
+            val todayPage = Intent(this, MondayActivity::class.java)
             startActivity(todayPage)
         }
         buttonChart.setOnClickListener {
-            val chartPage = Intent(this, ChartActivity::class.java)
+            val chartPage = Intent(this, MondayChartActivity::class.java)
             startActivity(chartPage)
         }
         buttonMenu.setOnClickListener {

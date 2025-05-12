@@ -1,41 +1,24 @@
 package com.example.dreamhealthy
 
 import android.annotation.SuppressLint
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.icu.util.Calendar
-import android.media.Image
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.Window
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
-import android.widget.PopupMenu
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
-import androidx.activity.enableEdgeToEdge
-import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-import java.util.ArrayList
-import java.util.Scanner
 
 
-class TodayActivity : AppCompatActivity() {
+class MondayActivity : AppCompatActivity() {
     //CAMBIARE CON I VALORI SMARTWATCH
     var hoursSleep:Int = 8  //7-9 --> 6/10
     var minutesSleep:Int = 30
@@ -213,12 +196,12 @@ class TodayActivity : AppCompatActivity() {
         }
         // button chart  --> from today to chartanalisys_today
         buttonChart.setOnClickListener {
-            val pageChart = Intent(this, ChartActivity::class.java)
+            val pageChart = Intent(this, MondayChartActivity::class.java)
             startActivity(pageChart)
         }
         //button NULL
         buttonToday.setOnClickListener {
-            val pageToday = Intent(this, TodayActivity::class.java)
+            val pageToday = Intent(this, MondayActivity::class.java)
             startActivity(pageToday)
         }
         wednesdayButton.setOnClickListener {
@@ -521,7 +504,7 @@ class TodayActivity : AppCompatActivity() {
         val totalHoursTextView = findViewById<TextView>(R.id.total_hours)
         val totalMinutesTextView = findViewById<TextView>(R.id.total_minutes)
 
-        //Log.d("TodayActivity", "Total Hours: $totalHours, Total Minutes: $totalMinutes")
+        //Log.d("MondayActivity", "Total Hours: $totalHours, Total Minutes: $totalMinutes")
         totalHoursTextView.text = "$totalHours h"
         totalMinutesTextView.text = "$totalMinutes m"
     }

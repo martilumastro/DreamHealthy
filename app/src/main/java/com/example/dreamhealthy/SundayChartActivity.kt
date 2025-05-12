@@ -11,10 +11,11 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
 import com.github.mikephil.charting.components.Legend
-import com.example.dreamhealthy.TimeAxisFormatter //classe importata
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.LimitLine
-class ChartActivity : AppCompatActivity() {
+import java.util.Calendar
+
+class SundayChartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChartBinding
 
     val heart_rate_values = ArrayList<Entry>()
@@ -66,9 +67,9 @@ class ChartActivity : AppCompatActivity() {
 
         private fun setChart() {
         val xAxis = binding.LineChart.xAxis
-        val now = java.util.Calendar.getInstance()
-        val current_hour = now.get(java.util.Calendar.HOUR_OF_DAY)
-        val current_minute = now.get(java.util.Calendar.MINUTE)
+        val now = Calendar.getInstance()
+        val current_hour = now.get(Calendar.HOUR_OF_DAY)
+        val current_minute = now.get(Calendar.MINUTE)
         val current_time_float = current_hour+ (current_minute / 60.0f)
 
         val HeartRateSet = LineDataSet(heart_rate_values, "Heart Rate")
@@ -143,7 +144,7 @@ class ChartActivity : AppCompatActivity() {
             // button chart  --> from today to chartanalisys_today
             val buttonToday = findViewById<ImageButton>(R.id.todayBt)
             buttonToday.setOnClickListener {
-                val pageToday = Intent(this, TodayActivity::class.java)
+                val pageToday = Intent(this, MondayActivity::class.java)
                 startActivity(pageToday)
             }
 

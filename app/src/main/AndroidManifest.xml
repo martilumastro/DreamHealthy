@@ -34,6 +34,9 @@
             android:name=".TuesdayActivity"
             android:exported="false" />
         <activity
+            android:name=".TuesdayChartActivity"
+            android:exported="false"/>
+        <activity
             android:name=".MondayAlarmClockActivity"
             android:exported="false" />
         <activity
@@ -88,10 +91,10 @@
             android:name=".MyAlarmsClockActivity"
             android:exported="false" />
         <activity
-            android:name=".ChartActivity"
+            android:name=".MondayChartActivity"
             android:exported="false" />
         <activity
-            android:name=".TodayActivity"
+            android:name=".MondayActivity"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
