@@ -12,7 +12,7 @@ import com.example.dreamhealthy.databinding.ActivityCalendarBinding
 
 class CalendarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCalendarBinding
-    private lateinit var buttonToday: ImageButton
+    private lateinit var buttonWeekValue: ImageButton
     private lateinit var buttonMyAlarmsClock: ImageButton
     private lateinit var buttonMenu: ImageButton
 
@@ -23,7 +23,7 @@ class CalendarActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // init
-        buttonToday = findViewById(R.id.today_bt)
+        buttonWeekValue = findViewById(R.id.week_values_bt)
         buttonMyAlarmsClock = findViewById(R.id.my_alarms_clock_bt)
         buttonMenu = findViewById(R.id.menu_bt)
 
@@ -34,9 +34,9 @@ class CalendarActivity : AppCompatActivity() {
     }
 
     fun changePage(){
-        buttonToday.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        buttonWeekValue.setOnClickListener {
+            val pageWeekValue = Intent (this, WeekValuesMenuActivity::class.java)
+            startActivity(pageWeekValue)
         }
         buttonMyAlarmsClock.setOnClickListener {
             val intent = Intent(this, MyAlarmsClockActivity::class.java)

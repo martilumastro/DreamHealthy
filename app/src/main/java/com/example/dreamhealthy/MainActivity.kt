@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     //var for view page
     private lateinit var buttonMenu: ImageButton
-    private lateinit var buttonToday: ImageButton
+    private lateinit var buttonWeekValue: ImageButton
     private lateinit var textButton: TextView
     private lateinit var homeBtn: ImageButton
 
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         //init image buttons
         buttonMenu = findViewById(R.id.menuBt)
-        buttonToday = findViewById(R.id.todayBt)
+        buttonWeekValue = findViewById(R.id.week_values_bt)
         textButton = findViewById(R.id.home_text_button)
         homeBtn = findViewById(R.id.homeBt)
 
@@ -47,10 +47,9 @@ class MainActivity : AppCompatActivity() {
             val pageMenu = Intent (this, MenuActivity::class.java)
             startActivity(pageMenu)
         }
-        // button today --> from home to today
-        buttonToday.setOnClickListener {
-            val pageToday = Intent (this, TodayActivity::class.java)
-            startActivity(pageToday)
+        buttonWeekValue.setOnClickListener {
+            val pageWeekValue = Intent (this, WeekValuesMenuActivity::class.java)
+            startActivity(pageWeekValue)
         }
         // button home --> NULL
         homeBtn.setOnClickListener {

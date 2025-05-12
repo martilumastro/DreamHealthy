@@ -84,16 +84,16 @@
                     android:layout_marginLeft="4dp"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"/>
-                <ImageButton
-                    android:id="@+id/todayBt"
-                    android:src="@drawable/icon_today_value_black"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="60dp"
-                    android:layout_margin="5dp"
-                    android:backgroundTint="@color/white"
-                    android:padding="15dp"
-                    android:contentDescription="Today's value"/>
+            <ImageButton
+                android:id="@+id/week_values_bt"
+                android:src="@drawable/pie_chart_black"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/white"
+                android:padding="15dp"
+                android:contentDescription="Week's values"/>
 
                 <ImageButton
                     android:id="@+id/menuBt"
