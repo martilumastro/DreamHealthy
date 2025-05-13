@@ -55,8 +55,8 @@
             android:layout_height="match_parent"
             app:layout_constraintTop_toBottomOf="@+id/title_page"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginStart="36dp"
             android:layout_marginBottom="32dp"
             android:orientation="vertical"
             android:gravity="center">
@@ -279,6 +279,16 @@
             android:backgroundTint="@color/white"
             android:padding="15dp"
             android:contentDescription="All my alarms clock"/>
+        <ImageButton
+            android:id="@+id/useful_advince_bt"
+            android:src="@drawable/icon_useful_black"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/white"
+            android:padding="15dp"
+            android:contentDescription="Useful advince"/>
         <ImageButton
             android:id="@+id/menu_bt"
             android:src="@drawable/icon_hamburger_menu_black"

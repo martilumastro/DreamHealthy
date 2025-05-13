@@ -73,6 +73,16 @@
             android:padding="15dp"
             android:contentDescription="Week's values"/>
         <ImageButton
+            android:id="@+id/today_bt"
+            android:src="@drawable/icon_today_value_black"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/white"
+            android:padding="15dp"
+            android:contentDescription="Today's values"/>
+        <ImageButton
             android:id="@+id/my_alarms_clock_bt"
             android:src="@drawable/clock_black"
             android:layout_width="wrap_content"

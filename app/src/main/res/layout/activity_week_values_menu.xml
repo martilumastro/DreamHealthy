@@ -27,8 +27,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/bar_button"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginBottom="10dp"
         android:orientation="vertical"
         android:gravity="center">
@@ -41,7 +41,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="8dp"
             android:padding="2dp">
             <Button
                 android:id="@+id/monday_values_bt"
@@ -50,7 +50,7 @@
                 android:drawablePadding="2dp"
                 android:text="Monday values"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
@@ -65,8 +65,8 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:padding="2dp">
             <Button
                 android:id="@+id/tuesday_values_bt"
@@ -74,7 +74,7 @@
                 android:backgroundTint="@color/blue_dark"
                 android:drawablePadding="2dp"
                 android:text="Tuesday values"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -90,8 +90,8 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:padding="2dp">
             <Button
                 android:id="@+id/wednesday_values_bt"
@@ -99,7 +99,7 @@
                 android:backgroundTint="@color/purple_dark"
                 android:drawablePadding="2dp"
                 android:text="Wednesday values"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -115,8 +115,8 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:padding="2dp">
             <Button
                 android:id="@+id/thursday_values_bt"
@@ -124,7 +124,7 @@
                 android:backgroundTint="@color/purple_light"
                 android:drawablePadding="2dp"
                 android:text="Thursday values"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -140,8 +140,8 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:padding="2dp">
             <Button
                 android:id="@+id/friday_values_bt"
@@ -149,7 +149,7 @@
                 android:backgroundTint="@color/red_dark"
                 android:drawablePadding="2dp"
                 android:text="Friday values"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -165,8 +165,8 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:padding="2dp">
             <Button
                 android:id="@+id/saturday_values_bt"
@@ -174,7 +174,7 @@
                 android:backgroundTint="@color/red_light"
                 android:drawablePadding="2dp"
                 android:text="Saturday values"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -190,7 +190,7 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="4dp"
             android:padding="2dp">
             <Button
@@ -199,7 +199,7 @@
                 android:backgroundTint="@color/orange"
                 android:drawablePadding="2dp"
                 android:text="Sunday values"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -261,6 +261,16 @@
             android:layout_marginLeft="4dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"/>
+        <ImageButton
+            android:id="@+id/my_alarms_clock_bt"
+            android:src="@drawable/clock_black"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/white"
+            android:padding="15dp"
+            android:contentDescription="All my alarms clock"/>
         <ImageButton
             android:id="@+id/menuBt"
             android:src="@drawable/icon_hamburger_menu_black"

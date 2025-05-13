@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class MenuActivity : AppCompatActivity() {
 
-    private lateinit var buttonHome: ImageButton
+    private lateinit var buttonToday: ImageButton
     private lateinit var buttonWeekValue: ImageButton
     private lateinit var buttonMenu: ImageButton
     private lateinit var textButton: TextView
@@ -32,7 +32,7 @@ class MenuActivity : AppCompatActivity() {
         textButton = findViewById(R.id.menu_text_button)
         buttonMenu = findViewById(R.id.menuBt)
         buttonWeekValue = findViewById(R.id.week_values_bt)
-        buttonHome = findViewById(R.id.homeBt)
+        buttonToday = findViewById(R.id.today_bt)
         buttonCalendar = findViewById(R.id.calendar_bt)
         buttonUsefulAdvince = findViewById(R.id.useful_advince_bt)
 
@@ -46,9 +46,9 @@ class MenuActivity : AppCompatActivity() {
     //fun for all changing page
     fun buttonChange(){
         // button home --> from menu to home
-        buttonHome.setOnClickListener {
-            val pageHome = Intent (this, MainActivity::class.java)
-            startActivity(pageHome)
+        buttonToday.setOnClickListener {
+            val pageToday = Intent (this, MainActivity::class.java)
+            startActivity(pageToday)
         }
         buttonWeekValue.setOnClickListener {
             val pageWeekValue = Intent (this, WeekValuesMenuActivity::class.java)

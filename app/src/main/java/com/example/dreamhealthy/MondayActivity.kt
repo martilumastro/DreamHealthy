@@ -33,7 +33,6 @@ class MondayActivity : AppCompatActivity() {
     private var goodChartTotalMonday:Float = 100.00f
 
     //value for navbar
-    private lateinit var buttonToday: ImageButton
     private lateinit var buttonMenu: ImageButton
     private lateinit var buttonChart: ImageButton
     private lateinit var textButton: TextView
@@ -54,10 +53,9 @@ class MondayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_today)
+        setContentView(R.layout.activity_monday)
 
         //init image buttons
-        buttonToday = findViewById(R.id.todayBt)
         buttonChart = findViewById(R.id.chartBt)
         buttonMenu = findViewById(R.id.menuBt)
         textButton = findViewById(R.id.today_text_button)
@@ -198,11 +196,6 @@ class MondayActivity : AppCompatActivity() {
         buttonChart.setOnClickListener {
             val pageChart = Intent(this, MondayChartActivity::class.java)
             startActivity(pageChart)
-        }
-        //button NULL
-        buttonToday.setOnClickListener {
-            val pageToday = Intent(this, MondayActivity::class.java)
-            startActivity(pageToday)
         }
         wednesdayButton.setOnClickListener {
             val pageWednesday = Intent(this, WednesdayActivity::class.java)

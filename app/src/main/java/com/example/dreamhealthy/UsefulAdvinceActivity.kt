@@ -1,5 +1,6 @@
 package com.example.dreamhealthy
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -12,8 +13,9 @@ class UsefulAdvinceActivity : AppCompatActivity() {
     private lateinit var listView: ListView
     private lateinit var list: Array<String>
     private lateinit var buttonToday: ImageButton
-    private lateinit var buttonChart: ImageButton
+    private lateinit var buttonWeekValue: ImageButton
     private lateinit var buttonMenu: ImageButton
+    private lateinit var buttonCalendar: ImageButton
     private lateinit var buttonBack: ImageButton
     private lateinit var buttonNext: ImageButton
     private lateinit var buttonFoodList: Button
@@ -22,12 +24,15 @@ class UsefulAdvinceActivity : AppCompatActivity() {
     private lateinit var buttonMorningList: Button
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_useful_advince)
+
         buttonToday = findViewById(R.id.today_bt)
-        buttonChart = findViewById(R.id.chart_bt)
+        buttonWeekValue = findViewById(R.id.week_values_bt)
         buttonMenu = findViewById(R.id.menu_bt)
+        buttonCalendar = findViewById(R.id.calendar_bt)
         buttonBack = findViewById(R.id.back_page)
         buttonNext = findViewById(R.id.next_page)
         buttonFoodList = findViewById(R.id.food_list)
@@ -42,13 +47,17 @@ class UsefulAdvinceActivity : AppCompatActivity() {
 
     //change page
     fun changePage(){
+        buttonCalendar.setOnClickListener {
+            val calendarPage = Intent(this, CalendarActivity::class.java)
+            startActivity(calendarPage)
+        }
         buttonToday.setOnClickListener {
-            val todayPage = Intent(this, MondayActivity::class.java)
+            val todayPage = Intent(this, MainActivity::class.java)
             startActivity(todayPage)
         }
-        buttonChart.setOnClickListener {
-            val chartPage = Intent(this, MondayChartActivity::class.java)
-            startActivity(chartPage)
+        buttonWeekValue.setOnClickListener {
+            val weekPage = Intent(this, WeekValuesMenuActivity::class.java)
+            startActivity(weekPage)
         }
         buttonMenu.setOnClickListener {
             val menuPage = Intent(this, MenuActivity::class.java)

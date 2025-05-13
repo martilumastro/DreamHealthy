@@ -28,8 +28,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/bar_button"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginBottom="10dp"
         android:orientation="vertical"
         android:gravity="center">
@@ -41,17 +41,18 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:padding="2dp">
             <Button
                 android:id="@+id/weekly_summary_bt"
                 android:drawableLeft="@drawable/week"
                 android:backgroundTint="@color/orange"
                 android:drawablePadding="2dp"
+                android:maxHeight="50dp"
                 android:text="Weekly summary"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
@@ -66,8 +67,8 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:padding="2dp">
             <Button
                 android:id="@+id/monthly_summary_bt"
@@ -75,7 +76,8 @@
                 android:backgroundTint="@color/red_light"
                 android:drawablePadding="2dp"
                 android:text="Monthly summary"
-                android:textSize="24sp"
+                android:maxHeight="50dp"
+                android:textSize="18sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -91,8 +93,8 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:padding="2dp">
             <Button
                 android:id="@+id/calendar_bt"
@@ -100,7 +102,8 @@
                 android:backgroundTint="@color/magenta"
                 android:drawablePadding="2dp"
                 android:text="Calendar"
-                android:textSize="24sp"
+                android:maxHeight="50dp"
+                android:textSize="18sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -116,8 +119,8 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:padding="2dp">
             <Button
                 android:id="@+id/alarm_clock_bt"
@@ -125,8 +128,9 @@
                 android:backgroundTint="@color/purple_light"
                 android:drawablePadding="2dp"
                 android:text="My alarms clock"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:gravity="center"
+                android:maxHeight="50dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_width="match_parent"
@@ -141,8 +145,8 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:padding="2dp">
             <Button
                 android:id="@+id/useful_advince_bt"
@@ -150,7 +154,8 @@
                 android:backgroundTint="@color/blue_light"
                 android:drawablePadding="2dp"
                 android:text="Useful advince"
-                android:textSize="24sp"
+                android:textSize="18sp"
+                android:maxHeight="50dp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -181,15 +186,15 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
-            android:id="@+id/homeBt"
-            android:src="@drawable/icon_home_black"
+            android:id="@+id/today_bt"
+            android:src="@drawable/icon_today_value_black"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
             android:layout_weight="1"
+            android:layout_height="60dp"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
             android:padding="15dp"
-            android:contentDescription="Home"/>
+            android:contentDescription="Today's values"/>
         <ImageButton
             android:id="@+id/week_values_bt"
             android:src="@drawable/pie_chart_black"

@@ -14,6 +14,7 @@ class CalendarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCalendarBinding
     private lateinit var buttonWeekValue: ImageButton
     private lateinit var buttonMyAlarmsClock: ImageButton
+    private lateinit var buttonToday: ImageButton
     private lateinit var buttonMenu: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +27,7 @@ class CalendarActivity : AppCompatActivity() {
         buttonWeekValue = findViewById(R.id.week_values_bt)
         buttonMyAlarmsClock = findViewById(R.id.my_alarms_clock_bt)
         buttonMenu = findViewById(R.id.menu_bt)
+        buttonToday = findViewById(R.id.today_bt)
 
 
         // call fun
@@ -44,6 +46,10 @@ class CalendarActivity : AppCompatActivity() {
         }
         buttonMenu.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+        }
+        buttonToday.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 

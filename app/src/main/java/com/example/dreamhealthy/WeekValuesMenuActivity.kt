@@ -1,5 +1,6 @@
 package com.example.dreamhealthy
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class WeekValuesMenuActivity : AppCompatActivity() {
     private lateinit var buttonHome: ImageButton
+    private lateinit var buttonAlarms: ImageButton
     private lateinit var buttonWeekValue: ImageButton
     private lateinit var buttonMenu: ImageButton
     private lateinit var textButton: TextView
@@ -22,6 +24,7 @@ class WeekValuesMenuActivity : AppCompatActivity() {
     private lateinit var sundayButton: Button
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,6 +33,7 @@ class WeekValuesMenuActivity : AppCompatActivity() {
         textButton = findViewById(R.id.menu_text_button)
         buttonMenu = findViewById(R.id.menuBt)
         buttonWeekValue = findViewById(R.id.week_values_bt)
+        buttonAlarms = findViewById(R.id.my_alarms_clock_bt)
         buttonHome = findViewById(R.id.homeBt)
         mondayButton = findViewById(R.id.monday_values_bt)
         tuesdayButton = findViewById(R.id.tuesday_values_bt)
@@ -50,6 +54,10 @@ class WeekValuesMenuActivity : AppCompatActivity() {
         buttonHome.setOnClickListener {
             val pageHome = Intent (this, MainActivity::class.java)
             startActivity(pageHome)
+        }
+        buttonAlarms.setOnClickListener {
+            val pageAlarms = Intent (this, MyAlarmsClockActivity::class.java)
+            startActivity(pageAlarms)
         }
         buttonWeekValue.setOnClickListener {
             val pageWeekValue = Intent (this, WeekValuesMenuActivity::class.java)

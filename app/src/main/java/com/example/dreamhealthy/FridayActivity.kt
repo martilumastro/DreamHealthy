@@ -32,7 +32,6 @@ class FridayActivity : AppCompatActivity() {
     private var goodChartTotalFriday:Float = 100.00f
 
     //value for navbar
-    private lateinit var buttonToday: ImageButton
     private lateinit var buttonMenu: ImageButton
     private lateinit var textButton: TextView
     private lateinit var tuesdayButton: Button
@@ -52,7 +51,6 @@ class FridayActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_friday)
         //init image buttons
-        buttonToday = findViewById(R.id.todayBt)
         buttonMenu = findViewById(R.id.menuBt)
         textButton = findViewById(R.id.today_text_button)
         tuesdayButton = findViewById(R.id.tuesday_button)

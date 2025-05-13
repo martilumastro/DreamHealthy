@@ -48,14 +48,14 @@
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <Button
                     android:id="@+id/monday_bt"
                     android:drawableLeft="@drawable/img_moon_white"
                     android:backgroundTint="@color/green_dark"
                     android:text="Monday"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
@@ -72,14 +72,14 @@
                 android:gravity="center"
                 android:paddingStart="24dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--:--"
                     android:gravity="center"
-                    android:textSize="28dp"
+                    android:textSize="22dp"
                     android:textColor="@color/white"
                     android:paddingEnd="8dp"/>
                 <LinearLayout
@@ -115,8 +115,8 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:padding="4dp">
             <Button
                 android:id="@+id/tuesday_bt"
@@ -124,7 +124,7 @@
                 android:backgroundTint="@color/blue_dark"
                 android:drawablePadding="2dp"
                 android:text="Tuesday"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
@@ -140,15 +140,15 @@
                 android:orientation="horizontal"
                 android:paddingStart="24dp"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--:--"
                     android:gravity="center"
-                    android:textSize="28dp"
+                    android:textSize="22dp"
                     android:textColor="@color/white"
                     android:paddingEnd="8dp"/>
                 <LinearLayout
@@ -183,15 +183,15 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <Button
                     android:id="@+id/wednesday_bt"
                     android:drawableLeft="@drawable/mercury_white"
                     android:backgroundTint="@color/purple_dark"
                     android:text="Wednesday"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
@@ -207,15 +207,15 @@
                 android:paddingStart="24dp"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--:--"
                     android:gravity="center"
-                    android:textSize="28dp"
+                    android:textSize="22dp"
                     android:textColor="@color/white"
                     android:paddingEnd="8dp"/>
                 <LinearLayout
@@ -251,8 +251,8 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <Button
                     android:id="@+id/thursday_bt"
@@ -260,7 +260,7 @@
                     android:backgroundTint="@color/purple_light"
                     android:drawablePadding="2dp"
                     android:text="Thursday"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
@@ -276,15 +276,15 @@
                 android:orientation="horizontal"
                 android:paddingStart="24dp"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--:--"
                     android:gravity="center"
-                    android:textSize="28dp"
+                    android:textSize="22dp"
                     android:textColor="@color/white"
                     android:paddingEnd="8dp"/>
                 <LinearLayout
@@ -320,8 +320,8 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <Button
                     android:id="@+id/friday_bt"
@@ -329,7 +329,7 @@
                     android:backgroundTint="@color/red_dark"
                     android:drawablePadding="2dp"
                     android:text="Friday"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
@@ -345,15 +345,15 @@
                 android:orientation="horizontal"
                 android:paddingStart="24dp"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--:--"
                     android:gravity="center"
-                    android:textSize="28dp"
+                    android:textSize="22dp"
                     android:textColor="@color/white"
                     android:paddingEnd="8dp"/>
                 <LinearLayout
@@ -391,8 +391,8 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <Button
                     android:id="@+id/saturday_bt"
@@ -400,7 +400,7 @@
                     android:backgroundTint="@color/red_light"
                     android:drawablePadding="2dp"
                     android:text="Saturday"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
@@ -416,15 +416,15 @@
                 android:orientation="horizontal"
                 android:paddingStart="24dp"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--:--"
                     android:gravity="center"
-                    android:textSize="28dp"
+                    android:textSize="22dp"
                     android:textColor="@color/white"
                     android:paddingEnd="8dp"/>
                 <LinearLayout
@@ -460,7 +460,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="4dp"
                 android:padding="4dp">
                 <Button
@@ -469,7 +469,7 @@
                     android:backgroundTint="@color/orange"
                     android:drawablePadding="2dp"
                     android:text="Sunday"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
@@ -485,7 +485,7 @@
                 android:orientation="horizontal"
                 android:paddingStart="24dp"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="4dp"
                 android:padding="4dp">
                 <TextView
@@ -493,7 +493,7 @@
                     android:layout_height="wrap_content"
                     android:text="--:--"
                     android:gravity="center"
-                    android:textSize="28dp"
+                    android:textSize="22dp"
                     android:textColor="@color/white"
                     android:paddingEnd="8dp"/>
                 <LinearLayout
@@ -555,6 +555,16 @@
             android:backgroundTint="@color/white"
             android:padding="15dp"
             android:contentDescription="Week's values"/>
+        <ImageButton
+            android:id="@+id/useful_advince_bt"
+            android:src="@drawable/icon_useful_black"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/white"
+            android:padding="15dp"
+            android:contentDescription="Useful advince"/>
         <ImageButton
             android:id="@+id/menu_bt"
             android:src="@drawable/icon_hamburger_menu_black"

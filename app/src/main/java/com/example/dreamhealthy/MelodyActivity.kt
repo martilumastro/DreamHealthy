@@ -16,12 +16,14 @@ class MelodyActivity : AppCompatActivity() {
     //var
     private lateinit var buttonMenu: ImageButton
     private lateinit var buttonAlarms: ImageButton
+    private lateinit var buttonUseful: ImageButton
     private lateinit var buttonMelodySleep: Button
     private lateinit var buttonMelodyWakeUp: Button
     private lateinit var buttonMelodyAlarm: Button
     private lateinit var textButton: TextView
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,6 +34,7 @@ class MelodyActivity : AppCompatActivity() {
         buttonMenu = findViewById(R.id.menu_bt)
         textButton = findViewById(R.id.melody_text_button)
         buttonAlarms = findViewById(R.id.my_alarms_clock_bt)
+        buttonUseful = findViewById(R.id.useful_advince_bt)
         buttonMelodySleep = findViewById(R.id.sleep_melody_bt)
         buttonMelodyWakeUp = findViewById(R.id.wake_up_melody_bt)
         buttonMelodyAlarm = findViewById(R.id.alarm_melody_bt)
@@ -43,19 +46,18 @@ class MelodyActivity : AppCompatActivity() {
 
 
     fun buttonChange(){
-        // button menu --> from melody to home
         buttonMenu.setOnClickListener {
             val pageMenu = Intent (this, MenuActivity::class.java)
             startActivity(pageMenu)
         }
-
-        // button alarms --> from melody to alarms
         buttonAlarms.setOnClickListener {
             val pageAlarms = Intent (this, MyAlarmsClockActivity::class.java)
             startActivity(pageAlarms)
         }
-
-        // button melodySleep --> from melody to sleep's melodies
+        buttonUseful.setOnClickListener {
+            val pageUseful = Intent (this, UsefulAdvinceActivity::class.java)
+            startActivity(pageUseful)
+        }
         buttonMelodySleep.setOnClickListener {
             val pageMelodySleep = Intent (this, SleepMelodiesActivity::class.java)
             startActivity(pageMelodySleep)

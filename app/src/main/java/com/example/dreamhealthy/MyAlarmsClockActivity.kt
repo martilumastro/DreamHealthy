@@ -15,6 +15,7 @@ class MyAlarmsClockActivity : AppCompatActivity() {
     private lateinit var buttonWeekValue: ImageButton
     private lateinit var buttonMenu: ImageButton
     private lateinit var buttonMelody: ImageButton
+    private lateinit var buttonUseful: ImageButton
     private lateinit var buttonAlarmMonday: Button
 
     @SuppressLint("WrongViewCast")
@@ -27,6 +28,7 @@ class MyAlarmsClockActivity : AppCompatActivity() {
             //init image buttons
         buttonMenu = findViewById(R.id.menu_bt)
         buttonWeekValue = findViewById(R.id.week_values_bt)
+        buttonUseful = findViewById(R.id.useful_advince_bt)
         buttonMelody = findViewById(R.id.melody_bt)
         buttonAlarmMonday = findViewById(R.id.monday_bt)
 
@@ -44,7 +46,10 @@ class MyAlarmsClockActivity : AppCompatActivity() {
             val pageWeekValue = Intent (this, WeekValuesMenuActivity::class.java)
             startActivity(pageWeekValue)
         }
-        // button melody --> from alarms to melody
+        buttonUseful.setOnClickListener {
+            val pageUseful = Intent (this, UsefulAdvinceActivity::class.java)
+            startActivity(pageUseful)
+        }
         buttonMelody.setOnClickListener {
             val pageMelody = Intent(this, MelodyActivity::class.java)
             startActivity(pageMelody)

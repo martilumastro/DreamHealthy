@@ -213,15 +213,15 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
-            android:id="@+id/chart_bt"
-            android:src="@drawable/icon_bar_chart_black"
+            android:id="@+id/week_values_bt"
+            android:src="@drawable/pie_chart_black"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
             android:layout_weight="1"
+            android:layout_height="60dp"
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
             android:padding="15dp"
-            android:contentDescription="Home"/>
+            android:contentDescription="Week's values"/>
         <ImageButton
             android:id="@+id/today_bt"
             android:src="@drawable/icon_today_value_black"
@@ -232,6 +232,16 @@
             android:backgroundTint="@color/white"
             android:padding="15dp"
             android:contentDescription="Today's values"/>
+        <ImageButton
+            android:id="@+id/calendar_bt"
+            android:src="@drawable/icon_calendar_black"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/white"
+            android:padding="15dp"
+            android:contentDescription="Caendar"/>
         <ImageButton
             android:id="@+id/menu_bt"
             android:src="@drawable/icon_hamburger_menu_black"
