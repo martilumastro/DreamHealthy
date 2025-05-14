@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MenuActivity : AppCompatActivity() {
+class    MenuActivity : AppCompatActivity() {
 
     private lateinit var buttonToday: ImageButton
     private lateinit var buttonWeekValue: ImageButton

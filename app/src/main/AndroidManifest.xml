@@ -18,18 +18,28 @@
         <activity
             android:name=".SundayActivity"
             android:exported="false" />
+        <activity android:name=".SundayChartActivity"
+            android:exported="false"/>
         <activity
             android:name=".SaturdayActivity"
+            android:exported="false" />
+        <activity android:name=".SaturdayChartActivity"
             android:exported="false" />
         <activity
             android:name=".FridayActivity"
             android:exported="false" />
+        <activity android:name=".FridayChartActivity"
+            android:exported="false"/>
         <activity
             android:name=".ThursdayActivity"
             android:exported="false" />
+        <activity android:name=".ThursdayChartActivity"
+            android:exported="false"/>
         <activity
             android:name=".WednesdayActivity"
             android:exported="false" />
+        <activity android:name=".WednesdayChartActivity"
+            android:exported="false"/>
         <activity
             android:name=".TuesdayActivity"
             android:exported="false" />
@@ -104,7 +114,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

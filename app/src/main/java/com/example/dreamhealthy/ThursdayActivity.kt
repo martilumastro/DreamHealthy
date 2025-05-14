@@ -40,7 +40,7 @@ class ThursdayActivity : AppCompatActivity() {
     private lateinit var fridayButton: Button
     private lateinit var saturdayButton: Button
     private lateinit var sundayButton: Button
-
+    private lateinit var chartButton : ImageButton
 
     //value for today color
     private var today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
@@ -60,6 +60,7 @@ class ThursdayActivity : AppCompatActivity() {
         fridayButton = findViewById(R.id.friday_button)
         saturdayButton = findViewById(R.id.saturday_button)
         sundayButton = findViewById(R.id.sunday_button)
+        chartButton = findViewById(R.id.chartBt)
 
 
         //change color today for make evident
@@ -183,6 +184,10 @@ class ThursdayActivity : AppCompatActivity() {
             startActivity(pageMenu)
         }
         // button chart  --> from today to chartanalisys_today
+        chartButton.setOnClickListener {
+          val pageChart = Intent(this, ThursdayChartActivity::class.java)
+          startActivity(pageChart)
+      }
 
         mondayButton.setOnClickListener {
             val pageMonday = Intent(this, MondayActivity::class.java)

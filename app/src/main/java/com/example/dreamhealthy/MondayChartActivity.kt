@@ -5,16 +5,16 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageButton
-import com.example.dreamhealthy.databinding.ActivityChartBinding
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
+import com.example.dreamhealthy.databinding.ActivityMondayChartBinding
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.LimitLine
 class MondayChartActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityChartBinding
+    private lateinit var binding: ActivityMondayChartBinding
 
     val heart_rate_values = ArrayList<Entry>()
     val temperature_values = ArrayList<Entry>()
@@ -24,7 +24,7 @@ class MondayChartActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityChartBinding.inflate(layoutInflater)
+        binding = ActivityMondayChartBinding.inflate(layoutInflater)
         setContentView(binding.root)
         buttonChange()
        setDataChart()
@@ -40,7 +40,7 @@ class MondayChartActivity : AppCompatActivity() {
 
     private fun HeartValues()
     {
-       heart_rate_values.add(Entry(23.0f,70f)) //x rappresenta l'ora y in questo caso il valore dei battiti cardiaci
+       heart_rate_values.add(Entry(23.0f,70f)) //x hour y 3 values
        heart_rate_values.add(Entry(23.5f,65f))
        heart_rate_values.add(Entry(0.0f,60f))
     }
