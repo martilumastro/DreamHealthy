@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,39 +15,52 @@
         android:theme="@style/Theme.DreamHealthy"
         tools:targetApi="31">
         <activity
+            android:name=".AlarmStopActivity"
+            android:exported="false" />
+
+        <receiver
+            android:name=".AlarmReceiver"
+            android:exported="true" />
+
+        <activity
             android:name=".WeekValuesMenuActivity"
             android:exported="false" />
         <activity
             android:name=".SundayActivity"
             android:exported="false" />
-        <activity android:name=".SundayChartActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".SundayChartActivity"
+            android:exported="false" />
         <activity
             android:name=".SaturdayActivity"
             android:exported="false" />
-        <activity android:name=".SaturdayChartActivity"
+        <activity
+            android:name=".SaturdayChartActivity"
             android:exported="false" />
         <activity
             android:name=".FridayActivity"
             android:exported="false" />
-        <activity android:name=".FridayChartActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".FridayChartActivity"
+            android:exported="false" />
         <activity
             android:name=".ThursdayActivity"
             android:exported="false" />
-        <activity android:name=".ThursdayChartActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".ThursdayChartActivity"
+            android:exported="false" />
         <activity
             android:name=".WednesdayActivity"
             android:exported="false" />
-        <activity android:name=".WednesdayChartActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".WednesdayChartActivity"
+            android:exported="false" />
         <activity
             android:name=".TuesdayActivity"
             android:exported="false" />
         <activity
             android:name=".TuesdayChartActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".MondayAlarmClockActivity"
             android:exported="false" />
@@ -114,6 +129,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
