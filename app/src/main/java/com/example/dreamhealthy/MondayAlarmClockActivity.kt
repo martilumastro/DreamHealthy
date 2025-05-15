@@ -11,22 +11,17 @@ import android.icu.util.Calendar
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.provider.Settings
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.dreamhealthy.databinding.ActivityCalendarBinding
-import com.example.dreamhealthy.databinding.ActivityMondayAlarmClockBinding
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import android.content.SharedPreferences
 
 @RequiresApi(Build.VERSION_CODES.O)
 class MondayAlarmClockActivity : AppCompatActivity() {
@@ -34,6 +29,8 @@ class MondayAlarmClockActivity : AppCompatActivity() {
     private lateinit var goBackButton: Button
     private lateinit var wakeUpHourTextView: TextView
     private lateinit var alarmMelodyTextView: TextView
+    private lateinit var sleepMelodyTextView: TextView
+    private lateinit var wakeUpMelodyTextView: TextView
     private lateinit var sleepUpHourTextView: TextView
 
     @SuppressLint("MissingInflatedId")
@@ -46,6 +43,8 @@ class MondayAlarmClockActivity : AppCompatActivity() {
         goBackButton = findViewById(R.id.go_back_bt)
         wakeUpHourTextView = findViewById(R.id.wake_up_hour)
         alarmMelodyTextView = findViewById(R.id.alarm_melody)
+        sleepMelodyTextView = findViewById(R.id.sleep_melody)
+        wakeUpMelodyTextView = findViewById(R.id.wake_up_melody)
         sleepUpHourTextView = findViewById(R.id.sleep_hour)
 
 
@@ -64,6 +63,8 @@ class MondayAlarmClockActivity : AppCompatActivity() {
                         wakeUpHourTextView.text = String.format("%02d:%02d", selectedHour, selectedMinute)
                         //alarm text
                         alarmMelodyTextView.text = "Standard alarm"
+                        sleepMelodyTextView.text = "Standard: Rowboat"
+                        wakeUpMelodyTextView.text = "Standard: Birds chirping"
                         //sleep hour
                         val sleepCalendar = Calendar.getInstance().apply {
                             set(Calendar.HOUR_OF_DAY, selectedHour)
@@ -75,7 +76,12 @@ class MondayAlarmClockActivity : AppCompatActivity() {
 
                         //sleep text
                         sleepUpHourTextView.text = String.format("%02d:%02d", sleepHour, sleepMinute)
+                        //set alarm
                         setAlarm(selectedHour, selectedMinute)
+                        //set sleep melody
+                        setSleepMelody(sleepHour, sleepMinute)
+                        //set pre wake melody
+                        setPreWakeMelody(selectedHour, selectedMinute)
                     },
                     hour,
                     minute,
@@ -101,14 +107,21 @@ class MondayAlarmClockActivity : AppCompatActivity() {
                         // standard text
                         wakeUpHourTextView.text = "--:--"
                         alarmMelodyTextView.text = ""
+                        sleepMelodyTextView.text = ""
+                        wakeUpMelodyTextView.text = ""
                         sleepUpHourTextView.text = "--:--"
                         Toast.makeText(this, "Alarm delete", Toast.LENGTH_SHORT).show()
                     }
                     .setNegativeButton("Cancel", null)
                     .show()
+                //save delete alarm for toggle button in my alarms clock
+                val prefsMondayDelete = getSharedPreferences("alarms", MODE_PRIVATE)
+                prefsMondayDelete.edit()
+                    .putBoolean("monday_alarm_set", false)
+                    .remove("monday_alarm_time")
+                    .apply()
             }
         }
-
 
         //fun
         viewThisDay()
@@ -126,11 +139,18 @@ class MondayAlarmClockActivity : AppCompatActivity() {
     }
 
     private fun setAlarm(hour: Int, minute: Int) {
-        //clendar object with user's hour and minute
+        //calendar object with hour and minute chosen by the user
         val calendar = Calendar.getInstance().apply {
             set(Calendar.HOUR_OF_DAY, hour)
             set(Calendar.MINUTE, minute)
             set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+
+            //Next monday if today is not monday
+            while (get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
+                add(Calendar.DATE, 1)
+            }
+            //Next monday if today is monday and time is before current time
             if (before(Calendar.getInstance())) {
                 add(Calendar.WEEK_OF_YEAR, 1)
             }
@@ -181,7 +201,61 @@ class MondayAlarmClockActivity : AppCompatActivity() {
             //if not granted permission
             Toast.makeText(this, "Error: Allow alarms in settings", Toast.LENGTH_LONG).show()
         }
+        //save state and clock of the alarm for toggle button in my alarms clock
+        val prefsMonday = getSharedPreferences("alarms", MODE_PRIVATE)
+        prefsMonday.edit()
+            .putBoolean("monday_alarm_set", true)
+            .putString("monday_alarm_time", String.format("%02d:%02d", hour, minute))
+            .apply()
     }
+    // fun sleep melody
+    private fun setSleepMelody(hour: Int, minute: Int) {
+        val calendar = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, hour)
+            set(Calendar.MINUTE, minute)
+            set(Calendar.SECOND, 0)
+            if (before(Calendar.getInstance())) add(Calendar.DATE, 1)
+        }
+
+        val intent = Intent(this, AlarmReceiver::class.java).apply {
+            putExtra("standard alarm", "rowboat.mp3")
+        }
+
+        val pendingIntent = PendingIntent.getBroadcast(
+            this,
+            1,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+    }
+
+    private fun setPreWakeMelody(wakeHour: Int, wakeMinute: Int) {
+        val calendar = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, wakeHour)
+            set(Calendar.MINUTE, wakeMinute)
+            add(Calendar.MINUTE, -15)
+            set(Calendar.SECOND, 0)
+            if (before(Calendar.getInstance())) add(Calendar.DATE, 1)
+        }
+
+        val intent = Intent(this, AlarmReceiver::class.java).apply {
+            putExtra("standard alarm", "birds_chirping_melody_wake.mp3")
+        }
+
+        val pendingIntent = PendingIntent.getBroadcast(
+            this,
+            2,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+    }
+
 
     //fun calculated day
     fun viewThisDay() {

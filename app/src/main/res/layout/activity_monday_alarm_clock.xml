@@ -248,6 +248,7 @@
                     android:textSize="16dp"
                     android:textAlignment="textStart"/>
                 <TextView
+                    android:id="@+id/wake_up_melody"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""

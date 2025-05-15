@@ -195,10 +195,10 @@ class MondayActivity : AppCompatActivity() {
             startActivity(pageMenu)
         }
         // button chart  --> from today to chartanalisys_today
-        buttonChart.setOnClickListener {
+        /*buttonChart.setOnClickListener {
             val pageChart = Intent(this, MondayChartActivity::class.java)
             startActivity(pageChart)
-        }
+        }*/
         wednesdayButton.setOnClickListener {
             val pageWednesday = Intent(this, WednesdayActivity::class.java)
             startActivity(pageWednesday)
