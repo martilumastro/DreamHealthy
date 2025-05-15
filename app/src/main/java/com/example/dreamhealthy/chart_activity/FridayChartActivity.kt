@@ -1,20 +1,26 @@
-package com.example.dreamhealthy
+package com.example.dreamhealthy.chart_activity
 
+import com.example.dreamhealthy.week_activity.FridayActivity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageButton
+import com.example.dreamhealthy.databinding.ActivityFridayChartBinding
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
-import com.example.dreamhealthy.databinding.ActivityMondayChartBinding
+import com.example.dreamhealthy.MenuActivity
+import com.example.dreamhealthy.R
+import com.example.dreamhealthy.TimeAxisFormatter
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.LimitLine
-class MondayChartActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMondayChartBinding
+import java.util.Calendar
+
+class FridayChartActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityFridayChartBinding
 
     val heart_rate_values = ArrayList<Entry>()
     val temperature_values = ArrayList<Entry>()
@@ -24,14 +30,14 @@ class MondayChartActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMondayChartBinding.inflate(layoutInflater)
+        binding = ActivityFridayChartBinding.inflate(layoutInflater)
         setContentView(binding.root)
         buttonChange()
        setDataChart()
     }
 
     fun setDataChart()
-    { // valori da implementare
+    {
         HeartValues()
         TemperatureValues()
         NoiseValues()
@@ -40,34 +46,30 @@ class MondayChartActivity : AppCompatActivity() {
 
     private fun HeartValues()
     {
-       heart_rate_values.add(Entry(23.0f,70f)) //x hour y 3 values
-       heart_rate_values.add(Entry(23.5f,65f))
-       heart_rate_values.add(Entry(0.0f,60f))
+       heart_rate_values.add(Entry(13.0f,70f)) //x hour y 3 values
+       heart_rate_values.add(Entry(16.5f,65f))
+       heart_rate_values.add(Entry(20.0f,60f))
     }
 
     private fun TemperatureValues()
     {
-      temperature_values.add(Entry(23.0f,36.7f))
-      temperature_values.add(Entry(23.5f,36.5f))
-      temperature_values.add(Entry(0.0f,36.4f))
+      temperature_values.add(Entry(13.0f,36.7f))
+      temperature_values.add(Entry(16.5f,36.5f))
+      temperature_values.add(Entry(20.0f,36.4f))
     }
 
     private fun NoiseValues()
     {
-        noise_values.add(Entry(23.0f, 35f))
-        noise_values.add(Entry(23.5f, 30f))
-        noise_values.add(Entry(0.0f, 25f))
+        noise_values.add(Entry(13.0f, 35f))
+        noise_values.add(Entry(16.5f, 30f))
+        noise_values.add(Entry(20.0f, 25f))
     }
-
-
-
-
 
         private fun setChart() {
         val xAxis = binding.LineChart.xAxis
-        val now = java.util.Calendar.getInstance()
-        val current_hour = now.get(java.util.Calendar.HOUR_OF_DAY)
-        val current_minute = now.get(java.util.Calendar.MINUTE)
+        val now = Calendar.getInstance()
+        val current_hour = now.get(Calendar.HOUR_OF_DAY)
+        val current_minute = now.get(Calendar.MINUTE)
         val current_time_float = current_hour+ (current_minute / 60.0f)
 
         val HeartRateSet = LineDataSet(heart_rate_values, "Heart Rate")
@@ -107,12 +109,10 @@ class MondayChartActivity : AppCompatActivity() {
         legend.isEnabled = true
         legend.textColor = Color.WHITE
         legend.form = Legend.LegendForm.LINE
-       limit_line(current_time_float,xAxis) // faccio la funzione per risparmiare tempo
+       limit_line(current_time_float,xAxis)
        anim_line()
 
     }
-
-
                     private fun limit_line(current_time : Float , xAxis :XAxis)
                     {
                     val currentLine = LimitLine(current_time,"Ora Attuale")
@@ -120,7 +120,7 @@ class MondayChartActivity : AppCompatActivity() {
                         currentLine.lineColor = Color.MAGENTA
                         currentLine.textColor = Color.MAGENTA
                         currentLine.labelPosition = LimitLine.LimitLabelPosition.RIGHT_TOP
-                        xAxis.removeAllLimitLines()  //mostriamo solo quella attuale
+                        xAxis.removeAllLimitLines()
                         xAxis.addLimitLine(currentLine)
                     }
                      private fun anim_line()
@@ -142,7 +142,7 @@ class MondayChartActivity : AppCompatActivity() {
             // button chart  --> from today to chartanalisys_today
             val buttonToday = findViewById<ImageButton>(R.id.todayBt)
             buttonToday.setOnClickListener {
-                val pageToday = Intent(this, MondayActivity::class.java)
+                val pageToday = Intent(this, FridayActivity::class.java)
                 startActivity(pageToday)
             }
 

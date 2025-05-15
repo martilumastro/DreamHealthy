@@ -1,5 +1,6 @@
-package com.example.dreamhealthy
+package com.example.dreamhealthy.chart_activity
 
+import com.example.dreamhealthy.week_activity.TuesdayActivity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +10,9 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
+import com.example.dreamhealthy.MenuActivity
+import com.example.dreamhealthy.R
+import com.example.dreamhealthy.TimeAxisFormatter
 import com.example.dreamhealthy.databinding.ActivityTuesdayChartBinding
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis

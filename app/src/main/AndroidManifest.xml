@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-
+    <uses-permission android:name="android.permission.BODY_SENSORS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-feature android:name="android.hardware.type.watch"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,10 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamHealthy"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
         <activity
             android:name=".AlarmStopActivity"
             android:exported="false" />
-
+        <activity android:name=".WearMainActivity"
+            android:exported="true"/>
         <receiver
             android:name=".AlarmReceiver"
             android:exported="true" />
@@ -26,40 +33,40 @@
             android:name=".WeekValuesMenuActivity"
             android:exported="false" />
         <activity
-            android:name=".SundayActivity"
+            android:name=".week_activity.SundayActivity"
             android:exported="false" />
         <activity
-            android:name=".SundayChartActivity"
+            android:name=".chart_activity.SundayChartActivity"
             android:exported="false" />
         <activity
-            android:name=".SaturdayActivity"
+            android:name=".week_activity.SaturdayActivity"
             android:exported="false" />
         <activity
-            android:name=".SaturdayChartActivity"
+            android:name=".chart_activity.SaturdayChartActivity"
             android:exported="false" />
         <activity
-            android:name=".FridayActivity"
+            android:name=".week_activity.FridayActivity"
             android:exported="false" />
         <activity
-            android:name=".FridayChartActivity"
+            android:name=".chart_activity.FridayChartActivity"
             android:exported="false" />
         <activity
-            android:name=".ThursdayActivity"
+            android:name=".week_activity.ThursdayActivity"
             android:exported="false" />
         <activity
-            android:name=".ThursdayChartActivity"
+            android:name=".chart_activity.ThursdayChartActivity"
             android:exported="false" />
         <activity
-            android:name=".WednesdayActivity"
+            android:name=".week_activity.WednesdayActivity"
             android:exported="false" />
         <activity
-            android:name=".WednesdayChartActivity"
+            android:name=".chart_activity.WednesdayChartActivity"
             android:exported="false" />
         <activity
-            android:name=".TuesdayActivity"
+            android:name=".week_activity.TuesdayActivity"
             android:exported="false" />
         <activity
-            android:name=".TuesdayChartActivity"
+            android:name=".chart_activity.TuesdayChartActivity"
             android:exported="false" />
         <activity
             android:name=".MondayAlarmClockActivity"
@@ -116,23 +123,42 @@
             android:name=".MyAlarmsClockActivity"
             android:exported="false" />
         <activity
-            android:name=".MondayChartActivity"
+            android:name=".chart_activity.MondayChartActivity"
             android:exported="false" />
         <activity
-            android:name=".MondayActivity"
+            android:name=".week_activity.MondayActivity"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
+
+    <!-- <service
+                android:name=".Class_Service_WearableOS.MyWereableListenerService"
+                android:exported="true"
+                tools:ignore="MissingClass">
+                <intent-filter>
+                    <action android:name ="com.google.android.gms.wearable.NODE_MIGRATED" />
+                    <data android:scheme="wear"/>
+                </intent-filter>
+            </service> -->
+
+
+
+
+
+
+
+

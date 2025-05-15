@@ -5,6 +5,13 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.dreamhealthy.week_activity.FridayActivity
+import com.example.dreamhealthy.week_activity.MondayActivity
+import com.example.dreamhealthy.week_activity.SaturdayActivity
+import com.example.dreamhealthy.week_activity.SundayActivity
+import com.example.dreamhealthy.week_activity.ThursdayActivity
+import com.example.dreamhealthy.week_activity.TuesdayActivity
+import com.example.dreamhealthy.week_activity.WednesdayActivity
 import java.time.DayOfWeek
 import java.time.LocalDate
 

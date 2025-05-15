@@ -1,22 +1,26 @@
-package com.example.dreamhealthy
+package com.example.dreamhealthy.chart_activity
 
+import com.example.dreamhealthy.week_activity.SaturdayActivity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageButton
+import com.example.dreamhealthy.databinding.ActivitySaturdayChartBinding
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
-import com.example.dreamhealthy.databinding.ActivitySundayChartBinding
+import com.example.dreamhealthy.MenuActivity
+import com.example.dreamhealthy.R
+import com.example.dreamhealthy.TimeAxisFormatter
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.LimitLine
 import java.util.Calendar
 
-class SundayChartActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySundayChartBinding
+class SaturdayChartActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySaturdayChartBinding
 
     val heart_rate_values = ArrayList<Entry>()
     val temperature_values = ArrayList<Entry>()
@@ -26,7 +30,7 @@ class SundayChartActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySundayChartBinding.inflate(layoutInflater)
+        binding = ActivitySaturdayChartBinding.inflate(layoutInflater)
         setContentView(binding.root)
         buttonChange()
        setDataChart()
@@ -42,23 +46,23 @@ class SundayChartActivity : AppCompatActivity() {
 
     private fun HeartValues()
     {
-       heart_rate_values.add(Entry(3.4f,70f)) //x rappresenta l'ora y in questo caso il valore dei battiti cardiaci
-       heart_rate_values.add(Entry(5.5f,65f))
-       heart_rate_values.add(Entry(8.0f,60f))
+       heart_rate_values.add(Entry(0.0f,70f)) //x hour y 3 values
+       heart_rate_values.add(Entry(2.5f,65f))
+       heart_rate_values.add(Entry(3.3f,60f))
     }
 
     private fun TemperatureValues()
     {
-      temperature_values.add(Entry(3.4f,36.7f))
-      temperature_values.add(Entry(5.5f,36.5f))
-      temperature_values.add(Entry(8.0f,36.4f))
+      temperature_values.add(Entry(0.0f,36.7f))
+      temperature_values.add(Entry(2.5f,36.5f))
+      temperature_values.add(Entry(3.3f,36.4f))
     }
 
     private fun NoiseValues()
     {
-        noise_values.add(Entry(3.4f, 35f))
-        noise_values.add(Entry(5.5f, 30f))
-        noise_values.add(Entry(8.0f, 25f))
+        noise_values.add(Entry(0.0f, 35f))
+        noise_values.add(Entry(2.5f, 30f))
+        noise_values.add(Entry(3.3f, 25f))
     }
 
 
@@ -144,7 +148,7 @@ class SundayChartActivity : AppCompatActivity() {
             // button chart  --> from today to chartanalisys_today
             val buttonToday = findViewById<ImageButton>(R.id.todayBt)
             buttonToday.setOnClickListener {
-                val pageToday = Intent(this, SundayActivity::class.java)
+                val pageToday = Intent(this, SaturdayActivity::class.java)
                 startActivity(pageToday)
             }
 

@@ -1,22 +1,26 @@
-package com.example.dreamhealthy
+package com.example.dreamhealthy.chart_activity
 
+import com.example.dreamhealthy.week_activity.WednesdayActivity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageButton
-import com.example.dreamhealthy.databinding.ActivityFridayChartBinding
+import com.example.dreamhealthy.databinding.ActivityWednesdayChartBinding
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
+import com.example.dreamhealthy.MenuActivity
+import com.example.dreamhealthy.R
+import com.example.dreamhealthy.TimeAxisFormatter
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.LimitLine
 import java.util.Calendar
 
-class FridayChartActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityFridayChartBinding
+class WednesdayChartActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityWednesdayChartBinding
 
     val heart_rate_values = ArrayList<Entry>()
     val temperature_values = ArrayList<Entry>()
@@ -26,7 +30,7 @@ class FridayChartActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityFridayChartBinding.inflate(layoutInflater)
+        binding = ActivityWednesdayChartBinding.inflate(layoutInflater)
         setContentView(binding.root)
         buttonChange()
        setDataChart()
@@ -42,24 +46,28 @@ class FridayChartActivity : AppCompatActivity() {
 
     private fun HeartValues()
     {
-       heart_rate_values.add(Entry(13.0f,70f)) //x hour y 3 values
-       heart_rate_values.add(Entry(16.5f,65f))
-       heart_rate_values.add(Entry(20.0f,60f))
+       heart_rate_values.add(Entry(22.2f,70f)) //x hour y 3 values
+       heart_rate_values.add(Entry(23.7f,65f))
+       heart_rate_values.add(Entry(0.0f,50f))
     }
 
     private fun TemperatureValues()
     {
-      temperature_values.add(Entry(13.0f,36.7f))
-      temperature_values.add(Entry(16.5f,36.5f))
-      temperature_values.add(Entry(20.0f,36.4f))
+      temperature_values.add(Entry(22.2f,36.9f))
+      temperature_values.add(Entry(23.7f,34.1f))
+      temperature_values.add(Entry(0.0f,33.6f))
     }
 
     private fun NoiseValues()
     {
-        noise_values.add(Entry(13.0f, 35f))
-        noise_values.add(Entry(16.5f, 30f))
-        noise_values.add(Entry(20.0f, 25f))
+        noise_values.add(Entry(22.2f, 38f))
+        noise_values.add(Entry(23.7f, 40f))
+        noise_values.add(Entry(0.0f, 55f))  // At midnight you make an engine
     }
+
+
+
+
 
         private fun setChart() {
         val xAxis = binding.LineChart.xAxis
@@ -109,6 +117,8 @@ class FridayChartActivity : AppCompatActivity() {
        anim_line()
 
     }
+
+
                     private fun limit_line(current_time : Float , xAxis :XAxis)
                     {
                     val currentLine = LimitLine(current_time,"Ora Attuale")
@@ -138,7 +148,7 @@ class FridayChartActivity : AppCompatActivity() {
             // button chart  --> from today to chartanalisys_today
             val buttonToday = findViewById<ImageButton>(R.id.todayBt)
             buttonToday.setOnClickListener {
-                val pageToday = Intent(this, FridayActivity::class.java)
+                val pageToday = Intent(this, WednesdayActivity::class.java)
                 startActivity(pageToday)
             }
 

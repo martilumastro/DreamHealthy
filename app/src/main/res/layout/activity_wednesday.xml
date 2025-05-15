@@ -8,7 +8,7 @@
     android:gravity="center"
     android:background="@color/blue_background"
     android:orientation="vertical"
-    tools:context=".WednesdayActivity">
+    tools:context=".week_activity.WednesdayActivity">
     <!--Linear high (days of the week)-->
     <LinearLayout
         android:id="@+id/top_layout"

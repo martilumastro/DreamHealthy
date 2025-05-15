@@ -8,7 +8,7 @@
     android:layout_gravity="center"
     android:background="@color/blue_background"
     android:orientation="vertical"
-    tools:context=".SaturdayChartActivity">
+    tools:context=".chart_activity.SaturdayChartActivity">
 
 
     <TextView

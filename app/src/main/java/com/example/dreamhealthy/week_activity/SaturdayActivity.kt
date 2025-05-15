@@ -1,11 +1,10 @@
-package com.example.dreamhealthy
-
+package com.example.dreamhealthy.week_activity
+import com.example.dreamhealthy.chart_activity.SaturdayChartActivity
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.icu.util.Calendar
-import android.media.Image
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
@@ -14,6 +13,9 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.dreamhealthy.MenuActivity
+import com.example.dreamhealthy.R
+
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
