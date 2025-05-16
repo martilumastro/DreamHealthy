@@ -24,7 +24,7 @@
         android:textSize="48sp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="48dp" />
+        tools:layout_editor_absoluteY="46dp" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/LineChart"

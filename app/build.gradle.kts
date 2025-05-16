@@ -37,6 +37,9 @@ android {
         viewBinding =  true
         compose = true
     }
+    composeOptions{
+        kotlinCompilerExtensionVersion = "1.5.14"
+    }
 }
 
 
@@ -60,7 +63,7 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.0")
     implementation("androidx.activity:activity-compose:1.10.1")
-
+/*
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
@@ -83,6 +86,6 @@ dependencies {
 
    // Permessions
     implementation("com.google.accompanist:accompanist-permissions:0.30.1")
-
+*/
 
 }

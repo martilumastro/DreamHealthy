@@ -1,4 +1,4 @@
-package com.example.dreamhealthy
+/*package com.example.dreamhealthy
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -448,3 +448,4 @@ class WearMainActivity : ComponentActivity()
     }
 }
 
+*/

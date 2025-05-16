@@ -18,6 +18,7 @@ import com.example.dreamhealthy.databinding.ActivityMondayChartBinding
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.LimitLine
+
 class MondayChartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMondayChartBinding
 
@@ -36,7 +37,7 @@ class MondayChartActivity : AppCompatActivity() {
     }
 
     fun setDataChart()
-    { // valori da implementare
+    {
         HeartValues()
         TemperatureValues()
         NoiseValues()
