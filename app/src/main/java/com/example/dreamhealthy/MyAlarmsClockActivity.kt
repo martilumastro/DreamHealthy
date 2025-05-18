@@ -23,6 +23,13 @@ class MyAlarmsClockActivity : AppCompatActivity() {
     private lateinit var buttonMelody: ImageButton
     private lateinit var buttonUseful: ImageButton
     private lateinit var buttonAlarmMonday: Button
+    private lateinit var buttonAlarmTuesday: Button
+    private lateinit var buttonAlarmWednesday: Button
+    private lateinit var buttonAlarmThursday: Button
+    private lateinit var buttonAlarmFriday: Button
+    private lateinit var buttonAlarmSaturday: Button
+    private lateinit var buttonAlarmSunday: Button
+
     private lateinit var mondayHour: TextView
     private lateinit var switchMonday: Switch
 
@@ -39,6 +46,12 @@ class MyAlarmsClockActivity : AppCompatActivity() {
         buttonUseful = findViewById(R.id.useful_advince_bt)
         buttonMelody = findViewById(R.id.melody_bt)
         buttonAlarmMonday = findViewById(R.id.monday_bt)
+        buttonAlarmTuesday = findViewById(R.id.tuesday_bt)
+        buttonAlarmWednesday = findViewById(R.id.wednesday_bt)
+        buttonAlarmThursday = findViewById(R.id.thursday_bt)
+        buttonAlarmFriday = findViewById(R.id.friday_bt)
+        buttonAlarmSaturday = findViewById(R.id.saturday_bt)
+        buttonAlarmSunday = findViewById(R.id.sunday_bt)
 
         mondayHour = findViewById(R.id.monday_hour)
         switchMonday = findViewById(R.id.switch_monday)
@@ -70,6 +83,31 @@ class MyAlarmsClockActivity : AppCompatActivity() {
             val pageAlarm = Intent(this, MondayAlarmClockActivity::class.java)
             startActivity(pageAlarm)
         }
+        buttonAlarmTuesday.setOnClickListener {
+            val pageAlarm = Intent(this, TuesdayAlarmClockActivity::class.java)
+            startActivity(pageAlarm)
+        }
+        buttonAlarmWednesday.setOnClickListener {
+            val pageAlarm = Intent(this, WednesdayAlarmClockActivity::class.java)
+            startActivity(pageAlarm)
+        }
+        buttonAlarmThursday.setOnClickListener {
+            val pageAlarm = Intent(this, ThursdayAlarmClockActivity::class.java)
+            startActivity(pageAlarm)
+        }
+        buttonAlarmFriday.setOnClickListener {
+            val pageAlarm = Intent(this, FridayAlarmClockActivity::class.java)
+            startActivity(pageAlarm)
+        }
+        buttonAlarmSaturday.setOnClickListener {
+            val pageAlarm = Intent(this, SaturdayAlarmClockActivity::class.java)
+            startActivity(pageAlarm)
+        }
+        buttonAlarmSunday.setOnClickListener {
+            val pageAlarm = Intent(this, SundayAlarmClockActivity::class.java)
+            startActivity(pageAlarm)
+        }
+
 
     }
 

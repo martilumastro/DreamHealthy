@@ -20,6 +20,8 @@ class    MenuActivity : AppCompatActivity() {
     private lateinit var buttonAlarms: Button
     private lateinit var buttonCalendar: Button
     private lateinit var buttonUsefulAdvince: Button
+    private lateinit var buttonTomorrowAlarm: Button
+    private lateinit var buttonTodayChart: Button
 
 
     @SuppressLint("MissingInflatedId")
@@ -35,6 +37,8 @@ class    MenuActivity : AppCompatActivity() {
         buttonToday = findViewById(R.id.today_bt)
         buttonCalendar = findViewById(R.id.calendar_bt)
         buttonUsefulAdvince = findViewById(R.id.useful_advince_bt)
+        buttonTomorrowAlarm = findViewById(R.id.tomorrow_alarm_bt)
+        buttonTodayChart = findViewById(R.id.today_chart_bt)
 
 
         //call fun
@@ -69,6 +73,14 @@ class    MenuActivity : AppCompatActivity() {
         buttonUsefulAdvince.setOnClickListener {
             val pageUsefulAdvince = Intent (this, UsefulAdvinceActivity::class.java)
             startActivity(pageUsefulAdvince)
+        }
+        buttonTodayChart.setOnClickListener {
+            val pageTodayChart = Intent (this, TodayChartActivity::class.java)
+            startActivity(pageTodayChart)
+        }
+        buttonTomorrowAlarm.setOnClickListener {
+            val pageTomorrowAlarm = Intent (this, TomorrowAlarmActivity::class.java)
+            startActivity(pageTomorrowAlarm)
         }
     }
 

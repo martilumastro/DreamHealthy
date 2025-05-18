@@ -3,9 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-    <uses-permission android:name="android.permission.BODY_SENSORS"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-feature android:name="android.hardware.type.watch"/>
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,22 +18,56 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamHealthy"
         tools:targetApi="31">
+        <activity
+            android:name=".SundayAlarmClockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SaturdayAlarmClockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FridayAlarmClockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThursdayAlarmClockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WednesdayAlarmClockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TuesdayAlarmClockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TomorrowAlarmActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
-        <service android:name=".Ricevitore_Dati.DataReceiverService"
+
+        <service
+            android:name=".Ricevitore_Dati.DataReceiverService"
             android:exported="true">
             <intent-filter>
-                <action android:name = "com.google.android.gms.wearable.DATA_CHANGED"/>
-                <data android:scheme ="wear" android:host="*" android:pathPrefix="/simulated_metrics"/>
+                <action android:name="com.google.android.gms.wearable.DATA_CHANGED" />
+
+                <data
+                    android:host="*"
+                    android:pathPrefix="/simulated_metrics"
+                    android:scheme="wear" />
             </intent-filter>
-        <meta-data
-            android:name="com.google.android.gms.wearable.BIND_LISTENER"
-            android:value="true" />
+
+            <meta-data
+                android:name="com.google.android.gms.wearable.BIND_LISTENER"
+                android:value="true" />
         </service>
+
+        <activity
+            android:name=".TodayChartActivity"
+            android:exported="false" />
         <activity
             android:name=".AlarmStopActivity"
             android:exported="false" />
+
         <receiver
             android:name=".AlarmReceiver"
             android:exported="true" />
@@ -138,34 +174,15 @@
         <activity
             android:name=".MenuActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
-
-    <!-- <service
-                android:name=".Class_Service_WearableOS.MyWereableListenerService"
-                android:exported="true"
-                tools:ignore="MissingClass">
-                <intent-filter>
-                    <action android:name ="com.google.android.gms.wearable.NODE_MIGRATED" />
-                    <data android:scheme="wear"/>
-                </intent-filter>
-            </service> -->
-
-
-
-
-
-
-
-

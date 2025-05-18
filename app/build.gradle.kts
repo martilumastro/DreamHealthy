@@ -63,29 +63,31 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.0")
     implementation("androidx.activity:activity-compose:1.10.1")
-/*
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
+    /*
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
 
-    val composeBom = platform("androidx.compose:compose-bom:2025.05.00")
-    implementation(composeBom)
-    androidTestImplementation(composeBom)
+        val composeBom = platform("androidx.compose:compose-bom:2025.05.00")
+        implementation(composeBom)
+        androidTestImplementation(composeBom)
 
-    implementation("androidx.compose.foundation:foundation")
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    debugImplementation("androidx.compose.ui:ui-tooling")
+        implementation("androidx.compose.foundation:foundation")
+        implementation("androidx.compose.ui:ui")
+        implementation("androidx.compose.ui:ui-tooling-preview")
+        debugImplementation("androidx.compose.ui:ui-tooling")
 
 
-    implementation("androidx.compose.material:material-icons-core")
-    implementation("androidx.compose.material:material-icons-extended")
+        implementation("androidx.compose.material:material-icons-core")
+        implementation("androidx.compose.material:material-icons-extended")
 
-    // Health Services API
-    implementation("androidx.health:health-services-client:1.1.0-alpha05")
+        // Health Services API
+        implementation("androidx.health:health-services-client:1.1.0-alpha05")
 
-   // Permessions
-    implementation("com.google.accompanist:accompanist-permissions:0.30.1")
-*/
+       // Permessions
+        implementation("com.google.accompanist:accompanist-permissions:0.30.1")
+    */
 
 }
