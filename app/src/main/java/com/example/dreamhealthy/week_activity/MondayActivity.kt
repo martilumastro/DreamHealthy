@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.dreamhealthy.MenuActivity
 import com.example.dreamhealthy.R
+import com.example.dreamhealthy.chart_activity.MondayChartActivity
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -195,10 +196,10 @@ class MondayActivity : AppCompatActivity() {
             startActivity(pageMenu)
         }
         // button chart  --> from today to chartanalisys_today
-        /*buttonChart.setOnClickListener {
+        buttonChart.setOnClickListener {
             val pageChart = Intent(this, MondayChartActivity::class.java)
             startActivity(pageChart)
-        }*/
+        }
         wednesdayButton.setOnClickListener {
             val pageWednesday = Intent(this, WednesdayActivity::class.java)
             startActivity(pageWednesday)

@@ -10,6 +10,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
+import android.util.Log
 import com.example.dreamhealthy.MenuActivity
 import com.example.dreamhealthy.R
 import com.example.dreamhealthy.TimeAxisFormatter
@@ -17,6 +18,9 @@ import com.example.dreamhealthy.databinding.ActivityTuesdayChartBinding
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.LimitLine
+import org.json.JSONArray
+import org.json.JSONException
+import org.json.JSONObject
 import java.util.Calendar
 
 class TuesdayChartActivity : AppCompatActivity() {
@@ -38,57 +42,77 @@ class TuesdayChartActivity : AppCompatActivity() {
 
     fun setDataChart()
     {
-        HeartValues()
-        TemperatureValues()
-        NoiseValues()
+        loadSimulateData()
         setChart()
     }
 
-    private fun HeartValues()
+    private fun loadSimulateData()
     {
-       heart_rate_values.add(Entry(18.0f,70f)) //x hour y 3 values
-       heart_rate_values.add(Entry(20.5f,65f))
-       heart_rate_values.add(Entry(22.0f,50f))
+        val sharedPrefs = getSharedPreferences("sim_data",MODE_PRIVATE)
+        val jsonString = sharedPrefs.getString("sim_data_list",null)
+
+        if(jsonString != null)
+        {
+            val jsonArray = JSONArray(jsonString)
+            for(i in 0 until jsonArray.length())
+            {
+                try{
+                    val obj = jsonArray.getJSONObject(i)
+                    if(obj.getString("day") == "Tuesday")
+                    {
+                        heartVal(obj)
+                        tempVal(obj)
+                        noiseLev(obj)
+                    }
+                } catch (e: JSONException)
+                {
+                    Log.e("JSON Parsing", "ERROR IN THE READ OF OBJECT JASON :${e.message}")
+                }
+            }
+        }
+    }
+    private fun heartVal(obj :  JSONObject){
+        val hr = obj.getDouble("heart").toFloat()
+        val time = obj.getDouble("time").toFloat()
+        heart_rate_values.add(Entry(time,hr))
     }
 
-    private fun TemperatureValues()
+    private fun tempVal(obj : JSONObject)
     {
-      temperature_values.add(Entry(18.0f,36.7f))
-      temperature_values.add(Entry(20.5f,36.5f))
-      temperature_values.add(Entry(22.0f,36.4f))
-    }
-
-    private fun NoiseValues()
-    {
-        noise_values.add(Entry(18.0f, 28f))
-        noise_values.add(Entry(20.5f, 30f))
-        noise_values.add(Entry(22.0f, 36f))
+        val tp = obj.getDouble("temp").toFloat()
+        val time = obj.getDouble("time").toFloat()
+        temperature_values.add(Entry(time,tp))
     }
 
 
+    private fun noiseLev(obj : JSONObject)
+    {
+        val ns = obj.getDouble("noise").toFloat()
+        val time = obj.getDouble("time").toFloat()
+        noise_values.add(Entry(time,ns))
+    }
 
 
-
-        private fun setChart() {
+    private fun setChart() {
         val xAxis = binding.LineChart.xAxis
-        val now = Calendar.getInstance()
-        val current_hour = now.get(Calendar.HOUR_OF_DAY)
-        val current_minute = now.get(Calendar.MINUTE)
+        val now = java.util.Calendar.getInstance()
+        val current_hour = now.get(java.util.Calendar.HOUR_OF_DAY)
+        val current_minute = now.get(java.util.Calendar.MINUTE)
         val current_time_float = current_hour+ (current_minute / 60.0f)
 
-        val HeartRateSet = LineDataSet(heart_rate_values, "Heart Rate")
-        HeartRateSet.color = Color.RED
-        HeartRateSet.setDrawCircles(false)
+        val heartRateSet = LineDataSet(heart_rate_values, "Heart Rate")
+        heartRateSet.color = Color.RED
+        heartRateSet.setDrawCircles(false)
 
-        val TemperatureSet = LineDataSet(temperature_values, "Temperature Body")
-        TemperatureSet.color = Color.YELLOW
-        TemperatureSet.setDrawCircles(false)
+        val temperatureSet = LineDataSet(temperature_values, "Temperature Body")
+        temperatureSet.color = Color.YELLOW
+        temperatureSet.setDrawCircles(false)
 
-        val NoiseSet = LineDataSet(noise_values, "Noise Ambience (DB)")
-        NoiseSet.color = Color.GREEN
-        NoiseSet.setDrawCircles(false)
+        val noiseSet = LineDataSet(noise_values, "Noise Ambience (DB)")
+        noiseSet.color = Color.GREEN
+        noiseSet.setDrawCircles(false)
 
-        val lineData = LineData(HeartRateSet,TemperatureSet,NoiseSet)
+        val lineData = LineData(heartRateSet,temperatureSet,noiseSet)
         binding.LineChart.data = lineData
         binding.LineChart.invalidate()
 

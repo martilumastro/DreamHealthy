@@ -3,6 +3,8 @@
     alias(libs.plugins.kotlin.android)
  }
 
+
+
 android {
     namespace = "com.example.dreamhealthy.wear"
     compileSdk = 35
@@ -41,10 +43,6 @@ android {
 }
 
 dependencies {
-
-    implementation("com.google.android.gms:play-services-wearable:18.1.0")
-    implementation("androidx.compose.ui:ui:1.5.4")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.5.4")
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.material)
     implementation(libs.androidx.compose.foundation)
@@ -55,4 +53,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation("com.google.android.gms:play-services-wearable:19.0.0")
+    implementation("androidx.activity:activity-compose:1.8.0")
+    implementation("androidx.compose.ui:ui:1.5.4")
+    implementation("androidx.core:core-ktx:1.16.0")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.5.4")
 }

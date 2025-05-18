@@ -11,6 +11,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
+import android.util.Log
 import com.example.dreamhealthy.MenuActivity
 import com.example.dreamhealthy.R
 import com.example.dreamhealthy.TimeAxisFormatter
@@ -18,13 +19,17 @@ import com.example.dreamhealthy.databinding.ActivityMondayChartBinding
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.LimitLine
+import org.json.JSONObject
+import com.google.android.gms.wearable.*
+import org.json.JSONArray
+import org.json.JSONException
 
 class MondayChartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMondayChartBinding
 
-    val heart_rate_values = ArrayList<Entry>()
-    val temperature_values = ArrayList<Entry>()
-    val noise_values = ArrayList<Entry>()
+    val heart_rate_values = mutableListOf<Entry>()
+    val temperature_values = mutableListOf<Entry>()
+    val noise_values = mutableListOf<Entry>()
 
 
     @SuppressLint("MissingInflatedId")
@@ -38,33 +43,55 @@ class MondayChartActivity : AppCompatActivity() {
 
     fun setDataChart()
     {
-        HeartValues()
-        TemperatureValues()
-        NoiseValues()
+        loadSimulateData()
         setChart()
     }
 
-    private fun HeartValues()
+    private fun loadSimulateData()
     {
-       heart_rate_values.add(Entry(23.0f,70f)) //x hour y 3 values
-       heart_rate_values.add(Entry(23.5f,65f))
-       heart_rate_values.add(Entry(0.0f,60f))
+        val sharedPrefs = getSharedPreferences("sim_data",MODE_PRIVATE)
+        val jsonString = sharedPrefs.getString("sim_data_list",null)
+
+        if(jsonString != null)
+        {
+            val jsonArray = JSONArray(jsonString)
+            for(i in 0 until jsonArray.length())
+            {
+                try{
+              val obj = jsonArray.getJSONObject(i)
+                if(obj.getString("day") == "Monday")
+                {
+                    heartVal(obj)
+                    tempVal(obj)
+                    noiseLev(obj)
+                }
+                    } catch (e: JSONException)
+                {
+                 Log.e("JSON Parsing", "ERROR IN THE READ OF OBJECT JASON :${e.message}")
+                }
+            }
+        }
+    }
+    private fun heartVal(obj :  JSONObject){
+            val hr = obj.getDouble("heart").toFloat()
+            val time = obj.getDouble("time").toFloat()
+            heart_rate_values.add(Entry(time,hr))
     }
 
-    private fun TemperatureValues()
+    private fun tempVal(obj : JSONObject)
     {
-      temperature_values.add(Entry(23.0f,36.7f))
-      temperature_values.add(Entry(23.5f,36.5f))
-      temperature_values.add(Entry(0.0f,36.4f))
-    }
+        val tp = obj.getDouble("temp").toFloat()
+        val time = obj.getDouble("time").toFloat()
+        temperature_values.add(Entry(time,tp))
+        }
 
-    private fun NoiseValues()
+
+    private fun noiseLev(obj : JSONObject)
     {
-        noise_values.add(Entry(23.0f, 35f))
-        noise_values.add(Entry(23.5f, 30f))
-        noise_values.add(Entry(0.0f, 25f))
-    }
-
+        val ns = obj.getDouble("noise").toFloat()
+        val time = obj.getDouble("time").toFloat()
+        noise_values.add(Entry(time,ns))
+        }
 
 
 
@@ -76,19 +103,19 @@ class MondayChartActivity : AppCompatActivity() {
         val current_minute = now.get(java.util.Calendar.MINUTE)
         val current_time_float = current_hour+ (current_minute / 60.0f)
 
-        val HeartRateSet = LineDataSet(heart_rate_values, "Heart Rate")
-        HeartRateSet.color = Color.RED
-        HeartRateSet.setDrawCircles(false)
+        val heartRateSet = LineDataSet(heart_rate_values, "Heart Rate")
+        heartRateSet.color = Color.RED
+        heartRateSet.setDrawCircles(false)
 
-        val TemperatureSet = LineDataSet(temperature_values, "Temperature Body")
-        TemperatureSet.color = Color.YELLOW
-        TemperatureSet.setDrawCircles(false)
+        val temperatureSet = LineDataSet(temperature_values, "Temperature Body")
+        temperatureSet.color = Color.YELLOW
+        temperatureSet.setDrawCircles(false)
 
-        val NoiseSet = LineDataSet(noise_values, "Noise Ambience (DB)")
-        NoiseSet.color = Color.GREEN
-        NoiseSet.setDrawCircles(false)
+        val noiseSet = LineDataSet(noise_values, "Noise Ambience (DB)")
+        noiseSet.color = Color.GREEN
+        noiseSet.setDrawCircles(false)
 
-        val lineData = LineData(HeartRateSet,TemperatureSet,NoiseSet)
+        val lineData = LineData(heartRateSet,temperatureSet,noiseSet)
         binding.LineChart.data = lineData
         binding.LineChart.invalidate()
 
@@ -113,7 +140,7 @@ class MondayChartActivity : AppCompatActivity() {
         legend.isEnabled = true
         legend.textColor = Color.WHITE
         legend.form = Legend.LegendForm.LINE
-       limit_line(current_time_float,xAxis) // faccio la funzione per risparmiare tempo
+       limit_line(current_time_float,xAxis) //
        anim_line()
 
     }
@@ -126,7 +153,7 @@ class MondayChartActivity : AppCompatActivity() {
                         currentLine.lineColor = Color.MAGENTA
                         currentLine.textColor = Color.MAGENTA
                         currentLine.labelPosition = LimitLine.LimitLabelPosition.RIGHT_TOP
-                        xAxis.removeAllLimitLines()  //mostriamo solo quella attuale
+                        xAxis.removeAllLimitLines()
                         xAxis.addLimitLine(currentLine)
                     }
                      private fun anim_line()

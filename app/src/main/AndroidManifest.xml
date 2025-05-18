@@ -19,12 +19,19 @@
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
-
+        <service android:name=".Ricevitore_Dati.DataReceiverService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name = "com.google.android.gms.wearable.DATA_CHANGED"/>
+                <data android:scheme ="wear" android:host="*" android:pathPrefix="/simulated_metrics"/>
+            </intent-filter>
+        <meta-data
+            android:name="com.google.android.gms.wearable.BIND_LISTENER"
+            android:value="true" />
+        </service>
         <activity
             android:name=".AlarmStopActivity"
             android:exported="false" />
-        <activity android:name=".WearMainActivity"
-            android:exported="true"/>
         <receiver
             android:name=".AlarmReceiver"
             android:exported="true" />
