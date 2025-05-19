@@ -145,6 +145,7 @@
                 android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <TextView
+                    android:id="@+id/tuesday_hour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--:--"
@@ -159,6 +160,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:id="@+id/switch_tuesday"
                         android:checked="false"
                         android:thumb="@drawable/switch_custom_thumb_selector"
                         android:track="@drawable/switch_custom_track_selector"
@@ -212,6 +214,7 @@
                 android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <TextView
+                    android:id="@+id/wednesday_hour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--:--"
@@ -226,6 +229,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:id="@+id/switch_wednesday"
                         android:checked="false"
                         android:thumb="@drawable/switch_custom_thumb_selector"
                         android:track="@drawable/switch_custom_track_selector"
@@ -281,6 +285,7 @@
                 android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <TextView
+                    android:id="@+id/thursday_hour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--:--"
@@ -295,6 +300,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:id="@+id/switch_thursday"
                         android:checked="false"
                         android:thumb="@drawable/switch_custom_thumb_selector"
                         android:track="@drawable/switch_custom_track_selector"
@@ -350,6 +356,7 @@
                 android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <TextView
+                    android:id="@+id/friday_hour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--:--"
@@ -364,6 +371,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:id="@+id/switch_friday"
                         android:checked="false"
                         android:thumb="@drawable/switch_custom_thumb_selector"
                         android:track="@drawable/switch_custom_track_selector"
@@ -421,6 +429,7 @@
                 android:layout_marginBottom="8dp"
                 android:padding="4dp">
                 <TextView
+                    android:id="@+id/saturday_hour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--:--"
@@ -435,6 +444,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:id="@+id/switch_saturday"
                         android:checked="false"
                         android:thumb="@drawable/switch_custom_thumb_selector"
                         android:track="@drawable/switch_custom_track_selector"
@@ -490,6 +500,7 @@
                 android:layout_marginBottom="4dp"
                 android:padding="4dp">
                 <TextView
+                    android:id="@+id/sunday_hour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--:--"
@@ -504,6 +515,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
                     <Switch
+                        android:id="@+id/switch_sunday"
                         android:checked="false"
                         android:thumb="@drawable/switch_custom_thumb_selector"
                         android:track="@drawable/switch_custom_track_selector"

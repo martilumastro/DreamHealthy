@@ -27,6 +27,10 @@ import android.content.SharedPreferences
 class MondayAlarmClockActivity : AppCompatActivity() {
     private lateinit var dayText: TextView
     private lateinit var goBackButton: Button
+    private lateinit var sleepMelodyButton: Button
+    private lateinit var wakeMelodyButton: Button
+    private lateinit var alarmMelodyButton: Button
+
     private lateinit var wakeUpHourTextView: TextView
     private lateinit var alarmMelodyTextView: TextView
     private lateinit var sleepMelodyTextView: TextView
@@ -41,6 +45,10 @@ class MondayAlarmClockActivity : AppCompatActivity() {
 
         dayText = findViewById(R.id.dayText)
         goBackButton = findViewById(R.id.go_back_bt)
+        sleepMelodyButton = findViewById(R.id.sleep_melody_bt)
+        wakeMelodyButton = findViewById(R.id.wake_melody_bt)
+        alarmMelodyButton = findViewById(R.id.alarm_melody_bt)
+
         wakeUpHourTextView = findViewById(R.id.wake_up_hour)
         alarmMelodyTextView = findViewById(R.id.alarm_melody)
         sleepMelodyTextView = findViewById(R.id.sleep_melody)
@@ -82,12 +90,23 @@ class MondayAlarmClockActivity : AppCompatActivity() {
                         setSleepMelody(sleepHour, sleepMinute)
                         //set pre wake melody
                         setPreWakeMelody(selectedHour, selectedMinute)
+                        //save data
+                        val prefsMonday = getSharedPreferences("alarms", MODE_PRIVATE).edit()
+                        prefsMonday.putBoolean("monday_alarm_set", true)
+                        prefsMonday.putString("monday_alarm_time", String.format("%02d:%02d", selectedHour, selectedMinute))
+                        prefsMonday.putString("monday_sleep_hour", String.format("%02d:%02d", sleepHour, sleepMinute))
+                        prefsMonday.putString("monday_alarm_melody", alarmMelodyTextView.text.toString())
+                        prefsMonday.putString("monday_sleep_melody", sleepMelodyTextView.text.toString())
+                        prefsMonday.putString("monday_wake_melody", wakeUpMelodyTextView.text.toString())
+                        prefsMonday.apply()
                     },
                     hour,
                     minute,
                     true
+
                 )
                 timePickerDialog.show()
+
             } else {
                 AlertDialog.Builder(this)
                     .setTitle("Delete this alarm!")
@@ -111,21 +130,22 @@ class MondayAlarmClockActivity : AppCompatActivity() {
                         wakeUpMelodyTextView.text = ""
                         sleepUpHourTextView.text = "--:--"
                         Toast.makeText(this, "Alarm delete", Toast.LENGTH_SHORT).show()
+                        //save delete alarm for toggle button in my alarms clock
+                        val prefsMondayDelete = getSharedPreferences("alarms", MODE_PRIVATE)
+                        prefsMondayDelete.edit()
+                            .putBoolean("monday_alarm_set", false)
+                            .remove("monday_alarm_time")
+                            .apply()
                     }
                     .setNegativeButton("Cancel", null)
                     .show()
-                //save delete alarm for toggle button in my alarms clock
-                val prefsMondayDelete = getSharedPreferences("alarms", MODE_PRIVATE)
-                prefsMondayDelete.edit()
-                    .putBoolean("monday_alarm_set", false)
-                    .remove("monday_alarm_time")
-                    .apply()
             }
         }
 
         //fun
         viewThisDay()
         changePage()
+        onResume()
 
     }
 
@@ -135,6 +155,18 @@ class MondayAlarmClockActivity : AppCompatActivity() {
         goBackButton.setOnClickListener {
             val backPage = Intent(this, MyAlarmsClockActivity::class.java)
             startActivity(backPage)
+        }
+        sleepMelodyButton.setOnClickListener {
+            val sleepPage = Intent(this, SleepMelodiesActivity::class.java)
+            startActivity(sleepPage)
+        }
+        wakeMelodyButton.setOnClickListener {
+            val wakePage = Intent(this, WakeUpMelodiesActivity::class.java)
+            startActivity(wakePage)
+        }
+        alarmMelodyButton.setOnClickListener {
+            val alarmPage = Intent(this, AlarmMelodiesActivity::class.java)
+            startActivity(alarmPage)
         }
     }
 
@@ -266,5 +298,27 @@ class MondayAlarmClockActivity : AppCompatActivity() {
         val formattedDate = nextMonday.format(formatter)
 
         dayText.text = formattedDate
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val prefsMonday = getSharedPreferences("alarms", MODE_PRIVATE)
+        val isAlarmSet = prefsMonday.getBoolean("monday_alarm_set", false)
+
+        if (isAlarmSet) {
+            wakeUpHourTextView.text = prefsMonday.getString("monday_alarm_time", "--:--")
+            sleepUpHourTextView.text = prefsMonday.getString("monday_sleep_hour", "--:--")
+            alarmMelodyTextView.text = prefsMonday.getString("monday_alarm_melody", "")
+            sleepMelodyTextView.text = prefsMonday.getString("monday_sleep_melody", "")
+            wakeUpMelodyTextView.text = prefsMonday.getString("monday_wake_melody", "")
+        } else {
+            // Reset Layout if alarm is not set
+            wakeUpHourTextView.text = "--:--"
+            sleepUpHourTextView.text = "--:--"
+            alarmMelodyTextView.text = ""
+            sleepMelodyTextView.text = ""
+            wakeUpMelodyTextView.text = ""
+        }
     }
 }
