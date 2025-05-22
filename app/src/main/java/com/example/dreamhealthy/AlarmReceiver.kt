@@ -3,19 +3,34 @@ package com.example.dreamhealthy
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.media.MediaPlayer
-import android.util.Log
 
 class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        val standardAlarm = intent.getStringExtra("standard alarm") ?: "standard_alarm_melody.mp3"
+        //For reading all types of melodies
+        val alarmMelody = intent.getStringExtra("alarm_melody_file")
+        val sleepMelody = intent.getStringExtra("sleep_melody_file")
+        val wakeMelody = intent.getStringExtra("wake_melody_file")
 
-        // Visible activity
+        // ?: (Elvis operator) to selection, customer melody or standard
+        val selectedMelody = alarmMelody ?: sleepMelody ?: wakeMelody ?: "standard_alarm_melody.mp3"
+
+        //reproduced type of melody, if it isn't null
+        val melodyType = when {
+            alarmMelody != null -> "alarm"
+            sleepMelody != null -> "sleep"
+            wakeMelody != null -> "wake"
+            else -> "alarm"
+        }
+
+        //Intent for open AlarmStopActivity
         val alarmIntent = Intent(context, AlarmStopActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-            putExtra("standard alarm", standardAlarm)
+            putExtra("melody_file", selectedMelody)
+            putExtra("melody_type", melodyType)
         }
+        //start AlarmStopActivity
         context.startActivity(alarmIntent)
     }
 }
+
