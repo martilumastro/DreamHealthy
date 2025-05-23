@@ -21,7 +21,6 @@ import com.github.mikephil.charting.components.LimitLine
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import java.util.Calendar
 
 class ThursdayChartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityThursdayChartBinding
@@ -30,6 +29,9 @@ class ThursdayChartActivity : AppCompatActivity() {
     val temperature_values = ArrayList<Entry>()
     val noise_values = ArrayList<Entry>()
 
+
+    val calendar = java.util.Calendar.getInstance()
+    val dayOfweek = calendar.get(java.util.Calendar.DAY_OF_WEEK)
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +50,7 @@ class ThursdayChartActivity : AppCompatActivity() {
 
     private fun loadSimulateData()
     {
-        val sharedPrefs = getSharedPreferences("sim_data",MODE_PRIVATE)
+        val sharedPrefs = getSharedPreferences("sim_data.json",MODE_PRIVATE)
         val jsonString = sharedPrefs.getString("sim_data_list",null)
 
         if(jsonString != null)
@@ -93,9 +95,6 @@ class ThursdayChartActivity : AppCompatActivity() {
     }
 
 
-
-
-
     private fun setChart() {
         val xAxis = binding.LineChart.xAxis
         val now = java.util.Calendar.getInstance()
@@ -103,21 +102,39 @@ class ThursdayChartActivity : AppCompatActivity() {
         val current_minute = now.get(java.util.Calendar.MINUTE)
         val current_time_float = current_hour+ (current_minute / 60.0f)
 
-        val heartRateSet = LineDataSet(heart_rate_values, "Heart Rate")
-        heartRateSet.color = Color.RED
-        heartRateSet.setDrawCircles(false)
+        val heartRateSet = LineDataSet(heart_rate_values, "Heart Rate").apply {
+            color = Color.RED
+            valueTextColor = Color.BLACK
+            lineWidth = 2f
+            setCircleColor(Color.RED)
+            circleRadius = 4f
+            setDrawCircles(false)
+        }
+        val temperatureSet = LineDataSet(temperature_values, "Temperature Body").apply {
+            color = Color.BLUE
+            valueTextColor = Color.BLACK
+            lineWidth = 2f
+            setCircleColor(Color.BLUE)
+            circleRadius = 4f
+            setDrawCircles(false)
+        }
+        val noiseSet = LineDataSet(noise_values, "Noise Ambience (DB)").apply {
+            color = Color.GREEN
+            valueTextColor = Color.BLACK
+            lineWidth = 2f
+            setCircleColor(Color.GREEN)
+            circleRadius = 4f
+            setDrawCircles(false)
+        }
 
-        val temperatureSet = LineDataSet(temperature_values, "Temperature Body")
-        temperatureSet.color = Color.YELLOW
-        temperatureSet.setDrawCircles(false)
-
-        val noiseSet = LineDataSet(noise_values, "Noise Ambience (DB)")
-        noiseSet.color = Color.GREEN
-        noiseSet.setDrawCircles(false)
 
         val lineData = LineData(heartRateSet,temperatureSet,noiseSet)
         binding.LineChart.data = lineData
-        binding.LineChart.invalidate()
+        binding.LineChart.apply {
+            description.text = "Simulated Data - Thursday"
+            animateX(1000)
+
+        }
 
         // set x with formatter time
         xAxis.valueFormatter = TimeAxisFormatter()
@@ -140,8 +157,11 @@ class ThursdayChartActivity : AppCompatActivity() {
         legend.isEnabled = true
         legend.textColor = Color.WHITE
         legend.form = Legend.LegendForm.LINE
-       limit_line(current_time_float,xAxis)
-       anim_line()
+        if(dayOfweek == java.util.Calendar.THURSDAY) // always check the day
+        {
+            limit_line(current_time_float, xAxis) //
+            anim_line()
+        }
 
     }
 

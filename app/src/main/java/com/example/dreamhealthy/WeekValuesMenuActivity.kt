@@ -8,13 +8,13 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.dreamhealthy.week_activity.FridayActivity
 import com.example.dreamhealthy.week_activity.MondayActivity
 import com.example.dreamhealthy.week_activity.SaturdayActivity
 import com.example.dreamhealthy.week_activity.SundayActivity
 import com.example.dreamhealthy.week_activity.ThursdayActivity
 import com.example.dreamhealthy.week_activity.TuesdayActivity
 import com.example.dreamhealthy.week_activity.WednesdayActivity
+import com.example.dreamhealthy.week_activity.FridayActivity
 
 class WeekValuesMenuActivity : AppCompatActivity() {
     private lateinit var buttonHome: ImageButton

@@ -1,4 +1,4 @@
-package com.example.dreamhealthy.wear.presentation
+/*package com.example.dreamhealthy.wear.presentation
 
 import android.util.Log
 import com.google.android.gms.wearable.*
@@ -39,3 +39,4 @@ import org.json.JSONObject
         Log.d("Phone", "Saved SimulateData : $json")
     }
 }
+*/

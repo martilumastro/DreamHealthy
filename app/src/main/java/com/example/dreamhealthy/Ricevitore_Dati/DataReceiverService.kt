@@ -12,10 +12,10 @@ import java.util.Date
 import java.util.Locale
 import android.util.Log
 
-class DataReceiverService : WearableListenerService() {
-
+class DataReceiverService : WearableListenerService()
+{
     override fun onDataChanged(dataEvents: DataEventBuffer) {
-        val sharedPrefs = getSharedPreferences("sim_data", Context.MODE_PRIVATE)
+        val sharedPrefs = getSharedPreferences("sim_data.json", Context.MODE_PRIVATE)
         val existing = sharedPrefs.getString("sim_data_list", "[]")
         val jsonArray = JSONArray(existing)
 
@@ -24,25 +24,25 @@ class DataReceiverService : WearableListenerService() {
                 val item = event.dataItem
                 if (item.uri.path == "/simulated_metrics") {
                     val dataMap = DataMapItem.fromDataItem(item).dataMap
-
                     val heart = dataMap.getFloat("heart rate")
                     val temp = dataMap.getFloat("temperature")
                     val noise = dataMap.getFloat("noise")
                     val time = dataMap.getFloat("time")
                     val day = getCurrentDayName()
-
                     val json = JSONObject().apply {
                         put("heart", heart)
                         put("temp", temp)
                         put("noise", noise)
                         put("time", time)
                         put("day", day)
+                        put("session_start", dataMap.getLong("session_start"))
+                        put("session_end", dataMap.getLong("session_end"))
                     }
 
                     jsonArray.put(json)
 
                     sharedPrefs.edit().putString("sim_data_list", jsonArray.toString()).apply()
-                    Log.d("Receiver", "Ricevuto e salvato: $json")
+                    Log.d("Receiver", "Received and saved: $json")
                 }
             }
         }

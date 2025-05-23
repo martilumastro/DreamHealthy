@@ -13,7 +13,6 @@ import com.example.dreamhealthy.chart_activity.SundayChartActivity
 import com.example.dreamhealthy.chart_activity.ThursdayChartActivity
 import com.example.dreamhealthy.chart_activity.TuesdayChartActivity
 import com.example.dreamhealthy.chart_activity.WednesdayChartActivity
-import com.example.dreamhealthy.week_activity.FridayActivity
 import com.example.dreamhealthy.week_activity.MondayActivity
 import com.example.dreamhealthy.week_activity.SaturdayActivity
 import com.example.dreamhealthy.week_activity.SundayActivity

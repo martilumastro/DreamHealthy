@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.dreamhealthy"
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-    <uses-permission android:name="android.permission.BODY_SENSORS" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
     <uses-feature android:name="android.hardware.type.watch" />
 
     <application
@@ -49,18 +47,15 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.DATA_CHANGED" />
-
                 <data
                     android:host="*"
                     android:pathPrefix="/simulated_metrics"
                     android:scheme="wear" />
             </intent-filter>
-
             <meta-data
                 android:name="com.google.android.gms.wearable.BIND_LISTENER"
                 android:value="true" />
         </service>
-
         <activity
             android:name=".TodayChartActivity"
             android:exported="false" />
