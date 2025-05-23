@@ -180,7 +180,7 @@ class ThursdayAlarmClockActivity : AppCompatActivity() {
             }
         }
 
-        //connection with alarmReceiver for music
+        //connection with alarmReceiver for music SCHEDULE_EXACT_ALARM
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
@@ -198,7 +198,7 @@ class ThursdayAlarmClockActivity : AppCompatActivity() {
         //read name of the melody
         val melodyPath = MelodyStorageManager.getMelody(this, "Thursday", "alarm")
         //standard if melody is null
-        val alarmMelody = melodyPath ?: "standard_alarm_melody.mp3" // se nulla, usa quella standard
+        val alarmMelody = melodyPath ?: "standard_alarm_melody.mp3"
 
         // send the melody to the alarmReceiver
         val intent = Intent(this, AlarmReceiver::class.java).apply {
@@ -230,8 +230,8 @@ class ThursdayAlarmClockActivity : AppCompatActivity() {
             e.printStackTrace()
             Toast.makeText(this, "Error: Allow alarms in settings", Toast.LENGTH_LONG).show()
         }
-
         // Save on SharedPreferences ("alarms")
+        //save state and clock of the alarm for toggle button in my alarms clock
         val prefsThursday = getSharedPreferences("alarms", MODE_PRIVATE)
         prefsThursday.edit()
             //active alarm and format alarm

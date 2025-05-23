@@ -22,7 +22,6 @@
             android:textColor="@android:color/white"
             android:layout_marginBottom="16dp" />
         <TextView
-            android:id="@+id/alarm_type_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Wake up!"

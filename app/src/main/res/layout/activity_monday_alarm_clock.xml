@@ -313,8 +313,8 @@
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:text="Set the alarm to calculate total sleep time"
-                android:textSize="20dp"/>
+                android:text="The alarm will calculate a rest time of 8 hours."
+                android:textSize="18dp"/>
         </LinearLayout>
     </LinearLayout>
 

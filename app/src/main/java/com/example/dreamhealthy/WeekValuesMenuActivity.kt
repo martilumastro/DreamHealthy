@@ -17,7 +17,6 @@ import com.example.dreamhealthy.week_activity.WednesdayActivity
 import com.example.dreamhealthy.week_activity.FridayActivity
 
 class WeekValuesMenuActivity : AppCompatActivity() {
-    private lateinit var buttonHome: ImageButton
     private lateinit var buttonAlarms: ImageButton
     private lateinit var buttonWeekValue: ImageButton
     private lateinit var buttonMenu: ImageButton
@@ -41,7 +40,6 @@ class WeekValuesMenuActivity : AppCompatActivity() {
         buttonMenu = findViewById(R.id.menuBt)
         buttonWeekValue = findViewById(R.id.week_values_bt)
         buttonAlarms = findViewById(R.id.my_alarms_clock_bt)
-        buttonHome = findViewById(R.id.homeBt)
         mondayButton = findViewById(R.id.monday_values_bt)
         tuesdayButton = findViewById(R.id.tuesday_values_bt)
         wednesdayButton = findViewById(R.id.wednesday_values_bt)
@@ -57,11 +55,6 @@ class WeekValuesMenuActivity : AppCompatActivity() {
 
     //fun for all changing page
     fun buttonChange(){
-        // button home --> from menu to home
-        buttonHome.setOnClickListener {
-            val pageHome = Intent (this, MainActivity::class.java)
-            startActivity(pageHome)
-        }
         buttonAlarms.setOnClickListener {
             val pageAlarms = Intent (this, MyAlarmsClockActivity::class.java)
             startActivity(pageAlarms)

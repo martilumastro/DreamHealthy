@@ -149,8 +149,6 @@ class MondayAlarmClockActivity : AppCompatActivity() {
 
     }
 
-
-
     fun changePage() {
         goBackButton.setOnClickListener {
             val backPage = Intent(this, MyAlarmsClockActivity::class.java)
@@ -169,7 +167,7 @@ class MondayAlarmClockActivity : AppCompatActivity() {
             startActivity(alarmPage)
         }
     }
-
+//fun for alarm
     private fun setAlarm(hour: Int, minute: Int) {
         //calendar object with hour and minute chosen by the user
         val calendar = Calendar.getInstance().apply {
@@ -199,12 +197,19 @@ class MondayAlarmClockActivity : AppCompatActivity() {
             Toast.makeText(this, "You give permission to alarms", Toast.LENGTH_LONG).show()
             return
         }
+        //Read the saved melody for alarm
+        //first save melody for thursday
+        MelodyStorageManager.saveMelody(this, "Monday", "alarm", "music_alarm_melody1.mp3")
+        //read name of the melody
+        val melodyPath = MelodyStorageManager.getMelody(this, "Monday", "alarm")
+        //standard if melody is null
+        val alarmMelody = melodyPath ?: "standard_alarm_melody.mp3"
 
         //connection with alarmReceiver for music
         val intent = Intent(this, AlarmReceiver::class.java).apply {
-            putExtra("standard alarm", "standard_alarm_melody.mp3")
+            putExtra("standard alarm", alarmMelody)
         }
-        //Broadcast: alarm start even if the app is closed
+        //Creating a PendingIntent upgradeable
         val pendingIntent = PendingIntent.getBroadcast(
             this,
             0,
@@ -219,7 +224,7 @@ class MondayAlarmClockActivity : AppCompatActivity() {
             showIntent,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
-
+        //set alarm with alarmManager
         try {
             //alarm visible
             alarmManager.setAlarmClock(
@@ -233,6 +238,7 @@ class MondayAlarmClockActivity : AppCompatActivity() {
             //if not granted permission
             Toast.makeText(this, "Error: Allow alarms in settings", Toast.LENGTH_LONG).show()
         }
+        // Save on SharedPreferences ("alarms")
         //save state and clock of the alarm for toggle button in my alarms clock
         val prefsMonday = getSharedPreferences("alarms", MODE_PRIVATE)
         prefsMonday.edit()
@@ -248,22 +254,38 @@ class MondayAlarmClockActivity : AppCompatActivity() {
             set(Calendar.SECOND, 0)
             if (before(Calendar.getInstance())) add(Calendar.DATE, 1)
         }
-
+        //read melody, type sleep
+        //save not null melody
+        MelodyStorageManager.saveMelody(this, "Monday", "sleep", "zen_relax_melody.mp3")
+        //read the saved melody
+        val melodyPath = MelodyStorageManager.getMelody(this, "Monday", "sleep")
+        //standard if null
+        val sleepMelody = melodyPath ?: "rowboat.mp3"
         val intent = Intent(this, AlarmReceiver::class.java).apply {
-            putExtra("standard alarm", "rowboat.mp3")
+            putExtra("standard alarm", sleepMelody)
         }
-
+        //pending intent to activate the melody
         val pendingIntent = PendingIntent.getBroadcast(
             this,
             1,
             intent,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
-
+        //get alarmManager for melody
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        // Android permission for alarm
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
+            val intent = Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).apply {
+                data = Uri.parse("package:$packageName")
+            }
+            startActivity(intent)
+            Toast.makeText(this, "Permission required for exact sleep alarms", Toast.LENGTH_LONG).show()
+            return
+        }
+        //alarm set to user time
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
     }
-
+    //fun pre wake melody
     private fun setPreWakeMelody(wakeHour: Int, wakeMinute: Int) {
         val calendar = Calendar.getInstance().apply {
             set(Calendar.HOUR_OF_DAY, wakeHour)
@@ -272,22 +294,37 @@ class MondayAlarmClockActivity : AppCompatActivity() {
             set(Calendar.SECOND, 0)
             if (before(Calendar.getInstance())) add(Calendar.DATE, 1)
         }
-
+        //Read the saved melody for wake up
+        //saved melody not null
+        MelodyStorageManager.saveMelody(this, "Monday", "wake", "guitar_relax_melody_wake.mp3")
+        //read the saved melody
+        val melodyPath = MelodyStorageManager.getMelody(this, "Monday", "wake")
+        //if melody is null
+        val wakeMelody = melodyPath ?: "birds_chirping_melody_wake.mp3"
+        //get AlarmReceiver intent for melody
         val intent = Intent(this, AlarmReceiver::class.java).apply {
-            putExtra("standard alarm", "birds_chirping_melody_wake.mp3")
+            putExtra("standard alarm", wakeMelody)
         }
-
+        //pending intent to activate the melody
         val pendingIntent = PendingIntent.getBroadcast(
             this,
             2,
             intent,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
-
+        //get alarmManager for melody
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
+            val intent = Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).apply {
+                data = Uri.parse("package:$packageName")
+            }
+            startActivity(intent)
+            Toast.makeText(this, "Permission required for exact wake alarms", Toast.LENGTH_LONG).show()
+            return
+        }
+        //user time for melody
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
     }
-
 
     //fun calculated day
     fun viewThisDay() {
@@ -300,18 +337,22 @@ class MondayAlarmClockActivity : AppCompatActivity() {
         dayText.text = formattedDate
     }
 
+    //update page layout
     override fun onResume() {
+        //super.onResume for the standard state reset
         super.onResume()
 
         val prefsMonday = getSharedPreferences("alarms", MODE_PRIVATE)
+        //read boolean for alarm, standard text is false
         val isAlarmSet = prefsMonday.getBoolean("monday_alarm_set", false)
-
+        //if the alarm has been set, read the time
         if (isAlarmSet) {
             wakeUpHourTextView.text = prefsMonday.getString("monday_alarm_time", "--:--")
             sleepUpHourTextView.text = prefsMonday.getString("monday_sleep_hour", "--:--")
-            alarmMelodyTextView.text = prefsMonday.getString("monday_alarm_melody", "")
-            sleepMelodyTextView.text = prefsMonday.getString("monday_sleep_melody", "")
-            wakeUpMelodyTextView.text = prefsMonday.getString("monday_wake_melody", "")
+            //and the text for the melody
+            alarmMelodyTextView.text = MelodyStorageManager.getMelody(this, "Monday", "alarm") ?: ""
+            sleepMelodyTextView.text = MelodyStorageManager.getMelody(this, "Monday", "sleep") ?: ""
+            wakeUpMelodyTextView.text = MelodyStorageManager.getMelody(this, "Monday", "wake") ?: ""
         } else {
             // Reset Layout if alarm is not set
             wakeUpHourTextView.text = "--:--"
