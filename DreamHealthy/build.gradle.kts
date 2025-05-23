@@ -3,8 +3,6 @@
     alias(libs.plugins.kotlin.android)
  }
 
-
-
 android {
     namespace = "com.example.dreamhealthy.wear"
     compileSdk = 35
@@ -27,6 +25,14 @@ android {
             )
         }
     }
+    sourceSets["main"].manifest.srcFile("src/main/AndroidManifest.xml")
+    /*sourceSets{
+        getByName("main")
+        {
+            manifest.srcFile("src/main/AndroidManifest.xml")
+        }
+    }*/
+
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

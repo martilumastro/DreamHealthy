@@ -1,5 +1,6 @@
 package com.example.dreamhealthy
 
+import android.annotation.SuppressLint
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
@@ -10,6 +11,7 @@ class AlarmStopActivity : AppCompatActivity() {
     //var init mediaPlayer null
     private var mediaPlayer: MediaPlayer? = null
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm_stop)

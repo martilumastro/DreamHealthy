@@ -21,6 +21,7 @@ import com.github.mikephil.charting.components.LimitLine
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import java.util.Locale
 
 class ThursdayChartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityThursdayChartBinding
@@ -39,59 +40,53 @@ class ThursdayChartActivity : AppCompatActivity() {
         binding = ActivityThursdayChartBinding.inflate(layoutInflater)
         setContentView(binding.root)
         buttonChange()
-       setDataChart()
+        setDataChart()
     }
 
-    fun setDataChart()
-    {
+    fun setDataChart() {
         loadSimulateData()
         setChart()
     }
 
-    private fun loadSimulateData()
-    {
-        val sharedPrefs = getSharedPreferences("sim_data.json",MODE_PRIVATE)
-        val jsonString = sharedPrefs.getString("sim_data_list",null)
+    private fun loadSimulateData() {
+        val today = java.text.SimpleDateFormat("EEEE", Locale.getDefault()).format(java.util.Date())
+        val sharedPrefs = getSharedPreferences("sim_data", MODE_PRIVATE)
+        val jsonString = sharedPrefs.getString("sim_data_list", null)
 
-        if(jsonString != null)
-        {
+        if (jsonString != null) {
             val jsonArray = JSONArray(jsonString)
-            for(i in 0 until jsonArray.length())
-            {
-                try{
+            for (i in 0 until jsonArray.length()) {
+                try {
                     val obj = jsonArray.getJSONObject(i)
-                    if(obj.getString("day") == "Thursday")
-                    {
+                    if (obj.getString("day") == today) {
                         heartVal(obj)
                         tempVal(obj)
                         noiseLev(obj)
                     }
-                } catch (e: JSONException)
-                {
+                } catch (e: JSONException) {
                     Log.e("JSON Parsing", "ERROR IN THE READ OF OBJECT JASON :${e.message}")
                 }
             }
         }
     }
-    private fun heartVal(obj :  JSONObject){
+
+    private fun heartVal(obj: JSONObject) {
         val hr = obj.getDouble("heart").toFloat()
         val time = obj.getDouble("time").toFloat()
-        heart_rate_values.add(Entry(time,hr))
+        heart_rate_values.add(Entry(time, hr))
     }
 
-    private fun tempVal(obj : JSONObject)
-    {
+    private fun tempVal(obj: JSONObject) {
         val tp = obj.getDouble("temp").toFloat()
         val time = obj.getDouble("time").toFloat()
-        temperature_values.add(Entry(time,tp))
+        temperature_values.add(Entry(time, tp))
     }
 
 
-    private fun noiseLev(obj : JSONObject)
-    {
+    private fun noiseLev(obj: JSONObject) {
         val ns = obj.getDouble("noise").toFloat()
         val time = obj.getDouble("time").toFloat()
-        noise_values.add(Entry(time,ns))
+        noise_values.add(Entry(time, ns))
     }
 
 
@@ -100,7 +95,7 @@ class ThursdayChartActivity : AppCompatActivity() {
         val now = java.util.Calendar.getInstance()
         val current_hour = now.get(java.util.Calendar.HOUR_OF_DAY)
         val current_minute = now.get(java.util.Calendar.MINUTE)
-        val current_time_float = current_hour+ (current_minute / 60.0f)
+        val current_time_float = current_hour + (current_minute / 60.0f)
 
         val heartRateSet = LineDataSet(heart_rate_values, "Heart Rate").apply {
             color = Color.RED
@@ -128,7 +123,7 @@ class ThursdayChartActivity : AppCompatActivity() {
         }
 
 
-        val lineData = LineData(heartRateSet,temperatureSet,noiseSet)
+        val lineData = LineData(heartRateSet, temperatureSet, noiseSet)
         binding.LineChart.data = lineData
         binding.LineChart.apply {
             description.text = "Simulated Data - Thursday"
@@ -157,7 +152,7 @@ class ThursdayChartActivity : AppCompatActivity() {
         legend.isEnabled = true
         legend.textColor = Color.WHITE
         legend.form = Legend.LegendForm.LINE
-        if(dayOfweek == java.util.Calendar.THURSDAY) // always check the day
+        if (dayOfweek == java.util.Calendar.THURSDAY) // always check the day
         {
             limit_line(current_time_float, xAxis) //
             anim_line()
@@ -166,38 +161,37 @@ class ThursdayChartActivity : AppCompatActivity() {
     }
 
 
-                    private fun limit_line(current_time : Float , xAxis :XAxis)
-                    {
-                    val currentLine = LimitLine(current_time,"Ora Attuale")
-                        currentLine.lineWidth = 2f
-                        currentLine.lineColor = Color.MAGENTA
-                        currentLine.textColor = Color.MAGENTA
-                        currentLine.labelPosition = LimitLine.LimitLabelPosition.RIGHT_TOP
-                        xAxis.removeAllLimitLines()  //mostriamo solo quella attuale
-                        xAxis.addLimitLine(currentLine)
-                    }
-                     private fun anim_line()
-                    {
-                      binding.LineChart.setTouchEnabled(true)
-                      binding.LineChart.setPinchZoom(true)
-                      binding.LineChart.animateX(1000)
-                      binding.LineChart.setNoDataText("No Data Avaible")
-                    }
-
-        //fun for changing page (navbar)
-        fun buttonChange() {
-            // button hamburger --> from today to menu
-            val buttonMenu = findViewById<ImageButton>(R.id.menuBt)
-            buttonMenu.setOnClickListener {
-                val pageMenu = Intent(this, MenuActivity::class.java)
-                startActivity(pageMenu)
-            }
-            // button chart  --> from today to chartanalisys_today
-            val buttonToday = findViewById<ImageButton>(R.id.todayBt)
-            buttonToday.setOnClickListener {
-                val pageToday = Intent(this, ThursdayActivity::class.java)
-                startActivity(pageToday)
-            }
-
-        }
+    private fun limit_line(current_time: Float, xAxis: XAxis) {
+        val currentLine = LimitLine(current_time, "Ora Attuale")
+        currentLine.lineWidth = 2f
+        currentLine.lineColor = Color.MAGENTA
+        currentLine.textColor = Color.MAGENTA
+        currentLine.labelPosition = LimitLine.LimitLabelPosition.RIGHT_TOP
+        xAxis.removeAllLimitLines()  //mostriamo solo quella attuale
+        xAxis.addLimitLine(currentLine)
     }
+
+    private fun anim_line() {
+        binding.LineChart.setTouchEnabled(true)
+        binding.LineChart.setPinchZoom(true)
+        binding.LineChart.animateX(1000)
+        binding.LineChart.setNoDataText("No Data Avaible")
+    }
+
+    //fun for changing page (navbar)
+    fun buttonChange() {
+        // button hamburger --> from today to menu
+        val buttonMenu = findViewById<ImageButton>(R.id.menuBt)
+        buttonMenu.setOnClickListener {
+            val pageMenu = Intent(this, MenuActivity::class.java)
+            startActivity(pageMenu)
+        }
+        // button chart  --> from today to chartanalisys_today
+        val buttonToday = findViewById<ImageButton>(R.id.todayBt)
+        buttonToday.setOnClickListener {
+            val pageToday = Intent(this, ThursdayActivity::class.java)
+            startActivity(pageToday)
+        }
+
+    }
+}

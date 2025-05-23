@@ -71,7 +71,7 @@
             android:name=".WeekValuesMenuActivity"
             android:exported="false" />
         <activity
-            android:name=".week_activity.SundayActivity"
+            android:name= ".week_activity.SundayActivity"
             android:exported="false" />
         <activity
             android:name=".chart_activity.SundayChartActivity"

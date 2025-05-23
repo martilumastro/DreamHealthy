@@ -1,5 +1,5 @@
-
 package com.example.dreamhealthy.wear.presentation
+
 import android.content.Context
 import android.os.Bundle
 import android.text.format.DateUtils.formatElapsedTime
@@ -25,49 +25,60 @@ import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-class MainActivity : ComponentActivity()
-{
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MaterialTheme{
-                var sessionActive by remember {mutableStateOf(false)}
+            MaterialTheme {
+                var sessionActive by remember { mutableStateOf(false) }
                 var startTime by remember { mutableStateOf(0L) }
                 var sessionEndTime by remember { mutableStateOf(0L) }
                 var elapsedTime by remember { mutableStateOf(0L) }
-
-              /*  var heartRate by remember { mutableStateOf("-") }
-                var bodyTemp by remember { mutableStateOf("-") }
-                var noiseLevel by remember { mutableStateOf("-")}*/
-
+                /*  var heartRate by remember { mutableStateOf("-") }
+                  var bodyTemp by remember { mutableStateOf("-") }
+                  var noiseLevel by remember { mutableStateOf("-")}*/
                 var coroutineScope = rememberCoroutineScope()
                 val context = LocalContext.current
+                val sharedPrefs = context.getSharedPreferences("sim_data", Context.MODE_PRIVATE)
                 var simulationJob by remember { mutableStateOf<Job?>(null) }
 
                 Scaffold {
                     Column(
-                        modifier = Modifier.fillMaxSize().background(Color.Black).padding(8.dp),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color.Black)
+                            .padding(8.dp),
                         verticalArrangement = Arrangement.Center
                     ) {
-                        if(!sessionActive)
-                        {
+                        if (!sessionActive) {
                             Button(onClick = {
+
+                                sharedPrefs.edit().remove("slim_data_list").apply()
+                                //   I delete the data of the time when the first session started
+
                                 sessionActive = true
                                 startTime = System.currentTimeMillis()
                                 sessionEndTime = 0L
-                                Toast.makeText(context, "Start Session" , Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Start Session", Toast.LENGTH_SHORT).show()
 
                                 simulationJob = coroutineScope.launch {
-                                    while(isActive)
-                                    {
-                                        val hr = Random.nextInt(55,90).toFloat()
-                                        val temp = (360..375).random() /10f
+                                    while (isActive) {
+                                        val hr = Random.nextInt(55, 90).toFloat()
+                                        val temp = (360..375).random() / 10f
                                         val noise = (25..55).random().toFloat()
                                         val currentTime = getCurrentFloatTime()
                                         val day = getCurrentDay()
 
-                                        saveSimulateData(context,hr,temp,noise,currentTime,day,startTime)
+                                        saveSimulateData(
+                                            context,
+                                            hr,
+                                            temp,
+                                            noise,
+                                            currentTime,
+                                            day,
+                                            startTime
+                                        )
 
                                         SleepDataGenerator.sendSimulatedMetrics(
                                             context = context,
@@ -83,16 +94,17 @@ class MainActivity : ComponentActivity()
                                     }
                                 }
                                 coroutineScope.launch {
-                                    while(sessionActive && isActive){
-                                        elapsedTime = System.currentTimeMillis() - startTime //so we know the time
+                                    while (sessionActive && isActive) {
+                                        elapsedTime =
+                                            System.currentTimeMillis() - startTime //so we know the time
                                         delay(1000L) //UPDATE EVERY SEC
                                     }
                                 }
                             }) {
-                                Text("Start Simulation" , color = Color.White)
+                                Text("Start Simulation", color = Color.White)
                             }
                         } else {
-                            Button(onClick =  {
+                            Button(onClick = {
                                 sessionActive = false
                                 simulationJob?.cancel()
                                 sessionEndTime = System.currentTimeMillis()
@@ -107,71 +119,87 @@ class MainActivity : ComponentActivity()
                                     sessionEnd = sessionEndTime,
                                     day = getCurrentDay()
                                 )
-                                Toast.makeText(context, "Session Ended at : ${formatTime(sessionEndTime)}", Toast.LENGTH_LONG).show()
+                                Toast.makeText(
+                                    context,
+                                    "Session Ended at : ${formatTime(sessionEndTime)}",
+                                    Toast.LENGTH_LONG
+                                ).show()
 
                             })
                             {
-                              Text("End Simulation", color = Color.Red)
+                                Text("End Simulation", color = Color.Red)
                             }
                         }
                         Spacer(modifier = Modifier.height(12.dp))
 
-                        if(sessionActive || sessionEndTime !=0L)
-                            {
-                            Text("Session started at: ${formatTime(startTime)}", color = Color.White)
-                            if(sessionActive)
-                            {
+                        if (sessionActive || sessionEndTime != 0L) {
+                            Text(
+                                "Session started at: ${formatTime(startTime)}",
+                                color = Color.White
+                            )
+                            if (sessionActive) {
                                 Text(
                                     "Elapsed Time : ${formatElapsedTime(elapsedTime)}",
                                     color = Color.White
                                 )
-                            }
-                                else if(sessionEndTime != 0L)
-                                {
-                                    Text("Session ended at: ${formatTime(sessionEndTime)}", color = Color.White)
+                            } else if (sessionEndTime != 0L) {
+                                Text(
+                                    "Session ended at: ${formatTime(sessionEndTime)}",
+                                    color = Color.White
+                                )
 
-                                }
-
                             }
+
                         }
                     }
                 }
             }
         }
+    }
 
 
-    private fun saveSimulateData(context: Context , heart : Float , temp : Float , noise : Float, time : Float, day: String, sessionStartTime : Long)
-    {
+    private fun saveSimulateData(
+        context: Context,
+        heart: Float,
+        temp: Float,
+        noise: Float,
+        time: Float,
+        day: String,
+        sessionStartTime: Long
+    ) {
 
         val sharedPrefs = context.getSharedPreferences("sim_data", Context.MODE_PRIVATE)
-        val existingJson = sharedPrefs.getString("sim_data_list",null)
-        val jsonArray = if(existingJson != null) JSONArray(existingJson) else JSONArray()
+        val existingJson = sharedPrefs.getString("sim_data_list", null)
+        val jsonArray = if (existingJson != null) JSONArray(existingJson) else JSONArray()
 
         val sessionData = JSONObject().apply {
-            put("heart" , heart)
-            put("temp",temp)
-            put("noise",noise)
-            put("time",time)
-            put("start_time_point" , System.currentTimeMillis())  // Save start time of session
-            put("session_start_global",sessionStartTime) // Placeholder end time , update after session
+            put("heart", heart)
+            put("temp", temp)
+            put("noise", noise)
+            put("time", time)
+            put("start_time_point", System.currentTimeMillis())  // Save start time of session
+            put(
+                "session_start_global",
+                sessionStartTime
+            ) // Placeholder end time , update after session
             put("day", day)
         }
         jsonArray.put(sessionData)
-        sharedPrefs.edit().putString("sim_data_list" , jsonArray.toString()).apply()
+        sharedPrefs.edit().putString("sim_data_list", jsonArray.toString()).apply()
         Log.d("SaveData", "Saved data point : $sessionData")
     }
 
-    private fun formatTime(timestamp : Long): String{
-        if(timestamp == 0L)
+    private fun formatTime(timestamp: Long): String {
+        if (timestamp == 0L)
             return "N/A"
-        val sdf = SimpleDateFormat("HH:mm:ss",Locale.getDefault())
+        val sdf = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
         return sdf.format(Date(timestamp))
     }
 
-    private fun formatElapsedTime(milliseconds: Long) : String {
-         val totalSeconds = milliseconds / 1000
-         val minutes = totalSeconds / 60
-         val seconds = totalSeconds % 60
+    private fun formatElapsedTime(milliseconds: Long): String {
+        val totalSeconds = milliseconds / 1000
+        val minutes = totalSeconds / 60
+        val seconds = totalSeconds % 60
         return String.format("%02d:%02d", minutes, seconds)
     }
 
@@ -179,8 +207,9 @@ class MainActivity : ComponentActivity()
         val now = java.util.Calendar.getInstance()
         val hour = now.get(java.util.Calendar.HOUR_OF_DAY)
         val minute = now.get(java.util.Calendar.MINUTE)
-        return hour +(minute /60f)
+        return hour + (minute / 60f)
     }
+
     fun getCurrentDay(): String {
         val sdf = SimpleDateFormat("EEEE", Locale.getDefault())
         return sdf.format(Date()) // es. "Sunday"
